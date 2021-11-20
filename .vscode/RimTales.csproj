@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<RootNamespace>RimTales</RootNamespace>
+		<AssemblyName>RimTales</AssemblyName>
+		<OutputPath>../1.3/Assemblies</OutputPath>
+		<VersionPrefix>1.0.0.0</VersionPrefix>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<LangVersion>9.0</LangVersion>
+	</PropertyGroup>
+
+ 	<ItemGroup>
+	 	<!-- Mod -->
+	 	<Compile Include="../Source/*" />
+	 	<!-- Rimworld -->
+	 	<Reference Include="../../../RimWorldLinux_Data/Managed/*.dll">
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+	
+</Project>
