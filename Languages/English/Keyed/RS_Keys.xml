@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<!-- Settings -->
+<EnUseColour>Colour Tale List: </EnUseColour>
+<EnShowDeaths>Enable Deaths: </EnShowDeaths>
+<EnShowVommit>Enable Vommit: </EnShowVommit>
+<EnShowWounded>Enable Wounded: </EnShowWounded>
+<EnShowAnimalTraining>Enable Animal Training: </EnShowAnimalTraining>
+<EnDebugLog>Print full-text tales to Debug Log: </EnDebugLog>
+</LanguageData>

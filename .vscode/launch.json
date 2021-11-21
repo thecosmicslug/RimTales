@@ -8,9 +8,8 @@
             "name": "Build",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build dll",
-            "program": "",
-            "args": [],
+            "program": "sh",
+            "args": ["${workspaceFolder}/.vscode/build.sh"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
