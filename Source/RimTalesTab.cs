@@ -12,24 +12,66 @@ namespace RimTales
 {
     public class RimTalesTab : MainTabWindow
 {
-    private const float FactionColorRectSize = 15f;
-    private const float FactionColorRectGap = 10f;
-    private const float RowMinHeight = 80f;
-    private const float LabelRowHeight = 50f;
-    private const float TypeColumnWidth = 100f;
-    private const float NameColumnWidth = 220f;
-    private const float RelationsColumnWidth = 100f;
-    private const float NameLeftMargin = 15f;
+    //private const float FactionColorRectSize = 15f;
+    //private const float FactionColorRectGap = 10f;
+    //private const float RowMinHeight = 80f;
+    //private const float LabelRowHeight = 50f;
+    //private const float TypeColumnWidth = 100f;
+    //private const float NameColumnWidth = 220f;
+    //private const float RelationsColumnWidth = 100f;
+    //private const float NameLeftMargin = 15f;
 
     private Vector2 scrollPosition = Vector2.zero;
     private float scrollViewHeight;
 
-    public String filter = "";
-    public float TickCount = 0;
-    public float NumTales = 0;
-    public bool bCheckRefresh = true; 
+    private String filter = "";
+    private float TickCount = 0;
+    private float NumTales = 0;
+    private bool bCheckRefresh = true; 
 
-    public List<String> tales = new List<String>();
+    private List<String> tales = new List<String>();
+
+    //* Taken from Vanilla Interactions Expanded so we can export even more Tales.
+    [DefOf]
+    public static class VIE_DefOf
+    {
+        public static TaleDef VSIE_BondedPetButchered;
+        public static TaleDef VSIE_ExposedCorpseOfMyFriend;
+        public static TaleDef VSIE_IngestedHumanFlesh;
+        public static TaleDef VSIE_BingedFood;
+        public static TaleDef VSIE_BingedDrug;
+        public static TaleDef VSIE_HideInRoom;
+        public static TaleDef VSIE_ThrewTantrum;
+        public static TaleDef VSIE_WanderedInSaddness;
+        public static TaleDef VSIE_WentBerserk;
+        public static TaleDef VSIE_WentIntoSadisticRage;
+        public static TaleDef VSIE_WentOnFireStartingSpree;
+        public static TaleDef VSIE_WentOnMurderousRage;
+        public static TaleDef VSIE_RanWild;
+        public static TaleDef VSIE_InsultedMe;
+        public static TaleDef VSIE_SlaughteredAnimalInRage;
+        public static TaleDef VSIE_RebuffedMe;
+        public static TaleDef VSIE_InducedPrisonerToEscape;
+        public static TaleDef VSIE_TamedThrumbo;
+        public static TaleDef VSIE_WasPreviouslyOurEnemy;
+        public static TaleDef VSIE_WasBadlyInjured;
+        public static TaleDef VSIE_DidNotAttendWedding;
+        public static TaleDef VSIE_AttendedMyWedding;
+        public static TaleDef VSIE_RemovedPrisonersOrgans;
+        public static TaleDef VSIE_FailedMedicalOperationAndKilled;
+        public static TaleDef VSIE_TamedMe;
+        public static TaleDef VSIE_ArrestedMe;
+        public static TaleDef VSIE_ResurrectedMe;
+        public static TaleDef VSIE_BrokeUpWithMe;
+        public static TaleDef VSIE_WeHadNiceChat;
+        public static TaleDef VSIE_WeHadSocialFight;
+        public static TaleDef VSIE_SavedMeFromMyWounds;
+        public static TaleDef VSIE_HasBeenMyFriendSinceChildhood;
+        public static TaleDef VSIE_SavedMeFromRaiders;
+        public static TaleDef VSIE_StoleMyLover;
+        public static TaleDef VSIE_CuredMyFriend;
+    }
+    //*
 
     public override Vector2 RequestedTabSize{
         get
@@ -149,7 +191,7 @@ namespace RimTales
                 if (tale2.thingData != null){
                     plus = " - " + tale2.thingData.thingDef.LabelCap + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                //AddTale(tale,overrideName,plus);
             }
             else if (tale is Tale_DoublePawnKilledBy){
                 Tale_DoublePawnKilledBy tale2 = tale as Tale_DoublePawnKilledBy;
@@ -161,7 +203,7 @@ namespace RimTales
                 }
                 if (RimTalesMod.settings.bShowDeaths == true){
                     if (tale.def != TaleDefOf.KilledColonyAnimal){
-                        AddTale(tale,overrideName,plus);
+                    //    AddTale(tale,overrideName,plus);
                     }
                 }
             }
@@ -170,12 +212,14 @@ namespace RimTales
                 Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
                 plus = " - " + tale2.defData.def.LabelCap + ".";
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.Vomited){
                 if (RimTalesMod.settings.bShowVommit == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.Recruited){
@@ -187,6 +231,7 @@ namespace RimTales
                     overrideName = " - Recruiter: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.Hunted){
@@ -201,6 +246,7 @@ namespace RimTales
                     overrideName = " - Hunter: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.KidnappedColonist){
@@ -212,6 +258,7 @@ namespace RimTales
                     overrideName = " - Kidnapper: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.DidSurgery){
@@ -223,6 +270,7 @@ namespace RimTales
                     plus = " - Patient: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledColonist){
@@ -239,6 +287,7 @@ namespace RimTales
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledMajorThreat){
@@ -249,6 +298,7 @@ namespace RimTales
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.TradedWith){
@@ -257,6 +307,7 @@ namespace RimTales
                     plus = " - Trader: " + tale2.secondPawnData.name + ".";
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.BecameLover || tale.def == TaleDefOf.Breakup || tale.def == TaleDefOf.Marriage){
@@ -268,6 +319,7 @@ namespace RimTales
                     overrideName = ": " + tale2.firstPawnData.name + "";
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }                
   
             if (tale.def == TaleDefOf.Captured || tale.def == TaleDefOf.ExecutedPrisoner || tale.def == TaleDefOf.SoldPrisoner){
@@ -282,6 +334,7 @@ namespace RimTales
                     overrideName = " - Warden: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.TamedAnimal || tale.def == TaleDefOf.TrainedAnimal || tale.def == TaleDefOf.BondedWithAnimal){
@@ -298,6 +351,7 @@ namespace RimTales
                 if (RimTalesMod.settings.bShowAnimalTraining == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledColonyAnimal){
@@ -312,10 +366,12 @@ namespace RimTales
                     overrideName = " - Killer: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.LandedInPod){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.BuriedCorpse){
@@ -333,134 +389,154 @@ namespace RimTales
                     overrideName = " - Worker: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.WasOnFire){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CompletedLongConstructionProject){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAmbushedByHumanlike){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.IllnessRevealed){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.IncreasedMenagerie){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.MinedValuable){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanRemoteMining){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.AttendedConcert){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.HeldConcert){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.AttendedParty){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.StruckMineable){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.Exhausted){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.WalkedNaked){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.SocialFight){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
-            if (tale.def == TaleDefOf.LaunchedShip){
-                AddTale(tale,overrideName,plus);
-            }
-
-            if (tale.def == TaleDefOf.GainedMasterSkillWithoutPassion){
-                AddTale(tale,overrideName,plus);
-            }
-            
             if (tale.def == TaleDefOf.GainedMasterSkillWithPassion){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledBy){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledMortar){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledLongRange){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledMelee){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.DefeatedHostileFactionLeader){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.KilledCapacity){
                 if (RimTalesMod.settings.bShowDeaths == true){
                     AddTale(tale,overrideName,plus);
                 }
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanFormed){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanFled){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAmbushDefeated){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAssaultSuccessful){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.ButcheredHumanlikeCorpse){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CraftedArt){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.GaveBirth){
@@ -478,16 +554,19 @@ namespace RimTales
                     overrideName = " - Mother: " + tale2.firstPawnData.name;
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.AteRawHumanlikeMeat){
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.CompletedLongCraftingProject){
                 Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
                 plus = " - " + tale2.defData.def.LabelCap + ".";
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
             if (tale.def == TaleDefOf.Wounded){
@@ -506,6 +585,7 @@ namespace RimTales
                         overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
                     }
                     AddTale(tale,overrideName,plus);
+                    continue;
                 } 
             }
 
@@ -524,11 +604,190 @@ namespace RimTales
                     overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
                 }
                 AddTale(tale,overrideName,plus);
+                continue;
             }
 
-            /// Not sure what this means?!
+            //* Not sure what this means?!
             if (tale.def == TaleDefOf.CollapseDodged){
                 AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            //*  VanillaSocialInteractionsExpanded stuff
+            if (tale.def == VIE_DefOf.VSIE_BondedPetButchered){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_ExposedCorpseOfMyFriend){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_IngestedHumanFlesh){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_BingedFood){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_BingedDrug){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_HideInRoom){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_ThrewTantrum){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WanderedInSaddness){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WentBerserk){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WentIntoSadisticRage){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WentOnFireStartingSpree){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WentOnMurderousRage){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_RanWild){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_InsultedMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_SlaughteredAnimalInRage){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_RebuffedMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_InducedPrisonerToEscape){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_TamedThrumbo){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WasPreviouslyOurEnemy){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WasBadlyInjured){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_DidNotAttendWedding){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_AttendedMyWedding){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_RemovedPrisonersOrgans){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_FailedMedicalOperationAndKilled){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_TamedMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_ArrestedMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+
+            if (tale.def == VIE_DefOf.VSIE_ResurrectedMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_BrokeUpWithMe){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+            
+            if (tale.def == VIE_DefOf.VSIE_WeHadNiceChat){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_WeHadSocialFight){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_SavedMeFromMyWounds){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_HasBeenMyFriendSinceChildhood){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_SavedMeFromRaiders){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_StoleMyLover){
+                AddTale(tale,overrideName,plus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.VSIE_CuredMyFriend){
+                AddTale(tale,overrideName,plus);
+                continue;
             }
 
         }
