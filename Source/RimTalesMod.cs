@@ -18,6 +18,7 @@ namespace RimTales
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
+
             Listing_Standard listing_Standard = new Listing_Standard();
             listing_Standard.Begin(inRect);
 

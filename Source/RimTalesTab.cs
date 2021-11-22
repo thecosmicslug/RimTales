@@ -25,6 +25,9 @@ namespace RimTales
     private float scrollViewHeight;
 
     public String filter = "";
+    public float TickCount = 0;
+    public float NumTales = 0;
+    public bool bCheckRefresh = true; 
 
     public List<String> tales = new List<String>();
 
@@ -35,16 +38,34 @@ namespace RimTales
         }
     }
 
+    //* Called when opening window, Set it all up.
     public override void PostOpen(){
         base.PostOpen();
         ProcessTales();
         filter = "";
     }
 
+    //* Called when the Window is visible.
+	public override void WindowUpdate(){
+        base.WindowUpdate();
+        if(bCheckRefresh == true){
+            TickCount = TickCount + 1;
+            if (TickCount >= 200){
+                TickCount = 0;
+                if(NumTales < Find.TaleManager.AllTalesListForReading.Count){
+                    bCheckRefresh = false;
+                    Log.Message("RimTales: New Tales Detected! Refreshing list.");
+                    ProcessTales();
+                }
+            }
+        }
+    }
+
+    //* Draw our GUI on the Window.
     public override void DoWindowContents(Rect fillRect){
 
         Text.Font = GameFont.Medium;
-        Widgets.Label(fillRect, "RimTales:");
+        Widgets.Label(fillRect, "RimTales");
         Rect position = new Rect(0f, 0f, fillRect.width, fillRect.height);
         GUI.BeginGroup(position);
         Text.Font = GameFont.Small;
@@ -52,18 +73,18 @@ namespace RimTales
         Rect outRect = new Rect(0f, 50f, position.width, position.height - 50f);
         Rect position2 = new Rect(100f, 0f, 110F, 30F);
 
-        if(Widgets.ButtonText(position2, "Invert Order")){
+        if(Widgets.ButtonText(position2, "EnInvert".Translate())){
             this.tales.Reverse();
         }
             
         Rect position3 = new Rect(280f, 5f, 110F, 30F);
-        Widgets.Label(position3, "Filter");
+        Widgets.Label(position3, "EnFilter".Translate());
 
         Rect position4 = new Rect(320f, 0f, 110F, 30F);
         filter = Widgets.TextField(position4, filter);
 
         Rect position6 = new Rect(615f, 0f, 300f, 30f);
-        if(Widgets.ButtonText(position6, "Export Tales")){
+        if(Widgets.ButtonText(position6, "EnSaveList".Translate())){
             saveTales();
         }
 
@@ -86,9 +107,9 @@ namespace RimTales
                 if (RimTalesMod.settings.bUseColour == true){
                     if (tale.Contains("Recruit") || tale.Contains("nimal") || tale.Contains("Hunted")) GUI.color = Color.green;
                     if (tale.Contains("Traded") || tale.Contains("Struck")) GUI.color = Color.gray;
-                    if (tale.Contains("risoner") || tale.Contains("aked") || tale.Contains("Gave up")) GUI.color = Color.yellow;
+                    if (tale.Contains("risoner") || tale.Contains("aked") || tale.Contains("Gave up") || tale.Contains("Wounded")) GUI.color = Color.yellow;
                     if (tale.Contains("Marriage") || tale.Contains("Breakup") || tale.Contains("lover")) GUI.color = Color.magenta;
-                    if (tale.Contains("Death") || tale.Contains("Kidnap") || tale.Contains("Berserk") || tale.Contains("Kill") || tale.Contains("kill") || tale.Contains("Raid") || tale.Contains("Human")) GUI.color = Color.red;
+                    if (tale.Contains("Death") || tale.Contains("Kidnap") || tale.Contains("Berserk") || tale.Contains("Kill") || tale.Contains("kill") || tale.Contains("Raid") || tale.Contains("Human") || tale.Contains("Downed")) GUI.color = Color.red;
                     if (tale.Contains("Research") || tale.Contains("Landed") || tale.Contains("Surgery")) GUI.color = Color.cyan;
                 }
                 
@@ -110,10 +131,14 @@ namespace RimTales
     }
 
     public void ProcessTales(){
-        
+
+        //* Stop refreshing while we process the tales.
+        bCheckRefresh = false; 
+
         this.tales.Clear();
         Log.Message("RimTales: Retrieving Tale Log...");
         
+        NumTales = Find.TaleManager.AllTalesListForReading.Count;
         foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
 
             String plus = "";
@@ -131,7 +156,7 @@ namespace RimTales
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
                     plus = " - Killer: " + tale2.secondPawnData.name + ".";
                 }
-                else if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
+                if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
                     plus = " - Killer: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 if (RimTalesMod.settings.bShowDeaths == true){
@@ -208,7 +233,7 @@ namespace RimTales
                 if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
                     overrideName = " - Killer: " + tale2.firstPawnData.kind.LabelCap;
                 }
-                else if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
+                if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
                     overrideName = " - Killer: " + tale2.firstPawnData.name;
                 }
                 if (RimTalesMod.settings.bShowDeaths == true){
@@ -294,6 +319,19 @@ namespace RimTales
             }
 
             if (tale.def == TaleDefOf.BuriedCorpse){
+                Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
+                if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
+                    plus = " - Body: " + tale2.secondPawnData.kind.LabelCap;
+                }
+                if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
+                    plus = " - Body: " + tale2.secondPawnData.name + ".";
+                }
+                if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
+                    overrideName = " - Worker: " + tale2.firstPawnData.kind.LabelCap;
+                }
+                if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
+                    overrideName = " - Worker: " + tale2.firstPawnData.name;
+                }
                 AddTale(tale,overrideName,plus);
             }
 
@@ -426,6 +464,19 @@ namespace RimTales
             }
 
             if (tale.def == TaleDefOf.GaveBirth){
+                Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
+                if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
+                    plus = " - Child: " + tale2.secondPawnData.kind.LabelCap;
+                }
+                if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
+                    plus = " - Child: " + tale2.secondPawnData.name + ".";
+                }
+                if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
+                    overrideName = " - Mother: " + tale2.firstPawnData.kind.LabelCap;
+                }
+                if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
+                    overrideName = " - Mother: " + tale2.firstPawnData.name;
+                }
                 AddTale(tale,overrideName,plus);
             }
 
@@ -434,10 +485,8 @@ namespace RimTales
             }
 
             if (tale.def == TaleDefOf.CompletedLongCraftingProject){
-                AddTale(tale,overrideName,plus);
-            }
-
-            if (tale.def == TaleDefOf.CollapseDodged){
+                Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
+                plus = " - " + tale2.defData.def.LabelCap + ".";
                 AddTale(tale,overrideName,plus);
             }
 
@@ -447,13 +496,13 @@ namespace RimTales
                     if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
                         plus = " - Attacker: " + tale2.secondPawnData.name + ".";
                     }
-                    else if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
+                    if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
                         plus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
                     }
                     if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
                         overrideName = " - Victim: " + tale2.firstPawnData.name;
                     }
-                    else if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
+                    if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
                         overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
                     }
                     AddTale(tale,overrideName,plus);
@@ -465,27 +514,31 @@ namespace RimTales
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
                     plus = " - Attacker: " + tale2.secondPawnData.name + ".";
                 }
-                else if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
+                if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
                     plus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
                     overrideName = " - Victim: " + tale2.firstPawnData.name;
                 }
-                else if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
+                if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
                     overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
                 }
                 AddTale(tale,overrideName,plus);
             }
-            
-            if (RimTalesMod.settings.bIsDebugging == true){
-                Log.Message("RimTales-DEBUG: " + tale.ToString());
+
+            /// Not sure what this means?!
+            if (tale.def == TaleDefOf.CollapseDodged){
+                AddTale(tale,overrideName,plus);
             }
+
         }
         this.tales.Reverse();
         Log.Message("RimTales: Listing Complete!");
+        bCheckRefresh = true; 
     }
 
     public void saveTales(){
+        
         String outputFile;
         outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_tales.txt");
         using (var output = new StreamWriter(outputFile, false)){
@@ -494,6 +547,17 @@ namespace RimTales
             }
         }
         Log.Message("RimTales: Tales exported to " + outputFile);
+
+        //* export the full data in another log.
+        if (RimTalesMod.settings.bIsDebugging == true){
+            outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_tales_debug.txt");
+            using (var output = new StreamWriter(outputFile, false)){
+                foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
+                    output.WriteLine(tale.ToString());
+                }
+            }
+            Log.Message("RimTales: Debugging Tales exported to " + outputFile);
+        }
     }
 
     public void AddTale(Tale tale, String overrideName, String plus){

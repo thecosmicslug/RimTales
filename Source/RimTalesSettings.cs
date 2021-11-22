@@ -9,7 +9,6 @@ namespace RimTales
     class RimTalesSettings : ModSettings
     {
         public bool bUseColour = true;
-
         public bool bShowDeaths = true;
         public bool bShowVommit = true;
         public bool bShowWounded = true;

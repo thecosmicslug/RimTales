@@ -6,5 +6,10 @@
 <EnShowVommit>Enable Vommit: </EnShowVommit>
 <EnShowWounded>Enable Wounded: </EnShowWounded>
 <EnShowAnimalTraining>Enable Animal Training: </EnShowAnimalTraining>
-<EnDebugLog>Print full-text tales to Debug Log: </EnDebugLog>
+<EnDebugLog>Print debug-text tales to seperate logfile: </EnDebugLog>
+<!-- GUI -->
+<EnFilter>Filter: </EnFilter>
+<EnInvert>Invert Order</EnInvert>
+<EnSaveList>Save Tales</EnSaveList>
+"EnSaveList".Translate()
 </LanguageData>
