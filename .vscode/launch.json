@@ -20,9 +20,9 @@
             "request": "launch",
             "preLaunchTask": "build dll",
             "program": "../../RimWorldLinux",
-            "args": ["-quicktest"],
+            "args": [""],
             "cwd": "${workspaceFolder}",
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "console": "internalConsole"
         }
     ]

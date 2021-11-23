@@ -5,11 +5,13 @@
 <EnShowDeaths>Enable Deaths: </EnShowDeaths>
 <EnShowVommit>Enable Vommit: </EnShowVommit>
 <EnShowWounded>Enable Wounded: </EnShowWounded>
-<EnShowAnimalTraining>Enable Animal Training: </EnShowAnimalTraining>
+<EnShowAnimalTales>Enable Animal Tales: </EnShowAnimalTales>
+<EnShowChitChat>Enable Chit-Chat: </EnShowChitChat>
+<EnShowPlayedGame>Enable Playing Game: </EnShowPlayedGame>
+
 <EnDebugLog>Print debug-text tales to seperate logfile: </EnDebugLog>
 <!-- GUI -->
 <EnFilter>Filter: </EnFilter>
 <EnInvert>Invert Order</EnInvert>
 <EnSaveList>Save Tales</EnSaveList>
-"EnSaveList".Translate()
 </LanguageData>

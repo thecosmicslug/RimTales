@@ -12,22 +12,16 @@ namespace RimTales
 {
     public class RimTalesTab : MainTabWindow
 {
-    //private const float FactionColorRectSize = 15f;
-    //private const float FactionColorRectGap = 10f;
-    //private const float RowMinHeight = 80f;
-    //private const float LabelRowHeight = 50f;
-    //private const float TypeColumnWidth = 100f;
-    //private const float NameColumnWidth = 220f;
-    //private const float RelationsColumnWidth = 100f;
-    //private const float NameLeftMargin = 15f;
-
     private Vector2 scrollPosition = Vector2.zero;
     private float scrollViewHeight;
 
     private String filter = "";
-    private float TickCount = 0;
-    private float NumTales = 0;
-    private bool bCheckRefresh = true; 
+    private int TickCount = 0;
+    private float  NumTales = 0;
+    private float ProcessedTales = 0; 
+    private bool bCheckRefresh = true;
+    private String StrPlus = "";
+    private String StrOverride = "";
 
     private List<String> tales = new List<String>();
 
@@ -70,8 +64,18 @@ namespace RimTales
         public static TaleDef VSIE_SavedMeFromRaiders;
         public static TaleDef VSIE_StoleMyLover;
         public static TaleDef VSIE_CuredMyFriend;
+        //* Extra tales found so far.
+        public static TaleDef PlayedGame;
+        public static TaleDef MajorThreat;
+        public static TaleDef HeatstrokeRevealed;
+        public static TaleDef Raid;
+        public static TaleDef Eclipse;
+        public static TaleDef Aurora;
+        public static TaleDef Meditated;
+        public static TaleDef Prayed;
+        public static TaleDef Stripped;
+
     }
-    //*
 
     public override Vector2 RequestedTabSize{
         get
@@ -92,8 +96,9 @@ namespace RimTales
         base.WindowUpdate();
         if(bCheckRefresh == true){
             TickCount = TickCount + 1;
-            if (TickCount >= 200){
+            if (TickCount >= 100){
                 TickCount = 0;
+                Log.Message("RimTales: WindowUpdate() TickCount=100");
                 if(NumTales < Find.TaleManager.AllTalesListForReading.Count){
                     bCheckRefresh = false;
                     Log.Message("RimTales: New Tales Detected! Refreshing list.");
@@ -180,44 +185,25 @@ namespace RimTales
         this.tales.Clear();
         Log.Message("RimTales: Retrieving Tale Log...");
         
+        ProcessedTales = 0;
         NumTales = Find.TaleManager.AllTalesListForReading.Count;
         foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
 
-            String plus = "";
-            String overrideName = "";
-
-            if (tale is Tale_SinglePawnAndThing){
-                Tale_SinglePawnAndThing tale2 = tale as Tale_SinglePawnAndThing;
-                if (tale2.thingData != null){
-                    plus = " - " + tale2.thingData.thingDef.LabelCap + ".";
-                }
-                //AddTale(tale,overrideName,plus);
-            }
-            else if (tale is Tale_DoublePawnKilledBy){
-                Tale_DoublePawnKilledBy tale2 = tale as Tale_DoublePawnKilledBy;
-                if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Killer: " + tale2.secondPawnData.name + ".";
-                }
-                if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Killer: " + tale2.secondPawnData.kind.LabelCap + ".";
-                }
-                if (RimTalesMod.settings.bShowDeaths == true){
-                    if (tale.def != TaleDefOf.KilledColonyAnimal){
-                    //    AddTale(tale,overrideName,plus);
-                    }
-                }
-            }
+            StrPlus = "";
+            StrOverride = "";
 
             if (tale.def == TaleDefOf.FinishedResearchProject){
                 Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
-                plus = " - " + tale2.defData.def.LabelCap + ".";
-                AddTale(tale,overrideName,plus);
+                StrPlus = " - " + tale2.defData.def.LabelCap + ".";
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.Vomited){
                 if (RimTalesMod.settings.bShowVommit == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
@@ -225,67 +211,69 @@ namespace RimTales
             if (tale.def == TaleDefOf.Recruited){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Joiner: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Joiner: " + tale2.secondPawnData.name + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Recruiter: " + tale2.firstPawnData.name;
+                    StrOverride = ": Recruiter: " + tale2.firstPawnData.name;
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.Hunted){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Prey: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": " + tale2.secondPawnData.name;
                 }
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Prey: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrOverride = ": " + tale2.secondPawnData.kind.LabelCap;
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Hunter: " + tale2.firstPawnData.name;
+                    StrPlus = " - Hunter: " + tale2.firstPawnData.name;
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.KidnappedColonist){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Victim: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": Victim: " + tale2.secondPawnData.name;
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Kidnapper: " + tale2.firstPawnData.name;
+                    StrPlus = " - Kidnapper: " + tale2.firstPawnData.name + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.DidSurgery){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Patient: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Patient: " + tale2.secondPawnData.name + ".";
                 }
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Patient: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrPlus = " - Patient: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledColonist){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Colonist: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": " + tale2.secondPawnData.name;
                 }
                 if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
-                    overrideName = " - Killer: " + tale2.firstPawnData.kind.LabelCap;
+                    StrPlus = " - Killer: " + tale2.firstPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Killer: " + tale2.firstPawnData.name;
+                    StrPlus = " - Killer: " + tale2.firstPawnData.name + ".";
                 }
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
@@ -293,10 +281,12 @@ namespace RimTales
             if (tale.def == TaleDefOf.KilledMajorThreat){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Enemy: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Enemy: " + tale2.secondPawnData.name + ".";
                 }
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
@@ -304,52 +294,54 @@ namespace RimTales
             if (tale.def == TaleDefOf.TradedWith){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Trader: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Trader: " + tale2.secondPawnData.name + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.BecameLover || tale.def == TaleDefOf.Breakup || tale.def == TaleDefOf.Marriage){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " and " + tale2.secondPawnData.name + ".";
+                    StrPlus = " and " + tale2.secondPawnData.name + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = ": " + tale2.firstPawnData.name + "";
+                    StrOverride = ": " + tale2.firstPawnData.name + "";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }                
   
             if (tale.def == TaleDefOf.Captured || tale.def == TaleDefOf.ExecutedPrisoner || tale.def == TaleDefOf.SoldPrisoner){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Animal: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrPlus = " - Animal: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Prisoner: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Prisoner: " + tale2.secondPawnData.name + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Warden: " + tale2.firstPawnData.name;
+                    StrOverride = ": Warden: " + tale2.firstPawnData.name;
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.TamedAnimal || tale.def == TaleDefOf.TrainedAnimal || tale.def == TaleDefOf.BondedWithAnimal){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Animal: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrOverride = ": " + tale2.secondPawnData.kind.LabelCap;
                 }
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Animal: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": " + tale2.secondPawnData.name;
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Handler: " + tale2.firstPawnData.name;
+                    StrPlus = " - Handler: " + tale2.firstPawnData.name + ".";
                 }
-                if (RimTalesMod.settings.bShowAnimalTraining == true){
-                    AddTale(tale,overrideName,plus);
+                if (RimTalesMod.settings.bShowAnimalTales == true){
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
@@ -357,215 +349,230 @@ namespace RimTales
             if (tale.def == TaleDefOf.KilledColonyAnimal){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Animal: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrPlus = " - Animal: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Animal: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Animal: " + tale2.secondPawnData.name + ".";
+                }
+                if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
+                    StrOverride = ": Killer: " + tale2.firstPawnData.kind.LabelCap;
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Killer: " + tale2.firstPawnData.name;
+                    StrOverride = ": Killer: " + tale2.firstPawnData.name;
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.LandedInPod){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.BuriedCorpse){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Body: " + tale2.secondPawnData.kind.LabelCap;
+                    StrOverride = ": " + tale2.secondPawnData.kind.LabelCap;
                 }
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Body: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": " + tale2.secondPawnData.name;
                 }
                 if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
-                    overrideName = " - Worker: " + tale2.firstPawnData.kind.LabelCap;
+                    StrPlus = " - Worker: " + tale2.firstPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Worker: " + tale2.firstPawnData.name;
+                    StrPlus = " - Worker: " + tale2.firstPawnData.name + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.WasOnFire){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CompletedLongConstructionProject){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAmbushedByHumanlike){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.IllnessRevealed){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.IncreasedMenagerie){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.MinedValuable){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanRemoteMining){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.AttendedConcert){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.HeldConcert){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.AttendedParty){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.StruckMineable){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.Exhausted){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.WalkedNaked){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.SocialFight){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.GainedMasterSkillWithPassion){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledBy){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledMortar){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledLongRange){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledMelee){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.DefeatedHostileFactionLeader){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.KilledCapacity){
                 if (RimTalesMod.settings.bShowDeaths == true){
-                    AddTale(tale,overrideName,plus);
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
                 }
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanFormed){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanFled){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAmbushDefeated){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CaravanAssaultSuccessful){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.ButcheredHumanlikeCorpse){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CraftedArt){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.GaveBirth){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Child: " + tale2.secondPawnData.kind.LabelCap;
+                    StrOverride = ": " + tale2.secondPawnData.kind.LabelCap;
                 }
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Child: " + tale2.secondPawnData.name + ".";
+                    StrOverride = ": " + tale2.secondPawnData.name;
                 }
                 if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
-                    overrideName = " - Mother: " + tale2.firstPawnData.kind.LabelCap;
+                    StrPlus = " - Mother: " + tale2.firstPawnData.kind.LabelCap  + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Mother: " + tale2.firstPawnData.name;
+                    StrPlus = " - Mother: " + tale2.firstPawnData.name + ".";
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.AteRawHumanlikeMeat){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == TaleDefOf.CompletedLongCraftingProject){
                 Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
-                plus = " - " + tale2.defData.def.LabelCap + ".";
-                AddTale(tale,overrideName,plus);
+                StrPlus = " - " + tale2.defData.def.LabelCap + ".";
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
@@ -573,232 +580,299 @@ namespace RimTales
                 if (RimTalesMod.settings.bShowWounded == true){
                     Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                     if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                        plus = " - Attacker: " + tale2.secondPawnData.name + ".";
+                        StrPlus = " - Attacker: " + tale2.secondPawnData.name + ".";
                     }
                     if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                        plus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
+                        StrPlus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
                     }
                     if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                        overrideName = " - Victim: " + tale2.firstPawnData.name;
+                        StrOverride = ": " + tale2.firstPawnData.name;
                     }
                     if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
-                        overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
+                        StrOverride = ": " + tale2.firstPawnData.kind.LabelCap;
                     }
-                    AddTale(tale,overrideName,plus);
-                    continue;
-                } 
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
+                }
+                continue;
             }
 
             if (tale.def == TaleDefOf.Downed){
                 Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
                 if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
-                    plus = " - Attacker: " + tale2.secondPawnData.name + ".";
+                    StrPlus = " - Attacker: " + tale2.secondPawnData.name + ".";
                 }
                 if (tale2.secondPawnData != null && !tale2.secondPawnData.kind.RaceProps.Humanlike){
-                    plus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
+                    StrPlus = " - Attacker: " + tale2.secondPawnData.kind.LabelCap + ".";
                 }
                 if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
-                    overrideName = " - Victim: " + tale2.firstPawnData.name;
+                    StrOverride = ": " + tale2.firstPawnData.name;
                 }
                 if (tale2.firstPawnData != null && !tale2.firstPawnData.kind.RaceProps.Humanlike){
-                    overrideName = " - Victim: " + tale2.firstPawnData.kind.LabelCap + ".";
+                    StrOverride = ": " + tale2.firstPawnData.kind.LabelCap;
                 }
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             //* Not sure what this means?!
             if (tale.def == TaleDefOf.CollapseDodged){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             //*  VanillaSocialInteractionsExpanded stuff
             if (tale.def == VIE_DefOf.VSIE_BondedPetButchered){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_ExposedCorpseOfMyFriend){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_IngestedHumanFlesh){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_BingedFood){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_BingedDrug){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_HideInRoom){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_ThrewTantrum){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WanderedInSaddness){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WentBerserk){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WentIntoSadisticRage){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WentOnFireStartingSpree){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WentOnMurderousRage){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_RanWild){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_InsultedMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_SlaughteredAnimalInRage){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_RebuffedMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_InducedPrisonerToEscape){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_TamedThrumbo){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WasPreviouslyOurEnemy){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WasBadlyInjured){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_DidNotAttendWedding){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_AttendedMyWedding){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_RemovedPrisonersOrgans){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_FailedMedicalOperationAndKilled){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_TamedMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_ArrestedMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
 
             if (tale.def == VIE_DefOf.VSIE_ResurrectedMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_BrokeUpWithMe){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
             
             if (tale.def == VIE_DefOf.VSIE_WeHadNiceChat){
-                AddTale(tale,overrideName,plus);
+                if (RimTalesMod.settings.bShowChitChat == true){
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
+                }
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_WeHadSocialFight){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_SavedMeFromMyWounds){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_HasBeenMyFriendSinceChildhood){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_SavedMeFromRaiders){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_StoleMyLover){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
             if (tale.def == VIE_DefOf.VSIE_CuredMyFriend){
-                AddTale(tale,overrideName,plus);
+                AddTale(tale,StrOverride,StrPlus);
                 continue;
             }
 
+            //* Spammy, not sure where these come from yet.
+            if (tale.def == VIE_DefOf.PlayedGame){
+                if (RimTalesMod.settings.bShowPlayedGame == true){
+                    AddTale(tale,StrOverride,StrPlus);
+                }else{
+                    ProcessedTales =  ProcessedTales + 1;
+                }
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.MajorThreat){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.HeatstrokeRevealed){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.Raid){
+                //* Duplicate Tale, count it but dont add.
+                ProcessedTales = ProcessedTales + 1;
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.Eclipse){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+            if (tale.def == VIE_DefOf.Aurora){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+            if (tale.def == VIE_DefOf.Meditated){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.Prayed){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+
+            if (tale.def == VIE_DefOf.Stripped){
+                AddTale(tale,StrOverride,StrPlus);
+                continue;
+            }
+
+            //* We Shouldn't end up here, log the tale if debug-mode
+            if (RimTalesMod.settings.bIsDebugging == true){
+                Log.Message("RimTales-DEBUG:============UNKNOWN-TALE===========");
+                Log.Message("RimTales-DEBUG:(TOSTRING) " + tale.ToString());
+                Log.Message("RimTales-DEBUG:(DEF) " +  tale.def);
+                Log.Message("RimTales-DEBUG:===================================");
+
+            }
         }
-        this.tales.Reverse();
+
+        this.tales.Reverse();        ;
         Log.Message("RimTales: Listing Complete!");
+        Log.Message("RimTales: " + this.tales.Count + "/" + NumTales + " Processed. (" + ((float)this.tales.Count / NumTales).ToString("0.00%") + ")");
+        
         bCheckRefresh = true; 
     }
 
     public void saveTales(){
         
         String outputFile;
+        String outputMsg;
         outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_tales.txt");
         using (var output = new StreamWriter(outputFile, false)){
             foreach (String tale in this.tales){
@@ -806,6 +880,7 @@ namespace RimTales
             }
         }
         Log.Message("RimTales: Tales exported to " + outputFile);
+        outputMsg = System.Environment.NewLine +  System.Environment.NewLine + System.Environment.NewLine + System.Environment.NewLine + "Tales saved to " + outputFile + System.Environment.NewLine;
 
         //* export the full data in another log.
         if (RimTalesMod.settings.bIsDebugging == true){
@@ -816,7 +891,12 @@ namespace RimTales
                 }
             }
             Log.Message("RimTales: Debugging Tales exported to " + outputFile);
+            outputMsg = outputMsg + "Full-text Tales saved to " + outputFile +System.Environment.NewLine;
         }
+
+        Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
+		Find.WindowStack.Add(window);
+
     }
 
     public void AddTale(Tale tale, String overrideName, String plus){
@@ -843,9 +923,9 @@ namespace RimTales
             var outstr = final + overrideName + plus;
             this.tales.Add(outstr);
         }
+        ProcessedTales = ProcessedTales + 1;
     }
     
-
 }
 
 }
