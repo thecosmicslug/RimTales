@@ -8,14 +8,14 @@ using RimWorld.Planet;
 using Verse;
 using UnityEngine;
 
-namespace RimTales 
-{
+namespace RimTales {
+    //* Our Tales List GUI 
     public class RimTalesTab : MainTabWindow
 {
     private Vector2 scrollPosition = Vector2.zero;
     private float scrollViewHeight;
 
-    private String filter = "";
+    private String StrFilter = "";
     private int TickCount = 0;
     private float  NumTales = 0;
     private float ProcessedTales = 0; 
@@ -27,8 +27,8 @@ namespace RimTales
 
     //* Taken from Vanilla Interactions Expanded so we can export even more Tales.
     [DefOf]
-    public static class VIE_DefOf
-    {
+    public static class VIE_DefOf{
+
         public static TaleDef VSIE_BondedPetButchered;
         public static TaleDef VSIE_ExposedCorpseOfMyFriend;
         public static TaleDef VSIE_IngestedHumanFlesh;
@@ -87,8 +87,9 @@ namespace RimTales
     //* Called when opening window, Set it all up.
     public override void PostOpen(){
         base.PostOpen();
+        Log.Message("RimTales: Showing Main Tab GUI.");
         ProcessTales();
-        filter = "";
+        StrFilter = "";
     }
 
     //* Called when the Window is visible.
@@ -96,7 +97,7 @@ namespace RimTales
         base.WindowUpdate();
         if(bCheckRefresh == true){
             TickCount = TickCount + 1;
-            if (TickCount >= 100){
+            if (TickCount >= 120){
                 TickCount = 0;
                 Log.Message("RimTales: WindowUpdate() TickCount=100");
                 if(NumTales < Find.TaleManager.AllTalesListForReading.Count){
@@ -128,7 +129,7 @@ namespace RimTales
         Widgets.Label(position3, "EnFilter".Translate());
 
         Rect position4 = new Rect(320f, 0f, 110F, 30F);
-        filter = Widgets.TextField(position4, filter);
+        StrFilter = Widgets.TextField(position4, StrFilter);
 
         Rect position6 = new Rect(615f, 0f, 300f, 30f);
         if(Widgets.ButtonText(position6, "EnSaveList".Translate())){
@@ -141,14 +142,14 @@ namespace RimTales
         float num = 0f;
         foreach (String tale in this.tales)
         {
-            bool show = false;
-            if(filter == ""){
-                show = true;
+            bool bShow = false;
+            if(StrFilter == ""){
+                bShow = true;
             }
-            else if (tale.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0){
-                show = true;
+            else if (tale.IndexOf(StrFilter, StringComparison.OrdinalIgnoreCase) >= 0){
+                bShow = true;
             }
-            if (show){
+            if (bShow){
 
                 GUI.color = Color.white;
                 if (RimTalesMod.settings.bUseColour == true){
@@ -175,6 +176,7 @@ namespace RimTales
         }
         Widgets.EndScrollView();
         GUI.EndGroup();
+
     }
 
     public void ProcessTales(){
@@ -879,8 +881,9 @@ namespace RimTales
                 output.WriteLine(tale);
             }
         }
-        Log.Message("RimTales: Tales exported to " + outputFile);
-        outputMsg = System.Environment.NewLine +  System.Environment.NewLine + System.Environment.NewLine + System.Environment.NewLine + "Tales saved to " + outputFile + System.Environment.NewLine;
+        Log.Message("RimTales: Filtered Tales exported to " + outputFile);
+        outputMsg = System.Environment.NewLine + System.Environment.NewLine +  System.Environment.NewLine +  this.tales.Count + "/" + NumTales + " Tales Exported. (" + ((float)this.tales.Count / NumTales).ToString("0.00%") + ")" + System.Environment.NewLine + System.Environment.NewLine + System.Environment.NewLine;
+        outputMsg = outputMsg + "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
 
         //* export the full data in another log.
         if (RimTalesMod.settings.bIsDebugging == true){
@@ -892,6 +895,7 @@ namespace RimTales
             }
             Log.Message("RimTales: Debugging Tales exported to " + outputFile);
             outputMsg = outputMsg + "Full-text Tales saved to " + outputFile +System.Environment.NewLine;
+
         }
 
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");

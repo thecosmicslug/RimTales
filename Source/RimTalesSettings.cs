@@ -5,17 +5,16 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace RimTales 
-{
+namespace RimTales {
+    //* Holds the actual settings here
     class RimTalesSettings : ModSettings
     {
         public bool bShowVommit = true;
         public bool bShowDeaths = true;
         public bool bShowWounded = true;
         public bool bShowAnimalTales= true;
-        public bool bShowChitChat= true;
-        public bool bShowPlayedGame= true;
-
+        public bool bShowChitChat= false;
+        public bool bShowPlayedGame= false;
         public bool bUseColour = true;
         public bool bIsDebugging = false;
 
@@ -27,8 +26,9 @@ namespace RimTales
             Scribe_Values.Look(ref this.bShowVommit, "ShowVommit", true);
             Scribe_Values.Look(ref this.bShowWounded, "ShowWounded", true);
             Scribe_Values.Look(ref this.bShowAnimalTales, "ShowAnimalTales", true);
-            Scribe_Values.Look(ref this.bShowChitChat, "ShowChitChat", true);
-            Scribe_Values.Look(ref this.bShowPlayedGame, "ShowPlayedGame", true);
+            //* SPAM!
+            Scribe_Values.Look(ref this.bShowChitChat, "ShowChitChat", false);
+            Scribe_Values.Look(ref this.bShowPlayedGame, "ShowPlayedGame", false);
 
             //* UI Settings
             Scribe_Values.Look(ref this.bUseColour, "UseColour", true);
@@ -36,17 +36,21 @@ namespace RimTales
         }
     }
 
-class RimTalesMod : Mod
+    //* Draw ModSettings GUI here
+    class RimTalesMod : Mod
     {
         public static RimTalesSettings settings;
+        public override string SettingsCategory() => "RimTales";
+        
+        public override void WriteSettings(){
+            base.WriteSettings();
+        }
 
-        public RimTalesMod(ModContentPack content) : base(content)
-        {
+        public RimTalesMod(ModContentPack content) : base(content){
             settings = GetSettings<RimTalesSettings>();
         }
 
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
+        public override void DoSettingsWindowContents(Rect inRect){
 
             Listing_Standard listing_Standard = new Listing_Standard();
             listing_Standard.Begin(inRect);
@@ -70,14 +74,10 @@ class RimTalesMod : Mod
 
             listing_Standard.End();
             settings.Write();
+            
+            base.DoSettingsWindowContents(inRect);
         }
 
-        public override string SettingsCategory() => "RimTales";
-        
-        public override void WriteSettings()
-        {
-            base.WriteSettings();
-        }
     }
 
 }
