@@ -9,6 +9,7 @@ namespace RimTales {
     //* Holds the actual settings here
     class RimTalesSettings : ModSettings
     {
+        //* Filter Settings
         public bool bShowVommit = true;
         public bool bShowDeaths = true;
         public bool bShowWounded = true;
@@ -16,7 +17,17 @@ namespace RimTales {
         public bool bShowChitChat= false;
         public bool bShowPlayedGame= false;
         public bool bUseColour = true;
+
+        //* Aniverary Settings taken from RimStory
+        public bool enableMarriageAnniversary = true;
+        public bool enableMemoryDay = true;
+        public bool enableDaysOfVictory = true;
+        public bool enableIndividualThoughts = true;
+        public bool enableFunerals = true;
+
+        //* Extra debug logs
         public bool bIsDebugging = false;
+
 
         public override void ExposeData()
         {
@@ -33,6 +44,12 @@ namespace RimTales {
             //* UI Settings
             Scribe_Values.Look(ref this.bUseColour, "UseColour", true);
             Scribe_Values.Look(ref this.bIsDebugging, "IsDebugging", false);
+            //* Aniversary Settings
+            Scribe_Values.Look(ref this.enableMarriageAnniversary, "enableMarriageAnniversary", true);
+            Scribe_Values.Look(ref this.enableMemoryDay, "enableMemoryDay", true);
+            Scribe_Values.Look(ref this.enableDaysOfVictory, "enableDaysOfVictory", true);
+            Scribe_Values.Look(ref this.enableIndividualThoughts, "enableIndividualThoughts", true);
+            Scribe_Values.Look(ref this.enableFunerals, "enableFunerals", true);
         }
     }
 
@@ -71,6 +88,14 @@ namespace RimTales {
                 //* Print a second text-file with the raw data.
                 listing_Standard.CheckboxLabeled("EnDebugLog".Translate(), ref settings.bIsDebugging);
             }
+
+            //* Aniversary Settings
+            listing_Standard.CheckboxLabeled("enableMarriageAnniversary".Translate(), ref settings.enableMarriageAnniversary);
+            listing_Standard.CheckboxLabeled("enableMemoryDay".Translate(), ref settings.enableMemoryDay);
+            listing_Standard.CheckboxLabeled("enableDaysOfVictory".Translate(), ref settings.enableDaysOfVictory);
+            listing_Standard.CheckboxLabeled("enableIndividualThoughts".Translate(), ref settings.enableIndividualThoughts);
+            listing_Standard.CheckboxLabeled("enableFunerals".Translate(), ref settings.enableFunerals);
+
 
             listing_Standard.End();
             settings.Write();
