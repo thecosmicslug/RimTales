@@ -24,12 +24,9 @@ namespace RimTales
         public static List<Pawn> deadPawnsForMassFuneral = new List<Pawn>();
         public static List<Pawn> deadPawnsForMassFuneralBuried = new List<Pawn>();
         public static List<Building_Grave> graves = new List<Building_Grave>();
-
-        public static List<IEvent> eventsLog = new List<IEvent>();
         public static List<IEvent> events = new List<IEvent>();
-        public static List<IEvent> eventsToDelete = new List<IEvent>();
-
         public static List<Pawn> pawnsAttended = new List<Pawn>();
+        public static List<Tale> tales = new List<Tale>();
 
         public static Building_Grave lastGrave;
 
@@ -43,7 +40,7 @@ namespace RimTales
         public static bool showIncidentsInLog = true;
         public static bool showCustomTextInLog = true;
 
-        public static List<Tale> tales = new List<Tale>();
+        
 
     }
 }

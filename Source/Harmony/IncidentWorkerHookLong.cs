@@ -10,7 +10,7 @@ namespace RimTales
     {
         private static void Postfix(IncidentWorker __instance)
         {
-            Log.Message($"it works {__instance.def.defName}");
+            Log.Message("RimTales: GameCondition.Init() - " + $"it works {__instance.def.defName}");
         }
     }
 }

@@ -39,51 +39,26 @@ namespace RimTales
         // Token: 0x0600078D RID: 1933 RVA: 0x0003FC4C File Offset: 0x0003E04C
         public override StateGraph CreateGraph()
         {
-            //StateGraph stateGraph = new StateGraph();
-            //LordToil_Gathering lordToil_Party = new LordToil_Gathering(this.spot, 600);
-            //stateGraph.AddToil(lordToil_Party);
-
-            //LordToil_End lordToil_End = new LordToil_End();
-            //stateGraph.AddToil(lordToil_End);
-
-            //Transition transition = new Transition(lordToil_Party, lordToil_End);
-
-            //transition.AddTrigger(new Trigger_TickCondition(() => this.ShouldBeCalledOff(), 1));
-            //transition.AddTrigger(new Trigger_PawnLostViolently());
-            //transition.AddPreAction(new TransitionAction_Message("Funeral called off.", MessageTypeDefOf.NegativeEvent, new TargetInfo(this.spot, base.Map, false)));
-            //stateGraph.AddTransition(transition);
-            //this.timeoutTrigger = new Trigger_TicksPassed(Rand.RangeInclusive(5000, 15000));
-            //Transition transition2 = new Transition(lordToil_Party, lordToil_End);
-            //transition2.AddTrigger(this.timeoutTrigger);
-            //transition2.AddPreAction(new TransitionAction_Message("Funeral finished.", MessageTypeDefOf.SituationResolved, new TargetInfo(this.spot, base.Map, false)));
-            //stateGraph.AddTransition(transition2);
-            //return stateGraph;
 
             var stateGraph = new StateGraph();
-
             var lordToil_Party = new LordToil_Funeral(spot);
             stateGraph.AddToil(lordToil_Party);
 
-            //LordToil_MarriageCeremony lordToil_MarriageCeremony = new LordToil_MarriageCeremony(this.organizer, this.organizer, this.spot);
-            //stateGraph.AddToil(lordToil_MarriageCeremony);
-
             var lordToil_End = new LordToil_EndGathering();
             stateGraph.AddToil(lordToil_End);
-
             var transition = new Transition(lordToil_Party, lordToil_End);
 
             transition.AddTrigger(new Trigger_TickCondition(ShouldBeCalledOff));
             transition.AddTrigger(new Trigger_PawnLostViolently());
-            //transition.AddPreAction(new TransitionAction_Message("Funeral called off.", MessageTypeDefOf.NegativeEvent, new TargetInfo(this.spot, base.Map, false)));
             transition.AddPreAction(new TransitionAction_Message("FuneralCalledOff".Translate(),
-                MessageTypeDefOf.NegativeEvent, new TargetInfo(spot, Map)));
+            MessageTypeDefOf.NegativeEvent, new TargetInfo(spot, Map)));
             stateGraph.AddTransition(transition);
             timeoutTrigger = new Trigger_TicksPassed(Rand.RangeInclusive(5000, 15000));
+            
             var transition2 = new Transition(lordToil_Party, lordToil_End);
             transition2.AddTrigger(timeoutTrigger);
             transition2.AddPreAction(new TransitionAction_Message("FuneralFinished".Translate(),
-                MessageTypeDefOf.SituationResolved, new TargetInfo(spot, Map)));
-            //transition2.AddPreAction(new TransitionAction_Message("Funeral finished.", MessageTypeDefOf.SituationResolved, new TargetInfo(this.spot, base.Map, false)));
+            MessageTypeDefOf.SituationResolved, new TargetInfo(spot, Map)));
             stateGraph.AddTransition(transition2);
             return stateGraph;
         }

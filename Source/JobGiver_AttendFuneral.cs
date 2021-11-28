@@ -17,12 +17,10 @@ namespace RimTales
             return new Job(RS_JobDefOf.AttendFuneral, grave);
         }
 
-
         private Building_Grave FindGrave()
         {
             return Resources.lastGrave;
         }
-
 
         public class RS_JobDefOf
         {

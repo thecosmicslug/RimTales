@@ -16,13 +16,20 @@ namespace RimTales
             get { return "RimTales"; }
         }
 
+        public override void SettingsChanged() {
+			Logger.Message("SettingsChanged()");
+            if (RimTalesTab.bTabOpen == true){
+                RimTalesTab.RefreshTales();
+            }
+		}
+
         public override void MapLoaded(Map map)
         {
-
-            //* Load all old tales
+            Logger.Message("Initialisng Tales...");
             foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
                 Resources.tales.Add(tale);
             }
+            Logger.Message("Done! MapLoaded()");
 
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
@@ -56,12 +63,6 @@ namespace RimTales
                     }
                 }
 
-                foreach (var e in Resources.eventsToDelete)
-                {
-                    Resources.events.Remove(e);
-                }
-
-                Resources.eventsToDelete.Clear();
             }, 2500, null, true);
 
             //* Mass funeral
@@ -99,12 +100,6 @@ namespace RimTales
             }
 
             Resources.events.Clear();
-        }
-
-        public override void Tick(int currentTick)
-        {
-            base.Tick(currentTick);
-            return;
         }
 
         public override void WorldLoaded()

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 <!-- Settings -->
-<EnUseColour>Colour Tale List: </EnUseColour>
-<EnShowDeaths>Enable Deaths: </EnShowDeaths>
-<EnShowVommit>Enable Vommit: </EnShowVommit>
-<EnShowWounded>Enable Wounded: </EnShowWounded>
-<EnShowAnimalTales>Enable Animal Tales: </EnShowAnimalTales>
-<EnShowChitChat>Enable Chit-Chat: </EnShowChitChat>
-<EnShowPlayedGame>Enable Playing Game: </EnShowPlayedGame>
-<EnDebugLog>Print debug-text tales to seperate logfile: </EnDebugLog>
-<enableFunerals>Enable Funerals: </enableFunerals>
-<enableMarriageAnniversary>Enable Marriage Anniversaries:</enableMarriageAnniversary>
-<enableMemoryDay>Enable Memorial Day: </enableMemoryDay>
-<enableDaysOfVictory>Enable Days of Victory: </enableDaysOfVictory>
-<enableIndividualThoughts>Enable Individual Thoughts: </enableIndividualThoughts>
+  <EnUseColour>Colour Tale List: </EnUseColour>
+  <EnShowDeaths>Enable Deaths: </EnShowDeaths>
+  <EnShowVommit>Enable Vommit: </EnShowVommit>
+  <EnShowWounded>Enable Wounded: </EnShowWounded>
+  <EnShowAnimalTales>Enable Animal Tales: </EnShowAnimalTales>
+  <EnShowChitChat>Enable Chit-Chat: </EnShowChitChat>
+  <EnShowPlayedGame>Enable Playing Game: </EnShowPlayedGame>
+  <EnDebugLog>Print debug-text tales to seperate logfile: </EnDebugLog>
+  <enableFunerals>Enable Funerals: </enableFunerals>
+  <enableMarriageAnniversary>Enable Marriage Anniversaries:</enableMarriageAnniversary>
+  <enableMemoryDay>Enable Memorial Day: </enableMemoryDay>
+  <enableDaysOfVictory>Enable Days of Victory: </enableDaysOfVictory>
+  <enableIndividualThoughts>Enable Individual Thoughts: </enableIndividualThoughts>
 <!-- GUI -->
-<EnFilter>Filter: </EnFilter>
-<EnInvert>Invert Order</EnInvert>
-<EnSaveList>Save Tales</EnSaveList>
+  <EnFilter>Filter: </EnFilter>
+  <EnInvert>Invert Order</EnInvert>
+  <EnSaveList>Save Tales</EnSaveList>
 <!-- Taken from RimStory -->
   <ColonyAttacked>{0} attacked your colony. </ColonyAttacked>
   <DayOfVictory>Day of {0} defeat.</DayOfVictory>
@@ -28,16 +28,12 @@
   <AMemorialDay>{0} died.</AMemorialDay>
   <AMemorialDayLetter>Memorial Day.</AMemorialDayLetter>
   <AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</AMemorialDayDesc>
-  <ARecruitment>{0} recruited {1}.</ARecruitment>
-  <ABreakup>{0} brokeup with {1}.</ABreakup>
-  <ABondedAnimal>Colonist {0} bonded with {1}</ABondedAnimal>
-  <ATamed>{0} tamed {1}</ATamed>
-  <!-- Gatherings -->
+<!-- Gatherings -->
   <FuneralCalledOff>Funeral called off.</FuneralCalledOff>
   <FuneralFinished>Funeral finished.</FuneralFinished>
   <FuneralLetter>Funeral.</FuneralLetter>
   <FuneralDesc>Colonists are gathering to honor:\n\n</FuneralDesc>
-  <!-- Incidents -->
+<!-- Incidents -->
   <RS_Infestation>Infestation of your colony.</RS_Infestation>
   <RS_Tornado>Tornado.</RS_Tornado>
   <RS_AnimalInsanityMass>Animals went mad.</RS_AnimalInsanityMass>

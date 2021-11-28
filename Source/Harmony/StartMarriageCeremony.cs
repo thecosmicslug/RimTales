@@ -11,7 +11,6 @@ namespace RimTales
         private static void Postfix(ref Pawn firstFiance, ref Pawn secondFiance)
         {
             Resources.events.Add(new AMarriage(Utils.CurrentDate(), firstFiance, secondFiance));
-            Resources.eventsLog.Add(new AMarriage(Utils.CurrentDate(), firstFiance, secondFiance));
         }
     }
 }

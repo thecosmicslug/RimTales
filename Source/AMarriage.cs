@@ -56,8 +56,6 @@ namespace RimTales
 
         public string ShowInLog()
         {
-            //return (date.day + " " + date.quadrum + " " + date.year + " " + pawn1.Name + " and " + pawn2.Name+" married.");
-            //return (date.day + " " + date.quadrum + " " + date.year + " " + "AMarriage".Translate(new object[] {pawn1, pawn2}));
             return $"{date.day} {date.quadrum} {date.year} " + "AMarriage".Translate(pawn1, pawn2);
         }
 
@@ -94,35 +92,24 @@ namespace RimTales
                 return false;
             }
 
-            //if (!RCellFinder.TryFindPartySpot(pawn1, out intVec))
             if (!RCellFinder.TryFindMarriageSite(pawn1, pawn2, out var intVec))
             {
                 return false;
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
-
-            //Lord lord = LordMaker.MakeNewLord(pawn1.Faction, new LordJob_Joinable_Party(intVec, pawn1), map, null);
             var unused = LordMaker.MakeNewLord(pawn1.Faction,
-                new LordJob_Joinable_Party(intVec, pawn1, GatheringDefOf.Party), map);
-
-            //Find.LetterStack.ReceiveLetter("Marriage anniversary", pawn1.LabelShort + " and " + pawn2.LabelShort + " anniversary.", LetterDefOf.PositiveEvent);
-            Find.LetterStack.ReceiveLetter("AMarriageLetter".Translate(),
-                "AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort),
-                LetterDefOf.PositiveEvent);
-
+            new LordJob_Joinable_Party(intVec, pawn1, GatheringDefOf.Party), map);
+            Find.LetterStack.ReceiveLetter("AMarriageLetter".Translate(),"AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort), LetterDefOf.PositiveEvent);
 
             foreach (var p in pawn1.Map.mapPawns.FreeColonists)
             {
                 if (p == pawn1 || p == pawn2)
                 {
-                    if (p.GetFirstSpouse() == pawn1 || p.GetFirstSpouse() == pawn2)
-                    {
+                    if (p.GetFirstSpouse() == pawn1 || p.GetFirstSpouse() == pawn2){
                         AddAttendedOurAnniversaryThoughts(p);
                     }
-
-                    else
-                    {
+                    else{
                         anniversary = false;
                         return false;
                     }

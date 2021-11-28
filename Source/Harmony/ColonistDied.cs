@@ -15,7 +15,6 @@ namespace RimTales
                 return;
             }
 
-            Resources.eventsLog.Add(new AMemorialDay(Utils.CurrentDate(), __instance));
             Resources.deadPawns.Add(__instance);
             Resources.deadPawnsForMassFuneral.Add(__instance);
             Resources.events.Add(new ADead(Utils.CurrentDate(), __instance));

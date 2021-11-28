@@ -54,13 +54,10 @@ namespace RimTales
         {
             if (deadPawn != null)
             {
-                //return (date.day + " " + date.quadrum + " " + date.year + " " + "AMemorialDay".Translate(deadPawn.Name));
-                return $"{date.day} {date.quadrum} {date.year} " +
-                       "AMemorialDay".Translate(deadPawn.Name.ToString());
+                return $"{date.day} {date.quadrum} {date.year} " + "AMemorialDay".Translate(deadPawn.Name.ToString());
             }
 
             return $"{date.day} {date.quadrum} {date.year} colonist died";
-            //return (date.day + " " + date.quadrum + " " + date.year + " " + deadPawn.Name + " died.");
         }
 
         public bool TryStartEvent()
@@ -70,6 +67,7 @@ namespace RimTales
 
         public bool TryStartEvent(Map map)
         {
+
             var isThisYear = true;
             foreach (var y in yearsWhenEventStarted)
             {
@@ -79,7 +77,6 @@ namespace RimTales
                 }
             }
 
-
             if (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum ||
                 Utils.CurrentHour() < Resources.minHour || Utils.CurrentHour() > Resources.maxHour ||
                 Utils.CurrentYear() == date.year || !isThisYear)
@@ -87,28 +84,21 @@ namespace RimTales
                 return false;
             }
 
-            //Pawn pawn = PartyUtility.FindRandomPartyOrganizer(Faction.OfPlayer, map);
             var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
-
             if (pawn == null)
             {
                 return false;
             }
 
-            //if (!RCellFinder.TryFindPartySpot(pawn, out intVec))
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, true, out var intVec))
             {
                 return false;
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
-            //Lord lord = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn), map, null);
             var unused = LordMaker.MakeNewLord(pawn.Faction,
-                new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
-
-            //Find.LetterStack.ReceiveLetter("Memorial Day", "Colonist are gathering to honor fallen colonists.", LetterDefOf.PositiveEvent);
-            Find.LetterStack.ReceiveLetter("AMemorialDayLetter".Translate(), "AMemorialDayDesc".Translate(),
-                LetterDefOf.PositiveEvent);
+            new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
+            Find.LetterStack.ReceiveLetter("AMemorialDayLetter".Translate(), "AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
             return true;
         }
 

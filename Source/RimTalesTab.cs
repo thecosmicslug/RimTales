@@ -881,6 +881,7 @@ namespace RimTales {
     //* Hook detected new tales, refresh GUI
     public static void RefreshTales(){
         RimTalesTab.tales.Clear();
+        Log.Message("RimTales: Refreshing Tale List...");
         foreach (Tale tale in Resources.tales)
         {
             IncomingTale(tale);

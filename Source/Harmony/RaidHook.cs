@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using Verse;
 
 namespace RimTales
 {
@@ -12,9 +13,10 @@ namespace RimTales
             if (Resources.rng.Next(101) <= Resources.randomChanceRaid)
             {
                 Resources.events.Add(new ABigThreat(Utils.CurrentDate(), parms.faction));
+                Log.Message("RimTales IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID: " + parms.faction );
             }
 
-            Resources.eventsLog.Add(new ABigThreat(Utils.CurrentDate(), parms.faction));
+                Log.Message("RimTales IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID(2): " + parms.faction );
         }
     }
 }
