@@ -17,7 +17,7 @@ namespace RimTales
         }
 
         public override void SettingsChanged() {
-			Logger.Message("SettingsChanged()");
+			Log.Message("[RimTales]: SettingsChanged()");
             if (RimTalesTab.bTabOpen == true){
                 RimTalesTab.RefreshTales();
             }

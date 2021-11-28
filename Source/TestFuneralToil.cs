@@ -101,7 +101,7 @@ namespace RimTales
             {
                 if (secondPawn != pawn)
                 {
-                    Log.Warning("RimTales: Called ExactStandingSpotFor but it's not this pawn's ceremony.");
+                    Log.Warning("[RimTales]: Called ExactStandingSpotFor but it's not this pawn's ceremony.");
                     return IntVec3.Invalid;
                 }
 
@@ -143,7 +143,7 @@ namespace RimTales
                 }
             }
 
-            Log.Warning("RimTales: Marriage spot is 1x1. There's no place for 2 pawns.");
+            Log.Warning("[RimTales]: Marriage spot is 1x1. There's no place for 2 pawns.");
             return IntVec3.Invalid;
         }
 

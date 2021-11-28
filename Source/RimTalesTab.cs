@@ -91,7 +91,7 @@ namespace RimTales {
     //* Called when opening window, Set it all up.
     public override void PostOpen(){
         bTabOpen=true;
-        Log.Message("RimTales: Showing Main Tab GUI.");
+        Log.Message("[RimTales]: Showing Main Tab GUI.");
         StrFilter = "";
         base.PostOpen();
     }
@@ -99,7 +99,7 @@ namespace RimTales {
     //* Called when closing window.
     public override void PostClose(){
         bTabOpen=false;
-        Log.Message("RimTales: Closing Main Tab GUI.");
+        Log.Message("[RimTales]: Closing Main Tab GUI.");
         base.PostClose();
     }
 
@@ -180,7 +180,7 @@ namespace RimTales {
                 output.WriteLine(tale);
             }
         }
-        Log.Message("RimTales: Filtered Tales exported to " + outputFile);
+        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
         outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
 
         //* export the full data in another log.
@@ -191,7 +191,7 @@ namespace RimTales {
                     output.WriteLine(tale.ToString());
                 }
             }
-            Log.Message("RimTales: Debugging Tales exported to " + outputFile);
+            Log.Message("[RimTales]: Debugging Tales exported to " + outputFile);
             outputMsg = outputMsg + "Full-text Tales saved to " + outputFile +System.Environment.NewLine;
 
         }
@@ -881,7 +881,7 @@ namespace RimTales {
     //* Hook detected new tales, refresh GUI
     public static void RefreshTales(){
         RimTalesTab.tales.Clear();
-        Log.Message("RimTales: Refreshing Tale List...");
+        Log.Message("[RimTales]: Refreshing Tale List...");
         foreach (Tale tale in Resources.tales)
         {
             IncomingTale(tale);
