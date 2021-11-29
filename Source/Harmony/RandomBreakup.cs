@@ -10,7 +10,7 @@ namespace RimTales
     {
         private static void Postfix(Thought __result, ref Pawn initiator, ref Pawn recipient)
         {
-            Log.Message("RimTales InteractionWorker_Breakup.RandomBreakupReason(): " + __result);
+            Log.Message("[RimTales]: InteractionWorker_Breakup.RandomBreakupReason(): " + __result);
         }
     }
 }

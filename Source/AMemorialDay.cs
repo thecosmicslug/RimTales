@@ -96,9 +96,12 @@ namespace RimTales
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
-            var unused = LordMaker.MakeNewLord(pawn.Faction,
-            new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
+            var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
             Find.LetterStack.ReceiveLetter("AMemorialDayLetter".Translate(), "AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
+
+            //* Added a tale for funeral anniversary
+            TaleRecorder.RecordTale(RimTalesTab.VIE_DefOf.AnniversaryDeath, deadPawn);
+
             return true;
         }
 

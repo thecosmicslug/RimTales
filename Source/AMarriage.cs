@@ -101,6 +101,9 @@ namespace RimTales
             var unused = LordMaker.MakeNewLord(pawn1.Faction,
             new LordJob_Joinable_Party(intVec, pawn1, GatheringDefOf.Party), map);
             Find.LetterStack.ReceiveLetter("AMarriageLetter".Translate(),"AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort), LetterDefOf.PositiveEvent);
+            
+            //* Added a tale for wedding anniversary
+            TaleRecorder.RecordTale(RimTalesTab.VIE_DefOf.AnniversaryMarriage, pawn1,pawn2);
 
             foreach (var p in pawn1.Map.mapPawns.FreeColonists)
             {

@@ -19,15 +19,12 @@ namespace RimTales
                 return false;
             }
 
-            //Pawn pawn = PartyUtility.FindRandomPartyOrganizer(Faction.OfPlayer, map);
             var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
-
             if (pawn == null)
             {
                 return false;
             }
 
-            //if (!RCellFinder.TryFindPartySpot(pawn, out intVec))
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, false, out _))
             {
                 return false;
@@ -41,11 +38,8 @@ namespace RimTales
                 }
             }
 
-            var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_RimTales(Resources.lastGrave.Position, pawn),
-                map);
-            Find.LetterStack.ReceiveLetter("FuneralLetter".Translate(), "FuneralDesc".Translate() + deadPawnsNames,
-                LetterDefOf.NeutralEvent, Resources.lastGrave);
-
+            var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_RimTales(Resources.lastGrave.Position, pawn),map);
+            Find.LetterStack.ReceiveLetter("FuneralLetter".Translate(), "FuneralDesc".Translate() + deadPawnsNames,LetterDefOf.NeutralEvent, Resources.lastGrave);
             deadPawnsNames = "";
             return true;
         }

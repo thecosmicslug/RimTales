@@ -14,7 +14,7 @@ namespace RimTales
 
         private static void Postfix(Tale tale)
         {
-            Resources.tales.Add(tale);
+            Resources.TaleManager.Add(tale);
             if(RimTalesMod.settings.bIsDebugging == true){
                 Log.Message("[RimTales]: TaleManager.Add() - " + tale.ToString());
             }

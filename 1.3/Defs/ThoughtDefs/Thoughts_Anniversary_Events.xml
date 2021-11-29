@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<TaleDef Name="RimTales" Abstract="True">
+		<type>Expirable</type>
+		<usableForArt>true</usableForArt>
+		<maxPerPawn>1</maxPerPawn>
+		<expireDays>200</expireDays>
+		<colonistOnly>True</colonistOnly>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>AnniversaryDeath</defName>
+		<label>anniversary of death</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>AnniversaryMarriage</defName>
+		<label>anniversary of marriage</label>
+		<taleClass>Tale_DoublePawn</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>AnniversaryThreat</defName>
+		<label>anniversary of threat</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+	
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_AnimalInsanityMass</defName>
+		<label>animal mass insanity</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_ManhunterPack</defName>
+		<label>manhunter pack attacked your colony</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_ColdSnap</defName>
+		<label>start of cold snap</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_HeatWave</defName>
+		<label>start of heat wave</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_FarmAnimalsWanderIn</defName>
+		<label>animals joined your colony</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_Infestation</defName>
+		<label>infestation of your colony</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_WandererJoin</defName>
+		<label>wanderer tried to join your colony</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_VolcanicWinter</defName>
+		<label>beginning of volcanic winter</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_ToxicFallout</defName>
+		<label>beginning of toxic fallout</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
+</Defs>

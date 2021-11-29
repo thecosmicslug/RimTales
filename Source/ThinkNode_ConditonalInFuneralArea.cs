@@ -15,7 +15,6 @@ namespace RimTales
             }
 
             var cell = pawn.mindState.duty.focus.Cell;
-            //return PartyUtility.InPartyArea(pawn.Position, cell, pawn.Map);
             return GatheringsUtility.InGatheringArea(pawn.Position, cell, pawn.Map);
         }
     }

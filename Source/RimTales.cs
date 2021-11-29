@@ -18,18 +18,16 @@ namespace RimTales
 
         public override void SettingsChanged() {
 			Log.Message("[RimTales]: SettingsChanged()");
-            if (RimTalesTab.bTabOpen == true){
-                RimTalesTab.RefreshTales();
-            }
 		}
 
         public override void MapLoaded(Map map)
         {
             Logger.Message("Initialisng Tales...");
+            Resources.TaleManager.Clear();
             foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
-                Resources.tales.Add(tale);
+                Resources.TaleManager.Add(tale);
             }
-            Logger.Message("Done! MapLoaded()");
+            Logger.Message("Done! Imported " + Resources.TaleManager.Count + " tales.");
 
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
@@ -37,9 +35,9 @@ namespace RimTales
             //* One tick per hour
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>
             {
-                if (Resources.events.Count > 0)
+                if (Resources.EventManager.Count > 0)
                 {
-                    foreach (var e in Resources.events)
+                    foreach (var e in Resources.EventManager)
                     {
                         if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary)
                         {
@@ -99,7 +97,7 @@ namespace RimTales
                 return;
             }
 
-            Resources.events.Clear();
+            Resources.EventManager.Clear();
         }
 
         public override void WorldLoaded()

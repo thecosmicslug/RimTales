@@ -1,3 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Rimworld Mod Template
 
 This template is created for Rimworld modders who use VS Code & Linux

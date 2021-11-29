@@ -80,8 +80,7 @@ namespace RimTales
                     //ownedPawns[i].needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOf.AttendedParty, null);
                     if (lord.LordJob is LordJob_RimTales lordJob_Joinable_Party)
                     {
-                        TaleRecorder.RecordTale(TaleDefOf.AttendedParty, pawn,
-                            lordJob_Joinable_Party.Organizer);
+                        //TaleRecorder.RecordTale(TaleDefOf.AttendedParty, pawn,lordJob_Joinable_Party.Organizer);
                     }
                 }
             }
