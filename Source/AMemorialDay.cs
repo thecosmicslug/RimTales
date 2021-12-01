@@ -100,7 +100,7 @@ namespace RimTales
             Find.LetterStack.ReceiveLetter("AMemorialDayLetter".Translate(), "AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
 
             //* Added a tale for funeral anniversary
-            TaleRecorder.RecordTale(RimTalesTab.VIE_DefOf.AnniversaryDeath, deadPawn);
+            TaleRecorder.RecordTale(RimTalesTab.RimTales_DefOf.AnniversaryDeath, deadPawn);
 
             return true;
         }
