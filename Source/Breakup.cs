@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace RimTales
 {
@@ -57,6 +58,7 @@ namespace RimTales
 
         public string ShowInLog()
         {
+            //return $"{date.day} {date.quadrum} {date.year} {"ABreakup".Translate(pawn1, pawn2)}"; //* Needs working on
             return $"{date.day} {date.quadrum} {date.year} {"ABreakup".Translate(pawn1.Name, pawn2.Name)}";
         }
 

@@ -1,61 +1,12 @@
-TO ADD:
-TaleDefOf.LandedInPod
-TaleDefOf.BuriedCorpse
-TaleDefOf.WasOnFire
-TaleDefOf.CompletedLongConstructionProject
-TaleDefOf.CaravanAmbushedByHumanlike
-TaleDefOf.IllnessRevealed
-TaleDefOf.IncreasedMenagerie
-TaleDefOf.MinedValuable
-TaleDefOf.CaravanRemoteMining
-TaleDefOf.AttendedConcert
-TaleDefOf.HeldConcert
-TaleDefOf.AttendedParty
-TaleDefOf.StruckMineable
-TaleDefOf.Exhausted
-TaleDefOf.WalkedNaked
-TaleDefOf.SocialFight
-TaleDefOf.LaunchedShip
-TaleDefOf.GainedMasterSkillWithoutPassion
-TaleDefOf.GainedMasterSkillWithPassion
-TaleDefOf.KilledBy
-TaleDefOf.KilledMortar
-TaleDefOf.KilledLongRange
-TaleDefOf.KilledMelee
-TaleDefOf.DefeatedHostileFactionLeader
-TaleDefOf.KilledCapacity
-TaleDefOf.CaravanFormed
-TaleDefOf.CaravanFled
-TaleDefOf.CaravanAmbushDefeated
-TaleDefOf.CaravanAssaultSuccessful
-TaleDefOf.ButcheredHumanlikeCorpse
-TaleDefOf.CraftedArt
-TaleDefOf.GaveBirth
-TaleDefOf.Wounded
-TaleDefOf.Downed
-TaleDefOf.AteRawHumanlikeMeat
-TaleDefOf.CompletedLongCraftingProject
 
-TaleDefOf.CollapseDodged  ////???
+Tales to Add:
 
+HypothermiaRevealed
+VisitedGrave
+BuiltSnowman
 
-DONE:
-TaleDefOf.FinishedResearchProject
-TaleDefOf.Vomited
-TaleDefOf.Recruited
-TaleDefOf.Hunted
-TaleDefOf.KidnappedColonist
-TaleDefOf.DidSurgery
-TaleDefOf.KilledColonist
-TaleDefOf.KilledMajorThreat
-TaleDefOf.TradedWith
-TaleDefOf.BecameLover
-TaleDefOf.Breakup
-TaleDefOf.Marriage
-TaleDefOf.Captured
-TaleDefOf.ExecutedPrisoner
-TaleDefOf.SoldPrisoner
-TaleDefOf.TrainedAnimal
-TaleDefOf.TamedAnimal
-TaleDefOf.BondedWithAnimal
-TaleDefOf.KilledColonyAnimal
+Replace Translation warning in Breakup.cs
+Add proper credits and thanks
+work out if its sensible to log all tales or just the ones TaleManager keeps.
+add our anniversary tales
+add more events

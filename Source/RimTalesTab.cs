@@ -115,7 +115,7 @@ namespace RimTales {
         foreach (Tale tale in Resources.TaleManager)
         {
             if(RimTalesMod.settings.bIsDebugging == true){
-                Log.Message("[RimTales]: " + tale.ToString());
+                //Log.Message("[RimTales]: " + tale.ToString());
             }
             IncomingTale(tale);
         }
@@ -281,6 +281,7 @@ namespace RimTales {
         //* Tale_SinglePawn First
         //*****************************
         if (tale.def == TaleDefOf.Vomited){
+            //Tale_SinglePawn
             if (RimTalesMod.settings.bShowVommit == true){
                 AddTale(tale,StrTaleOverride,StrTalePlus);
             }
@@ -288,26 +289,31 @@ namespace RimTales {
         }
 
         if (tale.def == TaleDefOf.LandedInPod){
+            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
 
         if (tale.def == RimTalesTab.RimTales_DefOf.Drunk){
+            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
 
         if (tale.def == TaleDefOf.WasOnFire){
+            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
 
         if (tale.def == TaleDefOf.WalkedNaked){
+            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
 
         if (tale.def == TaleDefOf.CollapseDodged){
+            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
@@ -386,6 +392,110 @@ namespace RimTales {
             return;
         }
 
+        if (tale.def == TaleDefOf.IncreasedMenagerie){
+            //Tale_DoublePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.CaravanRemoteMining){
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.AttendedConcert){
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.HeldConcert){
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.Exhausted){
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        } 
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_IngestedHumanFlesh){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_BingedFood){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_BingedDrug){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_HideInRoom){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_ThrewTantrum){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WanderedInSaddness){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentBerserk){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentIntoSadisticRage){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentOnFireStartingSpree){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentOnMurderousRage){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_RanWild){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }       
+
+        if (tale.def == TaleDefOf.ButcheredHumanlikeCorpse){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.AteRawHumanlikeMeat){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
         if (tale.def == RimTalesTab.RimTales_DefOf.PlayedGame){
             if (RimTalesMod.settings.bShowPlayedGame == true){
                 Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
@@ -431,13 +541,6 @@ namespace RimTales {
             return;
         }
 
-        if (tale.def == TaleDefOf.StruckMineable){
-            Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
-            StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
         if (tale.def == TaleDefOf.GainedMasterSkillWithPassion){
             Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
             StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
@@ -475,6 +578,13 @@ namespace RimTales {
             return;
         }
 
+        if (tale.def == TaleDefOf.StruckMineable){
+            Tale_SinglePawnAndThing tale2 = tale as Tale_SinglePawnAndThing;
+            StrTalePlus = " - " + tale2.thingData + ".";
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
         if (tale.def == TaleDefOf.Recruited){
             Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
             if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
@@ -489,6 +599,12 @@ namespace RimTales {
 
         if (tale.def == RimTalesTab.RimTales_DefOf.Stripped){
             //Tale_DoublePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
+        if (tale.def == TaleDefOf.AttendedParty){
+            // Tale_DoublePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
@@ -651,38 +767,6 @@ namespace RimTales {
             return;
         }
 
-        if (tale.def == TaleDefOf.IncreasedMenagerie){
-            //Tale_DoublePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.CaravanRemoteMining){
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.AttendedConcert){
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.HeldConcert){
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.AttendedParty){
-            // Tale_DoublePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.Exhausted){
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
         if (tale.def == TaleDefOf.SocialFight){
             Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
             if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
@@ -782,14 +866,10 @@ namespace RimTales {
         }
 
         if (tale.def == TaleDefOf.KilledCapacity){
+        //Tale_DoublePawnAndDef
             if (RimTalesMod.settings.bShowDeaths == true){
                 AddTale(tale,StrTaleOverride,StrTalePlus);
             }
-            return;
-        }
-
-        if (tale.def == TaleDefOf.ButcheredHumanlikeCorpse){
-            AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
 
@@ -807,11 +887,6 @@ namespace RimTales {
             if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
                 StrTalePlus = " - Mother: " + tale2.firstPawnData.name + ".";
             }
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == TaleDefOf.AteRawHumanlikeMeat){
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
@@ -869,72 +944,6 @@ namespace RimTales {
             return;
         }
 
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_IngestedHumanFlesh){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_BingedFood){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_BingedDrug){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_HideInRoom){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_ThrewTantrum){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WanderedInSaddness){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentBerserk){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentIntoSadisticRage){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentOnFireStartingSpree){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_WentOnMurderousRage){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_RanWild){
-            //Tale_SinglePawn
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
         if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_InsultedMe){
             Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
             if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
@@ -953,6 +962,12 @@ namespace RimTales {
             return;
         }
 
+        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_InducedPrisonerToEscape){
+            //Tale_SinglePawn
+            AddTale(tale,StrTaleOverride,StrTalePlus);
+            return;
+        }
+
         if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_RebuffedMe){
             Tale_DoublePawn tale2 = tale as Tale_DoublePawn;
             if (tale2.secondPawnData != null && tale2.secondPawnData.name != null){
@@ -961,12 +976,6 @@ namespace RimTales {
             if (tale2.firstPawnData != null && tale2.firstPawnData.name != null){
                 StrTaleOverride = ": " + tale2.firstPawnData.name;
             }
-            AddTale(tale,StrTaleOverride,StrTalePlus);
-            return;
-        }
-
-        if (tale.def == RimTalesTab.RimTales_DefOf.VSIE_InducedPrisonerToEscape){
-            //Tale_SinglePawn
             AddTale(tale,StrTaleOverride,StrTalePlus);
             return;
         }
