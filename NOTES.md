@@ -1,12 +1,12 @@
 
-Tales to Add:
+### Tales to Add:
 
-HypothermiaRevealed
-VisitedGrave
-BuiltSnowman
+* PutIntoCryptosleep    - Tale_DoublePawn
 
-Replace Translation warning in Breakup.cs
-Add proper credits and thanks
-work out if its sensible to log all tales or just the ones TaleManager keeps.
-add our anniversary tales
-add more events
+### Other things:
+
+* Replace Translation warning in Breakup.cs
+* Add proper credits and thanks
+* work out if its sensible to log all tales or just the ones TaleManager keeps.
+* add our anniversary tales
+* add more events

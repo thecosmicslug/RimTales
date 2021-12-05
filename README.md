@@ -1,5 +1,5 @@
 
-## RimTales - A Story Exporter for Rimworld.
+## RimTales - A Story Exporter for Rimworld. 
 
 Heavily based on 'Tale Log [Retold]' by Nandonalt, Spuddy. - 'https://bitbucket.org/spudbean/talelogretold/'
 After fixing it for v1.3 I decided to carry on tweaking the code. Many thanks to the original authors for sharing the code.
