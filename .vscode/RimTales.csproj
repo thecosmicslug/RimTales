@@ -8,8 +8,8 @@
 		<AssemblyName>RimTales</AssemblyName>
 		<OutputPath>../1.3/Assemblies</OutputPath>
 		<VersionPrefix>1.0.0.0</VersionPrefix>
-		<DebugType>none</DebugType>
 		<DebugSymbols>false</DebugSymbols>
+		<DebugType>None</DebugType>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<LangVersion>9.0</LangVersion>
 	</PropertyGroup>

@@ -20,16 +20,14 @@ namespace RimTales
 
         public static int minHour = 10;
         public static int maxHour = 20;
+        public static Building_Grave lastGrave;
 
         public static List<Pawn> deadPawnsForMassFuneral = new List<Pawn>();
         public static List<Pawn> deadPawnsForMassFuneralBuried = new List<Pawn>();
         public static List<Building_Grave> graves = new List<Building_Grave>();
         public static List<IEvent> EventManager = new List<IEvent>();
         public static List<Pawn> pawnsAttended = new List<Pawn>();
-        public static List<Tale> TaleManager = new List<Tale>();
-
-        public static Building_Grave lastGrave;
-
+        public static List<TaleStorage> TaleManager = new List<TaleStorage>();
         public static List<Pawn> deadPawns = new List<Pawn>();
 
         public static bool isMemorialDayCreated = false;

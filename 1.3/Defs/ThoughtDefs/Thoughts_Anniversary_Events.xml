@@ -39,16 +39,22 @@
 		<taleClass>Tale_SinglePawn</taleClass>
 	</TaleDef>
 
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_Raid</defName>
+		<label>Enemy Raid</label>
+		<taleClass>Tale_SinglePawn</taleClass>
+	</TaleDef>
+
 		<TaleDef ParentName="RimTales">
 		<defName>Incident_ColdSnap</defName>
 		<label>start of cold snap</label>
-		<taleClass>Tale_SinglePawn</taleClass>
+		<taleClass>Tale</taleClass>
 	</TaleDef>
 
 		<TaleDef ParentName="RimTales">
 		<defName>Incident_HeatWave</defName>
 		<label>start of heat wave</label>
-		<taleClass>Tale_SinglePawn</taleClass>
+		<taleClass>Tale</taleClass>
 	</TaleDef>
 
 		<TaleDef ParentName="RimTales">
@@ -72,13 +78,19 @@
 	<TaleDef ParentName="RimTales">
 		<defName>Incident_VolcanicWinter</defName>
 		<label>beginning of volcanic winter</label>
-		<taleClass>Tale_SinglePawn</taleClass>
+		<taleClass>Tale</taleClass>
 	</TaleDef>
 
 	<TaleDef ParentName="RimTales">
 		<defName>Incident_ToxicFallout</defName>
 		<label>beginning of toxic fallout</label>
-		<taleClass>Tale_SinglePawn</taleClass>
+		<taleClass>Tale</taleClass>
+	</TaleDef>
+
+		<TaleDef ParentName="RimTales">
+		<defName>Incident_Flashstorm</defName>
+		<label>beginning of flash storm</label>
+		<taleClass>Tale</taleClass>
 	</TaleDef>
 
 </Defs>

@@ -103,7 +103,7 @@ namespace RimTales
             Find.LetterStack.ReceiveLetter("AMarriageLetter".Translate(),"AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort), LetterDefOf.PositiveEvent);
             
             //* Added a tale for wedding anniversary
-            TaleRecorder.RecordTale(RimTalesTab.RimTales_DefOf.AnniversaryMarriage, pawn1,pawn2);
+            Core.AddIncident(Core.RimTales_DefOf.AnniversaryMarriage, "Marriage anniversary: " + pawn1.LabelShort + " & " + pawn2.LabelShort + " - " + yearsWhenEventStarted.Count + " years.");
 
             foreach (var p in pawn1.Map.mapPawns.FreeColonists)
             {

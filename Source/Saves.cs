@@ -13,6 +13,7 @@ namespace RimTales
         {
             Scribe_References.Look(ref Resources.lastGrave, "RS_LastGrave", true);
             Scribe_Collections.Look(ref Resources.EventManager, "RS_Events", LookMode.Deep, null);
+            Scribe_Collections.Look(ref Resources.TaleManager, "RS_Tales", LookMode.Deep, null);
             Scribe_Collections.Look(ref Resources.pawnsAttended, "RS_PawnsAttended", LookMode.Reference, null, true);
             Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneral, "RS_DeadPawns", LookMode.Reference, null,true);
             Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneralBuried, "RS_DeadPawnsBuried",LookMode.Reference, null, true);

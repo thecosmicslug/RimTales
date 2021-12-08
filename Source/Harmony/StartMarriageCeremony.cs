@@ -10,6 +10,7 @@ namespace RimTales
     {
         private static void Postfix(ref Pawn firstFiance, ref Pawn secondFiance)
         {
+            Log.Message("[RimTales]: VoluntarilyJoinableLordsStarter.TryStartMarriageCeremony()");
             Resources.EventManager.Add(new AMarriage(Utils.CurrentDate(), firstFiance, secondFiance));
         }
     }

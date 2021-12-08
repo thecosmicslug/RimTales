@@ -115,8 +115,7 @@ namespace RimTales
             string text = "DayOfVictoryDesc".Translate(faction.Name, date.ToString());
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.PositiveEvent);
 
-            //* Added a tale for raid anniversary
-            TaleRecorder.RecordTale(RimTalesTab.RimTales_DefOf.AnniversaryThreat, faction);
+            Core.AddIncident(Core.RimTales_DefOf.AnniversaryThreat, "Anniversary of a raid by: " + faction.Name + " in " + date.ToString() + ".");
             return true;
         }
 

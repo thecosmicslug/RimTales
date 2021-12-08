@@ -13,10 +13,12 @@ namespace RimTales
             if (Resources.rng.Next(101) <= Resources.randomChanceRaid)
             {
                 Resources.EventManager.Add(new ABigThreat(Utils.CurrentDate(), parms.faction));
-                Log.Message("[RimTales]: IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID: " + parms.faction );
+                Log.Message("[RimTales]: IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID: " + parms.faction.Name );
             }
-                //* This one is called?
-                Log.Message("[RimTales]: IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID(2): " + parms.faction );
+
+            //* what is the IF branch doing?!
+            Log.Message("[RimTales]: IncidentWorker_RaidEnemy.TryExecuteWorker() - RAID(2): " + parms.faction.Name);
+            Core.AddIncident(Core.RimTales_DefOf.Incident_Raid, "Enemy Raid: " + parms.faction.Name + " are launching an attack on your colony.");
         }
     }
 }

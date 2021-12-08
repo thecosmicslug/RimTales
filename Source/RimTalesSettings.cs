@@ -28,7 +28,6 @@ namespace RimTales {
         //* Extra debug logs
         public bool bIsDebugging = false;
 
-
         public override void ExposeData()
         {
             base.ExposeData();
