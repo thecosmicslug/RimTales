@@ -28,12 +28,11 @@ namespace RimTales {
         //* Set the list up
         Log.Message("[RimTales]: Refreshing Tale List...");
         tales.Clear();
-        foreach (TaleStorage taletmp in Resources.TaleManager)
+        foreach (TaleStorage taleTMP in Resources.TaleManager)
         {
-            if(RimTalesMod.settings.bIsDebugging == true){
-                Log.Message("[RimTales]: " + taletmp.ShortSummary);
+            if(CheckTaleFilters(taleTMP)==true){
+                tales.Add(taleTMP.ShortSummary);
             }
-            tales.Add(taletmp.ShortSummary);
         }
         tales.Reverse();
         base.PreOpen();
@@ -123,10 +122,13 @@ namespace RimTales {
 
     //* Hook detected new tale, add it to the GUI
     public static void UpdateList(TaleStorage taleTMP){
-        RimTalesTab.tales.Reverse();
-        //RimTalesTab.IncomingTale(taleTMP);
-        tales.Add(taleTMP.ShortSummary);
-        RimTalesTab.tales.Reverse();
+
+        if(CheckTaleFilters(taleTMP)==true){
+            RimTalesTab.tales.Reverse();
+            tales.Add(taleTMP.ShortSummary);
+            RimTalesTab.tales.Reverse();
+        }
+
     }
 
     //* Export Recorded Tales to disk
@@ -159,6 +161,44 @@ namespace RimTales {
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);
 
+    }
+
+    public static bool CheckTaleFilters(TaleStorage TaleTMP){
+
+        switch (TaleTMP.def.defName)
+        {
+            case "Vomited":
+                return RimTalesMod.settings.bShowVommit;
+            case "PlayedGame":
+                return RimTalesMod.settings.bShowPlayedGame;
+            case "VSIE_WeHadNiceChat":
+                return RimTalesMod.settings.bShowChitChat;;
+            case "Wounded":
+                return RimTalesMod.settings.bShowWounded;
+            case "TamedAnimal":
+                return RimTalesMod.settings.bShowAnimalTales;
+            case "TrainedAnimal":
+                return RimTalesMod.settings.bShowAnimalTales;
+            case "BondedWithAnimal":
+                return RimTalesMod.settings.bShowAnimalTales;
+            case "KilledColonist":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledMajorThreat":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledBy":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledMortar":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledLongRange":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledMelee":
+                return RimTalesMod.settings.bShowDeaths;
+            case "KilledCapacity":
+                return RimTalesMod.settings.bShowDeaths;
+            default:
+                //* Don't need to filter anything else
+                return true;
+        }
     }
 
 }
