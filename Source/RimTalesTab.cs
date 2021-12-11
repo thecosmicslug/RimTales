@@ -26,22 +26,18 @@ namespace RimTales {
     private List<TabRecord> tabs = new List<TabRecord>();
     public override Vector2 RequestedTabSize => new Vector2(1000f, 480f);
 
+    private bool bTabShowVommit = true;
+    private bool bTabShowDeaths = true;
+    private bool bTabShowWounded = true;
+    private bool bTabShowAnimalTales= true;
+    private bool bTabShowChitChat= false;
+    private bool bTabShowPlayedGame= false;
 
     //* Called when opening window, Set it all up.
     public override void PreOpen(){
 
         StrFilter = "";
-        tales.Clear();
-        
-        foreach (TaleStorage taleTMP in Resources.TaleManager){
-            if(CheckTaleFilters(taleTMP)==true){
-                if (CheckStringFilters(taleTMP.ShortSummary) == true){
-                    tales.Add(taleTMP.ShortSummary);
-                }
-            }
-         }
-        tales.Reverse();
-        bTabOpen=true;
+        ImportStringTales();
 
         tabs.Clear();
 		tabs.Add(new TabRecord("Log", delegate
@@ -58,6 +54,7 @@ namespace RimTales {
 			}, () => curTab == RimTab.About));
 
         scrollPosition = Vector2.zero;
+        bTabOpen=true;
         base.PreOpen();
     }
 
@@ -215,7 +212,17 @@ namespace RimTales {
         Rect outRect = new Rect(0f, 40f, position.width, position.height - 45f); // - 50f);
         Rect rect = new Rect(0f, 0f, position.width - 16f, this.scrollViewHeight);
         Widgets.BeginScrollView(outRect, ref this.scrollPosition, rect);
-                
+
+        //* Check if filter settings changed
+        if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowVommit || bTabShowAnimalTales != RimTalesMod.settings.bShowWounded || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame ){
+            //* Re-Import because filters changed since tab opened.
+            if (Prefs.DevMode){
+                Log.Message("[RimTales]: Filters changed, Importing tales again.");
+            }
+            ImportStringTales();
+        };
+
+
         float num = 0f;
         foreach (String tale in tales)
         {
@@ -349,6 +356,27 @@ namespace RimTales {
             return true;
         }
         return false;
+    }
+
+    //* Import Strings
+    private void ImportStringTales(){
+
+        bTabShowVommit = RimTalesMod.settings.bShowVommit;
+        bTabShowDeaths = RimTalesMod.settings.bShowDeaths;
+        bTabShowWounded = RimTalesMod.settings.bShowVommit;
+        bTabShowAnimalTales= RimTalesMod.settings.bShowWounded;
+        bTabShowChitChat= RimTalesMod.settings.bShowChitChat;
+        bTabShowPlayedGame= RimTalesMod.settings.bShowPlayedGame;
+
+        tales.Clear();
+        foreach (TaleStorage taleTMP in Resources.TaleManager){
+            if(CheckTaleFilters(taleTMP)==true){
+                if (CheckStringFilters(taleTMP.ShortSummary) == true){
+                    tales.Add(taleTMP.ShortSummary);
+                }
+            }
+         }
+        tales.Reverse();
     }
 }
 
