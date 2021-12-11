@@ -40,11 +40,8 @@ namespace RimTales
         public override void MapLoaded(Map map){
 
             Logger.Message("Initialisng Tales...");
-            //* UNCOMMENT THIS BLOCK TO WIPE OUR TALES DATA & RE-IMPORT
-            //Resources.TaleManager.Clear();
-            //foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
-            //    Core.IncomingTale(tale);
-            //}
+            //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
+            //WipeTaleLog();
             Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales.");
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
@@ -114,39 +111,37 @@ namespace RimTales
         //* Add String Tales for GUI
         private static void AddTale(Tale tale, String overrideName, String plus){
 
-                StringBuilder str = new StringBuilder();
-                Vector2 longitude = Vector2.zero;
-                
-                if (tale.surroundings != null && tale.surroundings.tile >= 0){
-                    longitude = Find.WorldGrid.LongLatOf(tale.surroundings.tile);
-                }
-                
-                TaleStorage TaleTMP = new TaleStorage();
-                TaleTMP.def = tale.def;
+            StringBuilder str = new StringBuilder();
+            Vector2 longitude = Vector2.zero;
+            
+            if (tale.surroundings != null && tale.surroundings.tile >= 0){
+                longitude = Find.WorldGrid.LongLatOf(tale.surroundings.tile);
+            }
+            
+            TaleStorage TaleTMP = new TaleStorage();
+            TaleTMP.def = tale.def;
 
-                str.Append(GenDate.DateFullStringAt(tale.date, longitude) + ": ");
-                string taleStr = tale.ToString();
-                string taleStr2 = taleStr.Split(new[] {"(age"}, StringSplitOptions.None)[0];
-                string taleStr3 = taleStr2.Split(',')[0];
-                str.Append(taleStr3.Remove(0, taleStr2.IndexOf(':') + 2));
-                if (overrideName == ""){
-                    str.Append(plus);
-                    TaleTMP.customLabel = str.ToString();
-                }
-                else{
-                    string[] temp = str.ToString().Split(':');
-                    string final = temp[0] + ":" + temp[1];
-                    var outstr = final + overrideName + plus;
-                    TaleTMP.customLabel = outstr;
+            str.Append(GenDate.DateFullStringAt(tale.date, longitude) + ": ");
+            string taleStr = tale.ToString();
+            string taleStr2 = taleStr.Split(new[] {"(age"}, StringSplitOptions.None)[0];
+            string taleStr3 = taleStr2.Split(',')[0];
+            str.Append(taleStr3.Remove(0, taleStr2.IndexOf(':') + 2));
+            if (overrideName == ""){
+                str.Append(plus);
+                TaleTMP.customLabel = str.ToString();
+            }
+            else{
+                string[] temp = str.ToString().Split(':');
+                string final = temp[0] + ":" + temp[1];
+                var outstr = final + overrideName + plus;
+                TaleTMP.customLabel = outstr;
 
-                }
+            }
 
-                Resources.TaleManager.Add(TaleTMP);
-
-                //* Tell the GUI to refresh
-                if (RimTalesTab.bTabOpen == true){
-                    RimTalesTab.UpdateList(TaleTMP);
-                }
+            Resources.TaleManager.Add(TaleTMP);
+            if(RimTalesTab.bTabOpen == true){
+                RimTalesTab.UpdateList(TaleTMP);
+            }
 
         }
 
@@ -176,17 +171,20 @@ namespace RimTales
             //* Add it to the collection
             Resources.TaleManager.Add(TaleTMP);
 
-            //* Tell the GUI to refresh
-            if (RimTalesTab.bTabOpen == true){
-                RimTalesTab.UpdateList(TaleTMP);
-            }
+        }
 
+        //* Wipe our log (DEBUGGING)
+        public static void WipeTaleLog(){
+            Resources.TaleManager.Clear();
+            foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
+                Core.IncomingTale(tale);
+            }
         }
 
         //* Process Tales, Build String version
         public static void IncomingTale(Tale tale){
 
-            if(RimTalesMod.settings.bIsDebugging == true){
+            if (Prefs.DevMode){
                 Log.Message("[RimTales]: TaleManager.Add() - " + tale.ToString());
             }
 
@@ -1122,13 +1120,15 @@ namespace RimTales
     
                 default:
                     //* We Shouldn't end up here, log the tale if debug-mode
-                    if (RimTalesMod.settings.bIsDebugging == true){
+                    if (Prefs.DevMode){
                         Log.Message("[RimTales]:============UNKNOWN-TALE===========");
                         Log.Message("[RimTales]:(TOSTRING) " + tale.ToString());
                         Log.Message("[RimTales]:(DEF) " +  tale.def);
                         Log.Message("[RimTales]:===================================");
                     }
                     break;
+
+                    
 
             }
 

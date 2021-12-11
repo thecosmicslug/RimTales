@@ -6,165 +6,306 @@ using Verse;
 using UnityEngine;
 
 namespace RimTales {
-    //* Our Tales List GUI 
+
     public class RimTalesTab : MainTabWindow
 {
     public static bool bTabOpen = false; 
     private static List<String> tales = new List<String>();
     private Vector2 scrollPosition = Vector2.zero;
     private float scrollViewHeight;
-    private String StrFilter = "";
+    private static String StrFilter = "";
 
-    public override Vector2 RequestedTabSize{
-        get
-        {
-            return new Vector2(1000f, 500f);
-        }
+    private enum RimTab : byte
+    {
+        Log,
+        Settings,
+        About
     }
+
+    private static RimTab curTab = RimTab.Log;
+    private List<TabRecord> tabs = new List<TabRecord>();
+    public override Vector2 RequestedTabSize => new Vector2(1000f, 480f);
+
 
     //* Called when opening window, Set it all up.
     public override void PreOpen(){
 
-        //* Set the list up
-        Log.Message("[RimTales]: Refreshing Tale List...");
+        StrFilter = "";
         tales.Clear();
-        foreach (TaleStorage taleTMP in Resources.TaleManager)
-        {
+        
+        foreach (TaleStorage taleTMP in Resources.TaleManager){
             if(CheckTaleFilters(taleTMP)==true){
-                tales.Add(taleTMP.ShortSummary);
+                if (CheckStringFilters(taleTMP.ShortSummary) == true){
+                    tales.Add(taleTMP.ShortSummary);
+                }
             }
-        }
+         }
         tales.Reverse();
+        bTabOpen=true;
+
+        tabs.Clear();
+		tabs.Add(new TabRecord("Log", delegate
+			{
+				curTab = RimTab.Log;
+			}, () => curTab == RimTab.Log));
+			tabs.Add(new TabRecord("Settings", delegate
+			{
+				curTab = RimTab.Settings;
+			}, () => curTab == RimTab.Settings));
+			tabs.Add(new TabRecord("About", delegate
+			{
+				curTab = RimTab.About;
+			}, () => curTab == RimTab.About));
+
+        scrollPosition = Vector2.zero;
         base.PreOpen();
     }
 
     public override void PostOpen(){
-
-        bTabOpen=true;
-        Log.Message("[RimTales]: Showing Main Tab GUI.");
-        StrFilter = "";
+        if (Prefs.DevMode){
+            Log.Message("[RimTales]: Showing Main Tab GUI.");
+        }
         base.PostOpen();
     }
 
     //* Called when closing window.
     public override void PostClose(){
-
         bTabOpen=false;
-        Log.Message("[RimTales]: Closing Main Tab GUI.");
+        if (Prefs.DevMode){
+            Log.Message("[RimTales]: Closing Main Tab GUI.");
+        }
         base.PostClose();
     }
 
-    //* Draw our GUI on the Window.
-    public override void DoWindowContents(Rect fillRect){
+    //* Draw our Tabs on the Window.
+    public override void DoWindowContents(Rect rect){
 
+        //* Stop Tabs getting cut off?
+        Rect val = rect;
+		val.yMin = rect.yMin + 32f;
+
+        //* Window Title
         Text.Font = GameFont.Medium;
-        Widgets.Label(fillRect, "RimTales");
-        Rect position = new Rect(0f, 0f, fillRect.width, fillRect.height);
-        GUI.BeginGroup(position);
+        Rect val2 = rect;
+        val2.x = val.x + 670;
+        Widgets.Label(val2, "RimTales: The Story Exporter.");
+
+        //* The Tabs
         Text.Font = GameFont.Small;
+		TabDrawer.DrawTabs(val, tabs);
+        
+		switch (curTab)
+			{
+			case RimTab.Log:
+				DoLogPage(val);
+				break;
+
+			case RimTab.Settings:
+				DoSettingsPage(val);
+				break;
+
+			case RimTab.About:
+				DoAboutPage(val);
+				break;
+			}
+
+    }
+
+    //* Settings Display Tab
+    private void DoSettingsPage(Rect fillRect){
+        
+        Widgets.DrawBoxSolidWithOutline(fillRect, Widgets.MenuSectionBGFillColor, new Color(0.5f, 0.5f, 0.5f, 1f), 1);
+        Rect position = fillRect.ContractedBy(5f);
+        GUI.BeginGroup(position);
         GUI.color = Color.white;
-        Rect outRect = new Rect(0f, 50f, position.width, position.height - 50f);
-        Rect position2 = new Rect(100f, 0f, 110F, 30F);
-        Rect position3 = new Rect(280f, 5f, 110F, 30F);
+        Text.Font = GameFont.Medium;
+
+        //* Filter Label
+        Rect positionLabel1 = new Rect(position.x + 150, 55f, 200F, 30F);
+        Widgets.Label(positionLabel1, "List Filter Settings:");
+        Widgets.DrawLineHorizontal(positionLabel1.x, 85f, 200);
+        Text.Font = GameFont.Small;
+
+        //* Filter Settings
+        Rect position2 = new Rect(positionLabel1.x, 90f, 160F, 30F);
+        Rect position3 = new Rect(positionLabel1.x, 130f, 160F, 30F);
+        Rect position4 = new Rect(positionLabel1.x, 170f, 160F, 30F);
+        Rect position5 = new Rect(positionLabel1.x, 205f, 160F, 30F);
+        Rect position6 = new Rect(positionLabel1.x, 245f, 160F, 30F);
+        Rect position7 = new Rect(positionLabel1.x, 275f, 160F, 30F);
+
+        //* Aniversary Label
+        Rect positionLabel2 = new Rect(positionLabel1.x + 350, 55f, 220F, 30F);
+        Text.Font = GameFont.Medium;
+        Widgets.Label(positionLabel2, "Anniversary Settings:");
+        Widgets.DrawLineHorizontal(positionLabel2.x, 85f, 200);
+        Text.Font = GameFont.Small;
+
+        //* Anniversary Settings
+        Rect position8 = new Rect(positionLabel2.x, 90f, 160F, 30F);
+        Rect position9 = new Rect(positionLabel2.x, 130f, 160F, 30F);
+        Rect position10 = new Rect(positionLabel2.x, 170f, 160F, 30F);
+        Rect position11 = new Rect(positionLabel2.x, 205f, 160F, 30F);
+        Rect position12 = new Rect(positionLabel2.x, 245f, 160F, 30F);
+
+        //* Filter settings
+        Widgets.CheckboxLabeled(position2, "EnShowDeaths".Translate(), ref RimTalesMod.settings.bShowDeaths);
+        Widgets.CheckboxLabeled(position3, "EnShowVommit".Translate(), ref RimTalesMod.settings.bShowVommit);
+        Widgets.CheckboxLabeled(position4, "EnShowWounded".Translate(), ref RimTalesMod.settings.bShowWounded);
+        Widgets.CheckboxLabeled(position5, "EnShowAnimalTales".Translate(), ref RimTalesMod.settings.bShowAnimalTales);
+        Widgets.CheckboxLabeled(position6, "EnShowChitChat".Translate(), ref RimTalesMod.settings.bShowChitChat);
+        Widgets.CheckboxLabeled(position7, "EnShowPlayedGame".Translate(), ref RimTalesMod.settings.bShowPlayedGame);
+ 
+        //* Aniversary Settings
+        Widgets.CheckboxLabeled(position8, "enableMarriageAnniversary".Translate(), ref RimTalesMod.settings.enableMarriageAnniversary);
+        Widgets.CheckboxLabeled(position9, "enableMemoryDay".Translate(), ref RimTalesMod.settings.enableMemoryDay);
+        Widgets.CheckboxLabeled(position10, "enableFunerals".Translate(), ref RimTalesMod.settings.enableFunerals);
+        Widgets.CheckboxLabeled(position11, "enableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
+        Widgets.CheckboxLabeled(position12, "enableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
+
+        GUI.EndGroup();
+    }
+
+    //* About RimTales Tab
+    private void DoAboutPage(Rect fillRect){
+        
+        Widgets.DrawBoxSolidWithOutline(fillRect, Widgets.MenuSectionBGFillColor, new Color(0.5f, 0.5f, 0.5f, 1f), 1);
+        Rect position = fillRect.ContractedBy(5f);
+        GUI.BeginGroup(position);
+        GUI.color = Color.white;
+        Text.Font = GameFont.Small;
+        Widgets.Label(position, "RimTales by TheCosmicSlug");
+        GUI.EndGroup();
+    }
+
+    //* Main Log Display Tab
+    private void DoLogPage(Rect fillRect){
+
+        //* Setup Display
+        Widgets.DrawBoxSolidWithOutline(fillRect, Widgets.MenuSectionBGFillColor, new Color(0.5f, 0.5f, 0.5f, 1f), 1);
+        Rect position = fillRect.ContractedBy(5f);
+        GUI.BeginGroup(position);
+        GUI.color = Color.white;
+        Text.Font = GameFont.Small;
+        
+        //* Filter label
+        Rect position3 = new Rect(10f, 10f, 110F, 30F);
         Widgets.Label(position3, "EnFilter".Translate());
 
-        Rect position4 = new Rect(320f, 0f, 110F, 30F);
+        //* Filter textbox
+        Rect position4 = new Rect(120f, 5f, 220F, 30F);
         StrFilter = Widgets.TextField(position4, StrFilter);
 
-        Rect position6 = new Rect(615f, 0f, 300f, 30f);
+        Rect position5 = new Rect(400, 5f, 100F, 30F);
+        Widgets.CheckboxLabeled(position5, "Color List", ref RimTalesMod.settings.bUseColour);
+
+        //* Save button
+        Rect position6 = new Rect(720f, 5f , 100f, 30f);
         if(Widgets.ButtonText(position6, "EnSaveList".Translate())){
             saveTales();
         }
 
+        //* Save ALL button
+        Rect position7 = new Rect(830f, 5f , 120f, 30f);
+        if(Widgets.ButtonText(position7, "EnSaveAllList".Translate())){
+            SaveAllTales();
+        }
+
+        //* The Log
+        Rect outRect = new Rect(0f, 40f, position.width, position.height - 45f); // - 50f);
         Rect rect = new Rect(0f, 0f, position.width - 16f, this.scrollViewHeight);
         Widgets.BeginScrollView(outRect, ref this.scrollPosition, rect);
-
+                
         float num = 0f;
         foreach (String tale in tales)
         {
-            bool bShow = false;
-            if(StrFilter == ""){
-                bShow = true;
+            //* Colour the list.
+            GUI.color = Color.white;
+            if (RimTalesMod.settings.bUseColour == true){
+                if (tale.Contains("Recruit") || tale.Contains("nimal") || tale.Contains("Hunted")) GUI.color = Color.green;
+                if (tale.Contains("Traded") || tale.Contains("Struck")) GUI.color = Color.gray;
+                if (tale.Contains("risoner") || tale.Contains("aked") || tale.Contains("Gave up") || tale.Contains("Wounded")) GUI.color = Color.yellow;
+                if (tale.Contains("Marriage") || tale.Contains("Breakup") || tale.Contains("lover")) GUI.color = Color.magenta;
+                if (tale.Contains("Death") || tale.Contains("Kidnap") || tale.Contains("Berserk") || tale.Contains("Kill") || tale.Contains("kill") || tale.Contains("Raid") || tale.Contains("Human") || tale.Contains("Downed")) GUI.color = Color.red;
+                if (tale.Contains("Research") || tale.Contains("Landed") || tale.Contains("Surgery")) GUI.color = Color.cyan;
             }
-            else if (tale.IndexOf(StrFilter, StringComparison.OrdinalIgnoreCase) >= 0){
-                bShow = true;
+            
+            Rect rect2 = new Rect(5f, num, rect.width, 30f);
+            if (Mouse.IsOver(rect2)){
+                GUI.DrawTexture(rect2, TexUI.HighlightTex);
             }
-            if (bShow){
-
-                GUI.color = Color.white;
-                if (RimTalesMod.settings.bUseColour == true){
-                    if (tale.Contains("Recruit") || tale.Contains("nimal") || tale.Contains("Hunted")) GUI.color = Color.green;
-                    if (tale.Contains("Traded") || tale.Contains("Struck")) GUI.color = Color.gray;
-                    if (tale.Contains("risoner") || tale.Contains("aked") || tale.Contains("Gave up") || tale.Contains("Wounded")) GUI.color = Color.yellow;
-                    if (tale.Contains("Marriage") || tale.Contains("Breakup") || tale.Contains("lover")) GUI.color = Color.magenta;
-                    if (tale.Contains("Death") || tale.Contains("Kidnap") || tale.Contains("Berserk") || tale.Contains("Kill") || tale.Contains("kill") || tale.Contains("Raid") || tale.Contains("Human") || tale.Contains("Downed")) GUI.color = Color.red;
-                    if (tale.Contains("Research") || tale.Contains("Landed") || tale.Contains("Surgery")) GUI.color = Color.cyan;
-                }
-                
-                Rect rect2 = new Rect(0f, num, rect.width, 30f);
-                if (Mouse.IsOver(rect2)){
-                    GUI.DrawTexture(rect2, TexUI.HighlightTex);
-                }
-                Widgets.Label(rect2, tale);
-                num += 30f;
-            }
+            Widgets.Label(rect2, tale);
+            num += 30f;
         }
 
-            
         GUI.color = Color.white;
         if (Event.current.type == EventType.Layout){
             this.scrollViewHeight = num;
         }
         Widgets.EndScrollView();
         GUI.EndGroup();
-
     }
 
     //* Hook detected new tale, add it to the GUI
     public static void UpdateList(TaleStorage taleTMP){
-
         if(CheckTaleFilters(taleTMP)==true){
-            RimTalesTab.tales.Reverse();
-            tales.Add(taleTMP.ShortSummary);
-            RimTalesTab.tales.Reverse();
+            if (CheckStringFilters(taleTMP.ShortSummary) == true){
+                tales.Reverse();
+                tales.Add(taleTMP.ShortSummary);
+                tales.Reverse();
+            }
         }
-
     }
 
-    //* Export Recorded Tales to disk
+    //* Export Filtered Tales to disk
     private void saveTales(){
         
         String outputFile;
         String outputMsg;
         outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_tales.txt");
         using (var output = new StreamWriter(outputFile, false)){
-            foreach (String tale in tales){
-                output.WriteLine(tale);
-            }
-        }
-        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
-        outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
-
-        //* export the full data in another log.
-        if (RimTalesMod.settings.bIsDebugging == true){
-            outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_tales_debug.txt");
-            using (var output = new StreamWriter(outputFile, false)){
-                foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
-                    output.WriteLine(tale.ToString());
+        
+            foreach (TaleStorage TaleTMP in Resources.TaleManager)
+            {
+                if(CheckTaleFilters(TaleTMP) == true){
+                    if (CheckStringFilters(TaleTMP.ShortSummary) == true){
+                        output.WriteLine(TaleTMP.ShortSummary);
+                    }
                 }
             }
-            Log.Message("[RimTales]: Debugging Tales exported to " + outputFile);
-            outputMsg = outputMsg + "Full-text Tales saved to " + outputFile +System.Environment.NewLine;
-
         }
-
+        
+        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
+        outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);
 
     }
 
-    public static bool CheckTaleFilters(TaleStorage TaleTMP){
+    //* Export ALL Tales to disk
+    private void SaveAllTales(){
 
+        String outputFile;
+        String outputMsg;
+        outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_all_tales.txt");
+
+        using (var output = new StreamWriter(outputFile, false)){
+            foreach (TaleStorage taleTMP in Resources.TaleManager)
+            {
+                output.WriteLine(taleTMP.ShortSummary);
+            }
+        }
+
+        if (Prefs.DevMode){
+            Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
+        }
+        outputMsg = "ALL Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
+        Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
+		Find.WindowStack.Add(window);
+    }
+    
+    //* Filter out unwanted tales based on type
+    private static bool CheckTaleFilters(TaleStorage TaleTMP){
         switch (TaleTMP.def.defName)
         {
             case "Vomited":
@@ -196,11 +337,19 @@ namespace RimTales {
             case "KilledCapacity":
                 return RimTalesMod.settings.bShowDeaths;
             default:
-                //* Don't need to filter anything else
                 return true;
         }
     }
 
+    //* Filter out unwanted tales based on string
+    private static bool CheckStringFilters(string tale){
+        if(StrFilter == ""){
+            return true;
+        }else if (tale.IndexOf(StrFilter, StringComparison.OrdinalIgnoreCase) >= 0){
+            return true;
+        }
+        return false;
+    }
 }
 
 }

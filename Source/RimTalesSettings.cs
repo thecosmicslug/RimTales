@@ -25,24 +25,19 @@ namespace RimTales {
         public bool enableIndividualThoughts = true;
         public bool enableFunerals = true;
 
-        //* Extra debug logs
-        public bool bIsDebugging = false;
-
         public override void ExposeData()
         {
             base.ExposeData();
+            //* UI Settings
+            Scribe_Values.Look(ref this.bUseColour, "UseColour", true);
             //* Filter settings
             Scribe_Values.Look(ref this.bShowDeaths, "ShowDeaths", true);
             Scribe_Values.Look(ref this.bShowVommit, "ShowVommit", true);
             Scribe_Values.Look(ref this.bShowWounded, "ShowWounded", true);
             Scribe_Values.Look(ref this.bShowAnimalTales, "ShowAnimalTales", true);
-            //* SPAM!
             Scribe_Values.Look(ref this.bShowChitChat, "ShowChitChat", false);
             Scribe_Values.Look(ref this.bShowPlayedGame, "ShowPlayedGame", false);
 
-            //* UI Settings
-            Scribe_Values.Look(ref this.bUseColour, "UseColour", true);
-            Scribe_Values.Look(ref this.bIsDebugging, "IsDebugging", false);
             //* Aniversary Settings
             Scribe_Values.Look(ref this.enableMarriageAnniversary, "enableMarriageAnniversary", true);
             Scribe_Values.Look(ref this.enableMemoryDay, "enableMemoryDay", true);
@@ -81,12 +76,6 @@ namespace RimTales {
             listing_Standard.CheckboxLabeled("EnShowAnimalTales".Translate(), ref settings.bShowAnimalTales);
             listing_Standard.CheckboxLabeled("EnShowChitChat".Translate(), ref settings.bShowChitChat);
             listing_Standard.CheckboxLabeled("EnShowPlayedGame".Translate(), ref settings.bShowPlayedGame);
-
-            if (Prefs.DevMode)
-            {
-                //* Print a second text-file with the raw data.
-                listing_Standard.CheckboxLabeled("EnDebugLog".Translate(), ref settings.bIsDebugging);
-            }
 
             //* Aniversary Settings
             listing_Standard.CheckboxLabeled("enableMarriageAnniversary".Translate(), ref settings.enableMarriageAnniversary);

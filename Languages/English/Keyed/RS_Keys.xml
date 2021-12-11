@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 <!-- Settings -->
-  <EnUseColour>Colour Tale List: </EnUseColour>
-  <EnShowDeaths>Enable Deaths: </EnShowDeaths>
-  <EnShowVommit>Enable Vommit: </EnShowVommit>
-  <EnShowWounded>Enable Wounded: </EnShowWounded>
-  <EnShowAnimalTales>Enable Animal Tales: </EnShowAnimalTales>
-  <EnShowChitChat>Enable Chit-Chat: </EnShowChitChat>
-  <EnShowPlayedGame>Enable Playing Game: </EnShowPlayedGame>
-  <EnDebugLog>Print debug-text tales to seperate logfile: </EnDebugLog>
-  <enableFunerals>Enable Funerals: </enableFunerals>
-  <enableMarriageAnniversary>Enable Marriage Anniversaries:</enableMarriageAnniversary>
-  <enableMemoryDay>Enable Memorial Day: </enableMemoryDay>
-  <enableDaysOfVictory>Enable Days of Victory: </enableDaysOfVictory>
-  <enableIndividualThoughts>Enable Individual Thoughts: </enableIndividualThoughts>
+  <EnUseColour>Colour Tale List:</EnUseColour>
+  <EnShowDeaths>Show Deaths:</EnShowDeaths>
+  <EnShowVommit>Show Vommit:</EnShowVommit>
+  <EnShowWounded>Show Wounded:</EnShowWounded>
+  <EnShowAnimalTales>Show Animal Tales:</EnShowAnimalTales>
+  <EnShowChitChat>Show Chit-Chat: </EnShowChitChat>
+  <EnShowPlayedGame>Show Playing Game:</EnShowPlayedGame>
+  <enableFunerals>Funerals:</enableFunerals>
+  <enableMarriageAnniversary>Marriage:</enableMarriageAnniversary>
+  <enableMemoryDay>Memorial Days:</enableMemoryDay>
+  <enableDaysOfVictory>Days of Victory:</enableDaysOfVictory>
+  <enableIndividualThoughts>Enable Thoughts:</enableIndividualThoughts>
 <!-- GUI -->
-  <EnFilter>Filter: </EnFilter>
-  <EnInvert>Invert Order</EnInvert>
-  <EnSaveList>Save Tales</EnSaveList>
+  <EnFilter>Filter Results:</EnFilter>
+  <EnSaveList>Save List</EnSaveList>
+  <EnSaveAllList>Save ALL Tales</EnSaveAllList>
 <!-- Taken from RimStory -->
   <ColonyAttacked>{0} attacked your colony. </ColonyAttacked>
   <DayOfVictory>Day of {0} defeat.</DayOfVictory>
