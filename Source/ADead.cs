@@ -50,11 +50,6 @@ namespace RimTales
             throw new NotImplementedException();
         }
 
-        public string ShowInLog()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool TryStartEvent()
         {
             throw new NotImplementedException();

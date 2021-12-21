@@ -28,7 +28,6 @@ namespace RimTales
             {
                 Data.presentForTicks[pawn] = ticksPerPartyPulse;
             }
-            //TODO correct?
         }
 
         // Token: 0x1700014B RID: 331
@@ -53,7 +52,6 @@ namespace RimTales
         // Token: 0x06000843 RID: 2115 RVA: 0x00043A60 File Offset: 0x00041E60
         public override void LordToilTick()
         {
-            //TODO test
 
             //if (--this.Data.ticksToNextPulse <= 0)
             {

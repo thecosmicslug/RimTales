@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 <!-- Settings -->
+<!-- //TODO: Complete Translations. 
+-->
   <EnUseColour>Colour Tale List:</EnUseColour>
   <EnShowDeaths>Show Deaths:</EnShowDeaths>
   <EnShowVommit>Show Vommit:</EnShowVommit>

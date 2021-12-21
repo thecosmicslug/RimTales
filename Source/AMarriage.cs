@@ -54,11 +54,6 @@ namespace RimTales
             throw new NotImplementedException();
         }
 
-        public string ShowInLog()
-        {
-            return $"{date.day} {date.quadrum} {date.year} " + "AMarriage".Translate(pawn1, pawn2);
-        }
-
         public bool TryStartEvent()
         {
             throw new NotImplementedException();

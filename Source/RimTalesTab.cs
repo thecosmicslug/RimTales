@@ -30,8 +30,8 @@ namespace RimTales {
     private bool bTabShowDeaths = true;
     private bool bTabShowWounded = true;
     private bool bTabShowAnimalTales= true;
-    private bool bTabShowChitChat= false;
-    private bool bTabShowPlayedGame= false;
+    private bool bTabShowChitChat= true;
+    private bool bTabShowPlayedGame= true;
 
     //* Called when opening window, Set it all up.
     public override void PreOpen(){
@@ -120,7 +120,7 @@ namespace RimTales {
         //* Filter Label
         Rect positionLabel1 = new Rect(position.x + 150, 55f, 200F, 30F);
         Widgets.Label(positionLabel1, "List Filter Settings:");
-        Widgets.DrawLineHorizontal(positionLabel1.x, 85f, 200);
+        Widgets.DrawLineHorizontal(positionLabel1.x, 80f, 200);
         Text.Font = GameFont.Small;
 
         //* Filter Settings
@@ -135,7 +135,7 @@ namespace RimTales {
         Rect positionLabel2 = new Rect(positionLabel1.x + 350, 55f, 220F, 30F);
         Text.Font = GameFont.Medium;
         Widgets.Label(positionLabel2, "Anniversary Settings:");
-        Widgets.DrawLineHorizontal(positionLabel2.x, 85f, 200);
+        Widgets.DrawLineHorizontal(positionLabel2.x, 80f, 200);
         Text.Font = GameFont.Small;
 
         //* Anniversary Settings
@@ -159,8 +159,9 @@ namespace RimTales {
         Widgets.CheckboxLabeled(position10, "enableFunerals".Translate(), ref RimTalesMod.settings.enableFunerals);
         Widgets.CheckboxLabeled(position11, "enableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
         Widgets.CheckboxLabeled(position12, "enableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
-
+        
         GUI.EndGroup();
+        RimTalesMod.settings.Write();
     }
 
     //* About RimTales Tab
@@ -172,6 +173,7 @@ namespace RimTales {
         GUI.color = Color.white;
         Text.Font = GameFont.Small;
         Widgets.Label(position, "RimTales by TheCosmicSlug");
+        // TODO: Add credits & thanks to the About tab.
         GUI.EndGroup();
     }
 
@@ -186,15 +188,20 @@ namespace RimTales {
         Text.Font = GameFont.Small;
         
         //* Filter label
-        Rect position3 = new Rect(10f, 10f, 110F, 30F);
-        Widgets.Label(position3, "EnFilter".Translate());
+        Rect position2 = new Rect(10f, 10f, 110F, 30F);
+        Widgets.Label(position2, "EnFilter".Translate());
 
         //* Filter textbox
-        Rect position4 = new Rect(120f, 5f, 220F, 30F);
-        StrFilter = Widgets.TextField(position4, StrFilter);
+        Rect position3 = new Rect(120f, 5f, 220F, 30F);
+        StrFilter = Widgets.TextField(position3, StrFilter);
 
-        Rect position5 = new Rect(400, 5f, 100F, 30F);
-        Widgets.CheckboxLabeled(position5, "Color List", ref RimTalesMod.settings.bUseColour);
+        //* Colour list toggle
+        Rect position4 = new Rect(350, 5f, 100F, 30F);
+        Widgets.CheckboxLabeled(position4, "Color List", ref RimTalesMod.settings.bUseColour);
+
+        //* Tale Counter
+        Rect position5 = new Rect(500, 10f, 250F, 30F);
+        Widgets.Label(position5, "Showing " + tales.Count + "/" +  Resources.TaleManager.Count + " Tales.");
 
         //* Save button
         Rect position6 = new Rect(720f, 5f , 100f, 30f);
@@ -214,14 +221,19 @@ namespace RimTales {
         Widgets.BeginScrollView(outRect, ref this.scrollPosition, rect);
 
         //* Check if filter settings changed
-        if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowVommit || bTabShowAnimalTales != RimTalesMod.settings.bShowWounded || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame ){
-            //* Re-Import because filters changed since tab opened.
+        if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowWounded || bTabShowAnimalTales != RimTalesMod.settings.bShowAnimalTales || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame ){
             if (Prefs.DevMode){
                 Log.Message("[RimTales]: Filters changed, Importing tales again.");
             }
             ImportStringTales();
         };
 
+        //* Check we have some tales to show
+        if (tales.Count == 0){
+            Widgets.EndScrollView();
+            GUI.EndGroup();
+            return;
+        }
 
         float num = 0f;
         foreach (String tale in tales)
@@ -229,12 +241,13 @@ namespace RimTales {
             //* Colour the list.
             GUI.color = Color.white;
             if (RimTalesMod.settings.bUseColour == true){
-                if (tale.Contains("Recruit") || tale.Contains("nimal") || tale.Contains("Hunted")) GUI.color = Color.green;
+                // TODO: Add more Colouring to the list.
+                if (tale.Contains("ecruit") || tale.Contains("nimal") || tale.Contains("unted")) GUI.color = Color.green;
                 if (tale.Contains("Traded") || tale.Contains("Struck")) GUI.color = Color.gray;
                 if (tale.Contains("risoner") || tale.Contains("aked") || tale.Contains("Gave up") || tale.Contains("Wounded")) GUI.color = Color.yellow;
-                if (tale.Contains("Marriage") || tale.Contains("Breakup") || tale.Contains("lover")) GUI.color = Color.magenta;
+                if (tale.Contains("arriage") || tale.Contains("Breakup") || tale.Contains("lover")) GUI.color = Color.magenta;
                 if (tale.Contains("Death") || tale.Contains("Kidnap") || tale.Contains("Berserk") || tale.Contains("Kill") || tale.Contains("kill") || tale.Contains("Raid") || tale.Contains("Human") || tale.Contains("Downed")) GUI.color = Color.red;
-                if (tale.Contains("Research") || tale.Contains("Landed") || tale.Contains("Surgery")) GUI.color = Color.cyan;
+                if (tale.Contains("Research") || tale.Contains("Landed") || tale.Contains("urgery")) GUI.color = Color.cyan;
             }
             
             Rect rect2 = new Rect(5f, num, rect.width, 30f);
@@ -313,6 +326,7 @@ namespace RimTales {
     
     //* Filter out unwanted tales based on type
     private static bool CheckTaleFilters(TaleStorage TaleTMP){
+        // TODO: Add more Tale filters.
         switch (TaleTMP.def.defName)
         {
             case "Vomited":
@@ -358,25 +372,37 @@ namespace RimTales {
         return false;
     }
 
-    //* Import Strings
+    //* Import Strings from the tale-list
     private void ImportStringTales(){
 
+        //* store filter options so we can check for changes.
         bTabShowVommit = RimTalesMod.settings.bShowVommit;
         bTabShowDeaths = RimTalesMod.settings.bShowDeaths;
-        bTabShowWounded = RimTalesMod.settings.bShowVommit;
-        bTabShowAnimalTales= RimTalesMod.settings.bShowWounded;
-        bTabShowChitChat= RimTalesMod.settings.bShowChitChat;
-        bTabShowPlayedGame= RimTalesMod.settings.bShowPlayedGame;
+        bTabShowWounded = RimTalesMod.settings.bShowWounded;
+        bTabShowAnimalTales = RimTalesMod.settings.bShowAnimalTales;
+        bTabShowChitChat = RimTalesMod.settings.bShowChitChat;
+        bTabShowPlayedGame = RimTalesMod.settings.bShowPlayedGame;
 
         tales.Clear();
-        foreach (TaleStorage taleTMP in Resources.TaleManager){
-            if(CheckTaleFilters(taleTMP)==true){
-                if (CheckStringFilters(taleTMP.ShortSummary) == true){
-                    tales.Add(taleTMP.ShortSummary);
+        int TaleCount = 0;
+        if (Resources.TaleManager.Count == 0){
+            return;
+        }
+
+        for (int i = Resources.TaleManager.Count-1; i >= 0; i--)
+        {
+            if(CheckTaleFilters(Resources.TaleManager[i])==true){
+                if (CheckStringFilters(Resources.TaleManager[i].ShortSummary) == true){
+                    tales.Add(Resources.TaleManager[i].ShortSummary);
+                    TaleCount = TaleCount + 1;
+                    // TODO: Make the amount of tales displayed customisable.
+                    if (TaleCount == 50){
+                        break;
+                    }
                 }
             }
-         }
-        tales.Reverse();
+        }
+
     }
 }
 

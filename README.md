@@ -1,6 +1,8 @@
 
 ## RimTales - A Story Exporter for Rimworld. 
 
+    //TODO: Create an updated README.
+
     This mod was Inspired by two abandoned mods, which I felt were both lacking features but good in their own way.
     So I started to combine the two, removing the UI from RimStory and integrating it with 'Tales Log [Retold]'
 

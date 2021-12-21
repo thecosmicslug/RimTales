@@ -51,21 +51,6 @@ namespace RimTales
             throw new NotImplementedException();
         }
 
-        public string ShowInLog()
-        {
-            if (faction != null && date != null)
-            {
-                return $"{date.day} {date.quadrum} {date.year} " + "ColonyAttacked".Translate(faction.Name);
-            }
-
-            if (faction == null && date != null)
-            {
-                return $"{date.day} {date.quadrum} {date.year} Your colony was raided.";
-            }
-
-            return "Your colony was raided.";
-        }
-
         public bool TryStartEvent()
         {
             return false;

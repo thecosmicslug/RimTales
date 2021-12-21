@@ -6,8 +6,10 @@ using RimWorld;
 
 namespace RimTales
 {
+
 	public class TaleStorage : IExposable
 	{
+
 		public TaleDef  def;
 		public string   customLabel;
 

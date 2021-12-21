@@ -48,30 +48,29 @@ namespace RimTales
 
             //* One tick per hour
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
-                if (Resources.EventManager.Count > 0){
-                    foreach (var e in Resources.EventManager){
-
-                        if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary){
-                            e.TryStartEvent(map);
-                        }
-
-                        if (e is AMemorialDay && RimTalesMod.settings.enableMemoryDay){
-                            e.TryStartEvent(map);
-                        }
-
-                        if (e is ABigThreat && RimTalesMod.settings.enableDaysOfVictory){
-                            e.TryStartEvent(map);
-                        }
-
-                        if (e is ADead && RimTalesMod.settings.enableIndividualThoughts){
-                            e.TryStartEvent(map);
+                //* No point checking if anniversarys are disabled.
+                if(RimTalesMod.settings.enableMarriageAnniversary || RimTalesMod.settings.enableMemoryDay || RimTalesMod.settings.enableDaysOfVictory || RimTalesMod.settings.enableIndividualThoughts ){
+                    if (Resources.EventManager.Count > 0){
+                        foreach (var e in Resources.EventManager){
+                            if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary){
+                                e.TryStartEvent(map);
+                            }
+                            if (e is AMemorialDay && RimTalesMod.settings.enableMemoryDay){
+                                e.TryStartEvent(map);
+                            }
+                            if (e is ABigThreat && RimTalesMod.settings.enableDaysOfVictory){
+                                e.TryStartEvent(map);
+                            }
+                            if (e is ADead && RimTalesMod.settings.enableIndividualThoughts){
+                                e.TryStartEvent(map);
+                            }
                         }
                     }
-                }
+            }
 
             }, 2500, null, true);
 
-            //* Mass funeral
+            //* Mass funeral code
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
                 if (Resources.deadPawnsForMassFuneralBuried.Count <= 0 || !RimTalesMod.settings.enableFunerals){
                     return;
@@ -550,6 +549,7 @@ namespace RimTales
 
                 case "VSIE_DidNotAttendWedding":
                     //Tale_DoublePawn
+                    //TODO: Finish double-pawn tales.
                     AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
@@ -1056,6 +1056,7 @@ namespace RimTales
                     break;
 
                 case "VSIE_SavedMeFromRaiders":
+                    // TODO: Add triple-pawn tales.
                     //* Triple-pawn  tale
                     AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
