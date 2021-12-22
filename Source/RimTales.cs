@@ -41,14 +41,13 @@ namespace RimTales
 
             Logger.Message("Initialisng Tales...");
             //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
-            //WipeTaleLog();
+            // WipeTaleLog();
             Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales.");
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
 
-            //* One tick per hour
+            //* One tick per hour for the anniversaries
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
-                //* No point checking if anniversarys are disabled.
                 if(RimTalesMod.settings.enableMarriageAnniversary || RimTalesMod.settings.enableMemoryDay || RimTalesMod.settings.enableDaysOfVictory || RimTalesMod.settings.enableIndividualThoughts ){
                     if (Resources.EventManager.Count > 0){
                         foreach (var e in Resources.EventManager){
@@ -109,7 +108,8 @@ namespace RimTales
 
         //* Add String Tales for GUI
         private static void AddTale(Tale tale, String overrideName, String plus){
-
+            
+            //TODO: Restructure Function for translation support. IncomingTales() relies on it!
             StringBuilder str = new StringBuilder();
             Vector2 longitude = Vector2.zero;
             
@@ -187,8 +187,10 @@ namespace RimTales
                 Log.Message("[RimTales]: TaleManager.Add() - " + tale.ToString());
             }
 
+            //TODO: Add translation support to tale descriptions.
             String StrTalePlus = "";
             String StrTaleOverride = "";
+            
             Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
             Tale_SinglePawnAndThing tale3 = tale as Tale_SinglePawnAndThing;
             Tale_DoublePawn tale4 = tale as Tale_DoublePawn;

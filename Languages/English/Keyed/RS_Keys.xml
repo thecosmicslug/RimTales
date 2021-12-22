@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 <!-- Settings -->
-<!-- //TODO: Complete Translations. 
--->
-  <EnUseColour>Colour Tale List:</EnUseColour>
-  <EnShowDeaths>Show Deaths:</EnShowDeaths>
-  <EnShowVommit>Show Vommit:</EnShowVommit>
-  <EnShowWounded>Show Wounded:</EnShowWounded>
-  <EnShowAnimalTales>Show Animal Tales:</EnShowAnimalTales>
-  <EnShowChitChat>Show Chit-Chat: </EnShowChitChat>
-  <EnShowPlayedGame>Show Playing Game:</EnShowPlayedGame>
-  <enableFunerals>Funerals:</enableFunerals>
-  <enableMarriageAnniversary>Marriage:</enableMarriageAnniversary>
-  <enableMemoryDay>Memorial Days:</enableMemoryDay>
-  <enableDaysOfVictory>Days of Victory:</enableDaysOfVictory>
-  <enableIndividualThoughts>Enable Thoughts:</enableIndividualThoughts>
+  <RT_UseColour>Colour List:</RT_UseColour>
+  <RT_ShowDeaths>Show Deaths:</RT_ShowDeaths>
+  <RT_ShowVommit>Show Vommit:</RT_ShowVommit>
+  <RT_ShowWounded>Show Wounded:</RT_ShowWounded>
+  <RT_ShowAnimalTales>Show Animal Tales:</RT_ShowAnimalTales>
+  <RT_ShowChitChat>Show Chit-Chat: </RT_ShowChitChat>
+  <RT_ShowPlayedGame>Show Playing Game:</RT_ShowPlayedGame>
+  <RT_EnableFunerals>Funerals:</RT_EnableFunerals>
+  <RT_EnableMarriageAnniversary>Marriage:</RT_EnableMarriageAnniversary>
+  <RT_EnableMemoryDay>Memorial Days:</RT_EnableMemoryDay>
+  <RT_EnableDaysOfVictory>Days of Victory:</RT_EnableDaysOfVictory>
+  <RT_EnableIndividualThoughts>Enable Thoughts:</RT_EnableIndividualThoughts>
 <!-- GUI -->
-  <EnFilter>Filter Results:</EnFilter>
-  <EnSaveList>Save List</EnSaveList>
-  <EnSaveAllList>Save ALL Tales</EnSaveAllList>
-<!-- Taken from RimStory -->
-  <ColonyAttacked>{0} attacked your colony. </ColonyAttacked>
-  <DayOfVictory>Day of {0} defeat.</DayOfVictory>
-  <DayOfVictoryDesc>Your colonists are celebrating {0}'s defeat on\n\n {1}</DayOfVictoryDesc>
-  <AMarriage>{0} and {1} married.</AMarriage>
-  <AMarriageLetter>Marriage anniversary.</AMarriageLetter>
-  <AMarriageDesc>{0} and {1} anniversary.</AMarriageDesc>
-  <AMemorialDay>{0} died.</AMemorialDay>
-  <AMemorialDayLetter>Memorial Day.</AMemorialDayLetter>
-  <AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</AMemorialDayDesc>
-<!-- Gatherings -->
-  <FuneralCalledOff>Funeral called off.</FuneralCalledOff>
-  <FuneralFinished>Funeral finished.</FuneralFinished>
-  <FuneralLetter>Funeral.</FuneralLetter>
-  <FuneralDesc>Colonists are gathering to honor:\n\n</FuneralDesc>
+  <RT_FilterSettings>Filter Settings:</RT_FilterSettings>
+  <RT_AnniversarySettings>Anniversary Settings:</RT_AnniversarySettings>
+  <RT_TheStoryExporter>The Story Exporter.</RT_TheStoryExporter>
+  <RT_Filter>Filter Results:</RT_Filter>
+  <RT_SaveList>Save List</RT_SaveList>
+  <RT_SaveAllList>Save ALL Tales</RT_SaveAllList>
+<!-- Events Taken from RimStory -->
+  <RT_DayOfVictory>Day of {0} defeat.</RT_DayOfVictory>
+  <RT_DayOfVictoryDesc>Celebrating anniversary of {0}'s defeat on {1}.</RT_DayOfVictoryDesc>
+  <RT_AMarriageLetter>Marriage anniversary.</RT_AMarriageLetter>
+  <RT_AMarriageDesc>{0} and {1}'s marriage anniversary of {2}yrs.</RT_AMarriageDesc>
+  <RT_AMemorialDay>{0} died.</RT_AMemorialDay>
+  <RT_AMemorialDayLetter>Memorial Day.</RT_AMemorialDayLetter>
+  <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</RT_AMemorialDayDesc>
+  <RT_FuneralCalledOff>Funeral called off.</RT_FuneralCalledOff>
+  <RT_FuneralFinished>Funeral finished.</RT_FuneralFinished>
+  <RT_FuneralLetter>Funeral.</RT_FuneralLetter>
+  <RT_FuneralDesc>Colonists are gathering to honor:\n\n</RT_FuneralDesc>
 <!-- Incidents -->
-  <RS_Infestation>Infestation of your colony.</RS_Infestation>
-  <RS_Tornado>Tornado.</RS_Tornado>
-  <RS_AnimalInsanityMass>Animals went mad.</RS_AnimalInsanityMass>
-  <RS_WandererJoin>Wanderer tried to join your colony. </RS_WandererJoin>
-  <RS_ManhunterPack>Manhunter pack attacked your colony.</RS_ManhunterPack>
-  <RS_RefugeeChased>Refugee tried to get help from your colony.</RS_RefugeeChased>
-  <RS_RefugeePodCrash>Refugee crashed on your territory.</RS_RefugeePodCrash>
-  <RS_Alphabeavers>Alphabeavers.</RS_Alphabeavers>
-  <RS_FarmAnimalsWanderIn>Animals joined your colony.</RS_FarmAnimalsWanderIn>
-  <RS_PoisonShipPartCrash>Poison ship crashed.</RS_PoisonShipPartCrash>
-  <RS_PsychicEmanatorShipPartCrash>Psychic ship crashed.</RS_PsychicEmanatorShipPartCrash>
-  <RS_ColdSnap>Start of Cold Snap</RS_ColdSnap>
-  <RS_HeatWave>Start of Heat Wave</RS_HeatWave>
-  <RS_ToxicFallout>Beginning of Toxic Fallout</RS_ToxicFallout>
-  <RS_VolcanicWinter>Beginning of Volcanic Winter</RS_VolcanicWinter>
+  <RT_ColonyAttacked>Enemy Raid: {0} are launching an attack on your colony.</RT_ColonyAttacked>
+  <RT_AnimalInsanityMass>Mass Animal Insanity occurs.</RT_AnimalInsanityMass>
+  <RT_ManhunterPack>Manhunter Pack attacked your colony.</RT_ManhunterPack>
+  <RT_ColdSnap>Start of a Cold Snap.</RT_ColdSnap>
+  <RT_HeatWave>Start of a Heat-Wave.</RT_HeatWave>
+  <RT_FarmAnimalsWanderIn>Animals joined your colony.</RT_FarmAnimalsWanderIn>
+  <RT_Infestation>Infestation of your colony.</RT_Infestation>
+  <RT_WandererJoin>Wanderer tried to join your colony.</RT_WandererJoin>
+  <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
+  <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
+  <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
+<!-- Unused? -->
+  <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
+  <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
+  <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
 </LanguageData>

@@ -95,10 +95,10 @@ namespace RimTales
             yearsWhenEventStarted.Add(Utils.CurrentYear());
             var unused = LordMaker.MakeNewLord(pawn1.Faction,
             new LordJob_Joinable_Party(intVec, pawn1, GatheringDefOf.Party), map);
-            Find.LetterStack.ReceiveLetter("AMarriageLetter".Translate(),"AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort), LetterDefOf.PositiveEvent);
+            Find.LetterStack.ReceiveLetter("RT_AMarriageLetter".Translate(),"RT_AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort,yearsWhenEventStarted.Count), LetterDefOf.PositiveEvent);
             
             //* Added a tale for wedding anniversary
-            Core.AddIncident(Core.RimTales_DefOf.AnniversaryMarriage, "Marriage anniversary: " + pawn1.LabelShort + " & " + pawn2.LabelShort + " - " + yearsWhenEventStarted.Count + " years.");
+            Core.AddIncident(Core.RimTales_DefOf.AnniversaryMarriage, "RT_AMarriageDesc".Translate(pawn1.LabelShort, pawn2.LabelShort,yearsWhenEventStarted.Count));
 
             foreach (var p in pawn1.Map.mapPawns.FreeColonists)
             {

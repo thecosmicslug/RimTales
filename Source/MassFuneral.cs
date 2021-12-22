@@ -39,7 +39,7 @@ namespace RimTales
             }
 
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_RimTales(Resources.lastGrave.Position, pawn),map);
-            Find.LetterStack.ReceiveLetter("FuneralLetter".Translate(), "FuneralDesc".Translate() + deadPawnsNames,LetterDefOf.NeutralEvent, Resources.lastGrave);
+            Find.LetterStack.ReceiveLetter("RT_FuneralLetter".Translate(), "RT_FuneralDesc".Translate() + deadPawnsNames,LetterDefOf.NeutralEvent, Resources.lastGrave);
             deadPawnsNames = "";
             return true;
         }

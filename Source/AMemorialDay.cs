@@ -87,10 +87,10 @@ namespace RimTales
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
-            Find.LetterStack.ReceiveLetter("AMemorialDayLetter".Translate(), "AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
+            Find.LetterStack.ReceiveLetter("RT_AMemorialDayLetter".Translate(), "RT_AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
 
             if (deadPawn != null){
-                Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "AMemorialDay".Translate(deadPawn.Name.ToString()));
+                Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "RT_AMemorialDay".Translate(deadPawn.Name.ToString()));
             }
        
             return true;

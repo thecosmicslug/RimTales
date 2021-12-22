@@ -10,13 +10,8 @@ namespace RimTales
     public static class Resources
     {
         public static Map TEST_MAP;
-
         public static Random rng = new Random();
         public static int randomChanceRaid = 6;
-
-        public static int xxx;
-        public static int yyy;
-        public static Vector2 vect = new Vector2(xxx, yyy);
 
         public static int minHour = 10;
         public static int maxHour = 20;
@@ -32,13 +27,6 @@ namespace RimTales
 
         public static bool isMemorialDayCreated = false;
         public static Date dateLastFuneral = null;
-
-        public static bool showRaidsInLog = true;
-        public static bool showDeadColonistsInLog = true;
-        public static bool showIncidentsInLog = true;
-        public static bool showCustomTextInLog = true;
-
-        
 
     }
 }

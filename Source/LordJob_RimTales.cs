@@ -50,14 +50,14 @@ namespace RimTales
 
             transition.AddTrigger(new Trigger_TickCondition(ShouldBeCalledOff));
             transition.AddTrigger(new Trigger_PawnLostViolently());
-            transition.AddPreAction(new TransitionAction_Message("FuneralCalledOff".Translate(),
+            transition.AddPreAction(new TransitionAction_Message("RT_FuneralCalledOff".Translate(),
             MessageTypeDefOf.NegativeEvent, new TargetInfo(spot, Map)));
             stateGraph.AddTransition(transition);
             timeoutTrigger = new Trigger_TicksPassed(Rand.RangeInclusive(5000, 15000));
             
             var transition2 = new Transition(lordToil_Party, lordToil_End);
             transition2.AddTrigger(timeoutTrigger);
-            transition2.AddPreAction(new TransitionAction_Message("FuneralFinished".Translate(),
+            transition2.AddPreAction(new TransitionAction_Message("RT_FuneralFinished".Translate(),
             MessageTypeDefOf.SituationResolved, new TargetInfo(spot, Map)));
             stateGraph.AddTransition(transition2);
             return stateGraph;

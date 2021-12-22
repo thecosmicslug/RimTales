@@ -67,48 +67,49 @@ namespace RimTales {
             listing_Standard.Begin(inRect);
 
             Text.Font = GameFont.Medium;
-            listing_Standard.Label("Filter Settings:");
+            listing_Standard.Label("RT_FilterSettings".Translate());
             Text.Font = GameFont.Small;
 
             listing_Standard.Gap(10f);
             listing_Standard.Gap(10f);
 
             //* List Colouring
-            listing_Standard.CheckboxLabeled("EnUseColour".Translate(), ref settings.bUseColour);
+            listing_Standard.CheckboxLabeled("RT_UseColour".Translate(), ref settings.bUseColour);
             listing_Standard.Gap(10f);
 
             //* Filter settings
-            listing_Standard.CheckboxLabeled("EnShowDeaths".Translate(), ref settings.bShowDeaths);
+            listing_Standard.CheckboxLabeled("RT_ShowDeaths".Translate(), ref settings.bShowDeaths);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("EnShowVommit".Translate(), ref settings.bShowVommit);
+            listing_Standard.CheckboxLabeled("RT_ShowVommit".Translate(), ref settings.bShowVommit);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("EnShowWounded".Translate(), ref settings.bShowWounded);
+            listing_Standard.CheckboxLabeled("RT_ShowWounded".Translate(), ref settings.bShowWounded);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("EnShowAnimalTales".Translate(), ref settings.bShowAnimalTales);
+            listing_Standard.CheckboxLabeled("RT_ShowAnimalTales".Translate(), ref settings.bShowAnimalTales);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("EnShowChitChat".Translate(), ref settings.bShowChitChat);
+            listing_Standard.CheckboxLabeled("RT_ShowChitChat".Translate(), ref settings.bShowChitChat);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("EnShowPlayedGame".Translate(), ref settings.bShowPlayedGame);
+            listing_Standard.CheckboxLabeled("RT_ShowPlayedGame".Translate(), ref settings.bShowPlayedGame);
             listing_Standard.Gap(10f);
             listing_Standard.Gap(10f);
             
             Text.Font = GameFont.Medium;
-            listing_Standard.Label("Anniversary Settings:");
+            listing_Standard.Label("RT_AnniversarySettings".Translate());
+            
             Text.Font = GameFont.Small;
 
             listing_Standard.Gap(10f);
             listing_Standard.Gap(10f);
 
             //* Aniversary Settings
-            listing_Standard.CheckboxLabeled("enableMarriageAnniversary".Translate(), ref settings.enableMarriageAnniversary);
+            listing_Standard.CheckboxLabeled("RT_EnableMarriageAnniversary".Translate(), ref settings.enableMarriageAnniversary);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("enableMemoryDay".Translate(), ref settings.enableMemoryDay);
+            listing_Standard.CheckboxLabeled("RT_EnableMemoryDay".Translate(), ref settings.enableMemoryDay);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("enableDaysOfVictory".Translate(), ref settings.enableDaysOfVictory);
+            listing_Standard.CheckboxLabeled("RT_EnableDaysOfVictory".Translate(), ref settings.enableDaysOfVictory);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("enableIndividualThoughts".Translate(), ref settings.enableIndividualThoughts);
+            listing_Standard.CheckboxLabeled("RT_EnableIndividualThoughts".Translate(), ref settings.enableIndividualThoughts);
             listing_Standard.Gap(10f);
-            listing_Standard.CheckboxLabeled("enableFunerals".Translate(), ref settings.enableFunerals);
+            listing_Standard.CheckboxLabeled("RT_EnableFunerals".Translate(), ref settings.enableFunerals);
 
             listing_Standard.End();
             settings.Write();

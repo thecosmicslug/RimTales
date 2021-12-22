@@ -3,7 +3,7 @@
 
     //TODO: Create an updated README.
 
-    This mod was Inspired by two abandoned mods, which I felt were both lacking features but good in their own way.
+    This mod was Inspired by two abandoned mods, 'Tales Log [Retold]' 'RimStory' and  which I felt were both lacking features but good in their own way.
     So I started to combine the two, removing the UI from RimStory and integrating it with 'Tales Log [Retold]'
 
     RimTales takes the best bits from both mods, condenses it into one interface while massivly expanding the Events & Incidents it records.
@@ -12,17 +12,21 @@
     This version no longer relies on the TaleManager to retrieve the events, Rimworld deletes them after sometime in-game and that bugged me!
     This version uses a Harmony hook to catch all tales and log them permamently, the same with the incidents.
 
-# Original Description:
-Every time something relevant happens on a colony, a "tale" is registered on the save so it can be used on art (like deaths, research, training and so on).
-This mod adds a tab to the game window that shows to you every tale recorded on that save.
-To avoid performance issues, the log will only update when you open it.
-Also, this mod does not change tale recording, so it only shows what the game has recorded.
 
-* __Filters__. Using the "filter" text field you can select what will be shown on the tab.
+# Development:
 
-* __Colours__. "Show Colors": if disabled, all tales will be white.
+I Work on this project using Visual Studio Code for Linux, to use on Windows the project paths will need adjusting.
+I use the following extensions while I work:
+
+1. GitLens                  -   https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
+2. Super One Dark Theme     -   https://marketplace.visualstudio.com/items?itemName=seansassenrath.vscode-theme-superonedark
+3. Material Icon Theme      -   https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme
+4. Save All Button          -   https://marketplace.visualstudio.com/items?itemName=nanlei.save-all
+5. Todo Tree                -   https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+6. Rainbow Brackets         -   https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets
+7. Better Comments          -   https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments
 
 
 # Thanks
 1. Thanks to spuddy for fixing 'Tale Log [Retold]' for v18 and sharing the source code at 'https://bitbucket.org/spudbean/talelogretold/'
-2. Thanks to Nandonalt for the original 'Tale Log'
+3. Thanks to 'emipa606' who have carried on fixing 'RimStory' 'https://github.com/emipa606/RimStory'

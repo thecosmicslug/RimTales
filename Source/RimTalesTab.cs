@@ -85,7 +85,7 @@ namespace RimTales {
         Text.Font = GameFont.Medium;
         Rect val2 = rect;
         val2.x = val.x + 670;
-        Widgets.Label(val2, "RimTales: The Story Exporter.");
+        Widgets.Label(val2, "RimTales: " + "RT_TheStoryExporter".Translate());
 
         //* The Tabs
         Text.Font = GameFont.Small;
@@ -119,7 +119,7 @@ namespace RimTales {
 
         //* Filter Label
         Rect positionLabel1 = new Rect(position.x + 150, 55f, 200F, 30F);
-        Widgets.Label(positionLabel1, "List Filter Settings:");
+        Widgets.Label(positionLabel1, "RT_FilterSettings".Translate());
         Widgets.DrawLineHorizontal(positionLabel1.x, 80f, 200);
         Text.Font = GameFont.Small;
 
@@ -134,7 +134,8 @@ namespace RimTales {
         //* Aniversary Label
         Rect positionLabel2 = new Rect(positionLabel1.x + 350, 55f, 220F, 30F);
         Text.Font = GameFont.Medium;
-        Widgets.Label(positionLabel2, "Anniversary Settings:");
+        
+        Widgets.Label(positionLabel2, "RT_AnniversarySettings".Translate());
         Widgets.DrawLineHorizontal(positionLabel2.x, 80f, 200);
         Text.Font = GameFont.Small;
 
@@ -146,19 +147,21 @@ namespace RimTales {
         Rect position12 = new Rect(positionLabel2.x, 245f, 160F, 30F);
 
         //* Filter settings
-        Widgets.CheckboxLabeled(position2, "EnShowDeaths".Translate(), ref RimTalesMod.settings.bShowDeaths);
-        Widgets.CheckboxLabeled(position3, "EnShowVommit".Translate(), ref RimTalesMod.settings.bShowVommit);
-        Widgets.CheckboxLabeled(position4, "EnShowWounded".Translate(), ref RimTalesMod.settings.bShowWounded);
-        Widgets.CheckboxLabeled(position5, "EnShowAnimalTales".Translate(), ref RimTalesMod.settings.bShowAnimalTales);
-        Widgets.CheckboxLabeled(position6, "EnShowChitChat".Translate(), ref RimTalesMod.settings.bShowChitChat);
-        Widgets.CheckboxLabeled(position7, "EnShowPlayedGame".Translate(), ref RimTalesMod.settings.bShowPlayedGame);
- 
+        Widgets.CheckboxLabeled(position2, "RT_ShowDeaths".Translate(), ref RimTalesMod.settings.bShowDeaths);
+        Widgets.CheckboxLabeled(position3, "RT_ShowVommit".Translate(), ref RimTalesMod.settings.bShowVommit);
+        Widgets.CheckboxLabeled(position4, "RT_ShowWounded".Translate(), ref RimTalesMod.settings.bShowWounded);
+        Widgets.CheckboxLabeled(position5, "RT_ShowAnimalTales".Translate(), ref RimTalesMod.settings.bShowAnimalTales);
+        Widgets.CheckboxLabeled(position6, "RT_ShowChitChat".Translate(), ref RimTalesMod.settings.bShowChitChat);
+        Widgets.CheckboxLabeled(position7, "RT_ShowPlayedGame".Translate(), ref RimTalesMod.settings.bShowPlayedGame);
+
+        // TODO: Make the amount of tales displayed customisable.
+
         //* Aniversary Settings
-        Widgets.CheckboxLabeled(position8, "enableMarriageAnniversary".Translate(), ref RimTalesMod.settings.enableMarriageAnniversary);
-        Widgets.CheckboxLabeled(position9, "enableMemoryDay".Translate(), ref RimTalesMod.settings.enableMemoryDay);
-        Widgets.CheckboxLabeled(position10, "enableFunerals".Translate(), ref RimTalesMod.settings.enableFunerals);
-        Widgets.CheckboxLabeled(position11, "enableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
-        Widgets.CheckboxLabeled(position12, "enableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
+        Widgets.CheckboxLabeled(position8, "RT_EnableMarriageAnniversary".Translate(), ref RimTalesMod.settings.enableMarriageAnniversary);
+        Widgets.CheckboxLabeled(position9, "RT_EnableMemoryDay".Translate(), ref RimTalesMod.settings.enableMemoryDay);
+        Widgets.CheckboxLabeled(position10, "RT_EnableFunerals".Translate(), ref RimTalesMod.settings.enableFunerals);
+        Widgets.CheckboxLabeled(position11, "RT_EnableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
+        Widgets.CheckboxLabeled(position12, "RT_EnableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
         
         GUI.EndGroup();
         RimTalesMod.settings.Write();
@@ -189,7 +192,7 @@ namespace RimTales {
         
         //* Filter label
         Rect position2 = new Rect(10f, 10f, 110F, 30F);
-        Widgets.Label(position2, "EnFilter".Translate());
+        Widgets.Label(position2, "RT_Filter".Translate());
 
         //* Filter textbox
         Rect position3 = new Rect(120f, 5f, 220F, 30F);
@@ -197,7 +200,8 @@ namespace RimTales {
 
         //* Colour list toggle
         Rect position4 = new Rect(350, 5f, 100F, 30F);
-        Widgets.CheckboxLabeled(position4, "Color List", ref RimTalesMod.settings.bUseColour);
+        
+        Widgets.CheckboxLabeled(position4, "RT_UseColour".Translate(), ref RimTalesMod.settings.bUseColour);
 
         //* Tale Counter
         Rect position5 = new Rect(500, 10f, 250F, 30F);
@@ -205,13 +209,13 @@ namespace RimTales {
 
         //* Save button
         Rect position6 = new Rect(720f, 5f , 100f, 30f);
-        if(Widgets.ButtonText(position6, "EnSaveList".Translate())){
+        if(Widgets.ButtonText(position6, "RT_SaveList".Translate())){
             saveTales();
         }
 
         //* Save ALL button
         Rect position7 = new Rect(830f, 5f , 120f, 30f);
-        if(Widgets.ButtonText(position7, "EnSaveAllList".Translate())){
+        if(Widgets.ButtonText(position7, "RT_SaveAllList".Translate())){
             SaveAllTales();
         }
 
@@ -295,7 +299,10 @@ namespace RimTales {
             }
         }
         
-        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
+        if (Prefs.DevMode){
+            Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
+        }
+
         outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);

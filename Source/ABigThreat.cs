@@ -96,11 +96,10 @@ namespace RimTales
             yearsWhenEventStarted.Add(Utils.CurrentYear());
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
 
-            string label = "DayOfVictory".Translate(faction.Name);
-            string text = "DayOfVictoryDesc".Translate(faction.Name, date.ToString());
+            string label = "RT_DayOfVictory".Translate(faction.Name);
+            string text = "RT_DayOfVictoryDesc".Translate(faction.Name, date.ToString());
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.PositiveEvent);
-
-            Core.AddIncident(Core.RimTales_DefOf.AnniversaryThreat, "Anniversary of a raid by: " + faction.Name + " in " + date.ToString() + ".");
+            Core.AddIncident(Core.RimTales_DefOf.AnniversaryThreat, text);
             return true;
         }
 
