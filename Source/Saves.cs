@@ -11,13 +11,13 @@ namespace RimTales
 
         public override void ExposeData()
         {
-            Scribe_References.Look(ref Resources.lastGrave, "RS_LastGrave", true);
-            Scribe_Collections.Look(ref Resources.EventManager, "RS_Events", LookMode.Deep, null);
-            Scribe_Collections.Look(ref Resources.TaleManager, "RS_Tales", LookMode.Deep, null);
-            Scribe_Collections.Look(ref Resources.pawnsAttended, "RS_PawnsAttended", LookMode.Reference, null, true);
-            Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneral, "RS_DeadPawns", LookMode.Reference, null,true);
-            Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneralBuried, "RS_DeadPawnsBuried",LookMode.Reference, null, true);
-            Scribe_Values.Look(ref Resources.isMemorialDayCreated, "RS_Memorial_Day");
+            Scribe_References.Look(ref Resources.lastGrave, "RT_LastGrave", true);
+            Scribe_Collections.Look(ref Resources.EventManager, "RT_Events", LookMode.Deep, null);
+            Scribe_Collections.Look(ref Resources.TaleManager, "RT_Tales", LookMode.Deep, null);
+            Scribe_Collections.Look(ref Resources.pawnsAttended, "RT_PawnsAttended", LookMode.Reference, null, true);
+            Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneral, "RT_DeadPawns", LookMode.Reference, null,true);
+            Scribe_Collections.Look(ref Resources.deadPawnsForMassFuneralBuried, "RT_DeadPawnsBuried",LookMode.Reference, null, true);
+            Scribe_Values.Look(ref Resources.isMemorialDayCreated, "RT_Memorial_Day");
         }
     }
 }

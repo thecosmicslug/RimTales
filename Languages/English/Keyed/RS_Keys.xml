@@ -44,8 +44,55 @@
   <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
   <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
   <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
+  <!-- Tales -->
+  <RT_CaravanRemoteMining>CaravanRemoteMining: {0}'s caravan mining a rich vein of {1} in a foreign land.</RT_CaravanRemoteMining>
+  <RT_CaravanAmbushedByManhunter>CaravanAmbushedByManhunter: {0}'s caravan is being ambushed by animals.</RT_CaravanAmbushedByManhunter>
+  <RT_PlayedGame>PlayedGame: {0} played a game of {1}.</RT_PlayedGame>
+  <RT_HeatstrokeRevealed>HeatstrokeRevealed: {0} has Heat-Stroke.</RT_HeatstrokeRevealed>
+  <RT_HypothermiaRevealed>HypothermiaRevealed: {0} has Hypothermia.</RT_HypothermiaRevealed>
+  <RT_ToxicityRevealed>ToxicityRevealed: {0} has developed {1}.</RT_ToxicityRevealed>
+  <RT_IllnessRevealed>IllnessRevealed: {0} has developed {1}.</RT_IllnessRevealed>
+  <RT_FinishedResearchProject>FinishedResearchProject: {0} has discovered {1}.</RT_FinishedResearchProject>
+  <RT_CompletedLongConstructionProject>CompletedLongConstructionProject: {0} has built {1}.</RT_CompletedLongConstructionProject>
+  <RT_MinedValuable>MinedValuable: {0} is mining a rich vein of {1}.</RT_MinedValuable>
+  <RT_GainedMasterSkillWithPassion>GainedMasterSkillWithPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithPassion>
+  <RT_GainedMasterSkillWithoutPassion>GainedMasterSkillWithoutPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithoutPassion>
+  <RT_DefeatedHostileFactionLeader>DefeatedHostileFactionLeader: {0} killed {1}, The leader of {2}.</RT_DefeatedHostileFactionLeader>
+  <RT_CompletedLongCraftingProject>CompletedLongCraftingProject: {0} completed work on a {1}.</RT_CompletedLongCraftingProject>
+  <RT_CraftedArt>CraftedArt: {0} completed work on a {1}.</RT_CraftedArt>
+  <RT_StruckMineable>StruckMineable: {0} is mining a rich vein of {1}.</RT_StruckMineable>
+  <RT_Recruited>Recruited: {1} has been recruited by {0}.</RT_Recruited>
+  <RT_Stripped>Stripped: {0} removed clothing from {1}.</RT_Stripped>
+  <RT_IncreasedMenagerie>IncreasedMenagerie: {1} has been tamed by {0}.</RT_IncreasedMenagerie>
+  <RT_AttendedParty>AttendedParty: {1} atttended the party of {0}.</RT_AttendedParty>
+  <RT_DidNotAttendWedding>DidNotAttendWedding: {0} did not show up to the wedding of {1}.</RT_DidNotAttendWedding>
+  <RT_AttendedMyWedding>AttendedMyWedding: {0} came to the wedding of {1}.</RT_AttendedMyWedding>
+  <RT_ArrestedMe>ArrestedMe: {0} has arrested {1}.</RT_ArrestedMe>
+  <RT_ResurrectedMe>ResurrectedMe: {0} has resurrected {1}.</RT_ResurrectedMe>
+  <RT_BrokeUpWithMe>BrokeUpWithMe: The relationship between {0} and {1} has ended.</RT_BrokeUpWithMe>
+  <RT_Hunted>Hunted: {1} was killed by {0}.</RT_Hunted>
+  <RT_KidnappedColonist>KidnappedColonist: {1} has taken {0}.</RT_KidnappedColonist>
+  <RT_DidSurgery>DidSurgery: {1} is operating on {0}.</RT_DidSurgery>
+  <RT_KilledColonist>KilledColonist: {0} has killed {1}.</RT_KilledColonist>
+  <RT_TradedWith>TradedWith: {0} is buying goods from {1}.</RT_TradedWith>
+  <RT_WeHadNiceChat>WeHadNiceChat: {0} and {1} had a nice chat.</RT_WeHadNiceChat>
+  <RT_BecameLover>BecameLover: {0} and {1} are now lovers.</RT_BecameLover>
+  <RT_Breakup>Breakup: {0} and {1} are no longer in a relationship.</RT_Breakup>
+  <RT_Marriage>Marriage: {0} and {1} are now married.</RT_Marriage>
+  <RT_Captured>Captured: {0} has caught {1}.</RT_Captured>
+  <RT_ExecutedPrisoner>ExecutedPrisoner: {0} has killed {1}.</RT_ExecutedPrisoner>
+  <RT_SoldPrisoner>SoldPrisoner: {0} has sold {1} to slavers.</RT_SoldPrisoner>
+  <RT_TamedAnimal>TamedAnimal: {0} is taming a {1}.</RT_TamedAnimal>
+  <RT_TrainedAnimal>TrainedAnimal: {0} is training {1}.</RT_TrainedAnimal>
+  <RT_BondedWithAnimal>BondedWithAnimal: {0} is forming a deep bond with {1}.</RT_BondedWithAnimal>
+  <RT_KilledColonyAnimal>KilledColonyAnimal: {0} has killed {1}.</RT_KilledColonyAnimal>
+  <RT_BuriedCorpse>BuriedCorpse: {0} is burying {1}.</RT_BuriedCorpse>
+  <RT_VisitedGrave>VisitedGrave: {0} is  visiting the grave of {1}.</RT_VisitedGrave>
+  <RT_PutIntoCryptosleep>PutIntoCryptosleep: {0} is putting {1} into cryptosleep.</RT_PutIntoCryptosleep>
+  <RT_SocialFight>SocialFight: {0} is starting a fight with {1}.</SocialFight>
+  <RT_KilledBy>KilledBy: {0} was killed by {1}.</RT_KilledBy>
+  <RT_GaveBirth>GaveBirth: </RT_GaveBirth>
 <!-- Unused? -->
-  <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
   <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
   <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
 </LanguageData>

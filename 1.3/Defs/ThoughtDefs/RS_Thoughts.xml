@@ -2,7 +2,7 @@
 <Defs>
   <!-- Relative Died -->
   <ThoughtDef>
-    <defName>RS_DayDiedLover</defName>
+    <defName>RT_DayDiedLover</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -14,7 +14,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedSpouse</defName>
+    <defName>RT_DayDiedSpouse</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -26,7 +26,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedFiance</defName>
+    <defName>RT_DayDiedFiance</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -38,7 +38,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedChild</defName>
+    <defName>RT_DayDiedChild</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -50,7 +50,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedMother</defName>
+    <defName>RT_DayDiedMother</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -62,7 +62,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedFather</defName>
+    <defName>RT_DayDiedFather</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -74,7 +74,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_DayDiedSibling</defName>
+    <defName>RT_DayDiedSibling</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -87,7 +87,7 @@
   </ThoughtDef>
   <!-- Other -->
   <ThoughtDef>
-    <defName>RS_DayBreakup</defName>
+    <defName>RT_DayBreakup</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
@@ -99,7 +99,7 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RS_ChitchatPast</defName>
+    <defName>RT_ChitchatPast</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>
     <stages>

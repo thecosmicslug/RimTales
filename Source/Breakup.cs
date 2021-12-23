@@ -39,11 +39,11 @@ namespace RimTales
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref anniversary, "RS_Anniversary", true);
-            Scribe_References.Look(ref pawn1, "RS_DeadPawn1");
-            Scribe_References.Look(ref pawn2, "RS_DeadPawn2");
-            Scribe_Collections.Look(ref yearsWhenEventStarted, "RS_yearsWhenEventStarted", LookMode.Value);
-            Scribe_Deep.Look(ref date, "RS_DateAttacked");
+            Scribe_Values.Look(ref anniversary, "RT_Anniversary", true);
+            Scribe_References.Look(ref pawn1, "RT_DeadPawn1");
+            Scribe_References.Look(ref pawn2, "RT_DeadPawn2");
+            Scribe_Collections.Look(ref yearsWhenEventStarted, "RT_yearsWhenEventStarted", LookMode.Value);
+            Scribe_Deep.Look(ref date, "RT_DateAttacked");
         }
 
         public bool GetIsAnniversary()

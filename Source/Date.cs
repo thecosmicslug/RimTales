@@ -22,9 +22,9 @@ namespace RimTales
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref day, "RS_DateDay");
-            Scribe_Values.Look(ref quadrum, "RS_DateQuadrum", Quadrum.Undefined);
-            Scribe_Values.Look(ref year, "RS_DateYear");
+            Scribe_Values.Look(ref day, "RT_DateDay");
+            Scribe_Values.Look(ref quadrum, "RT_DateQuadrum", Quadrum.Undefined);
+            Scribe_Values.Look(ref year, "RT_DateYear");
         }
 
         public Date GetDate()

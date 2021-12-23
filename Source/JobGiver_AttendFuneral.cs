@@ -14,7 +14,7 @@ namespace RimTales
                 return null;
             }
 
-            return new Job(RS_JobDefOf.AttendFuneral, grave);
+            return new Job(RT_JobDefOf.AttendFuneral, grave);
         }
 
         private Building_Grave FindGrave()
@@ -22,7 +22,7 @@ namespace RimTales
             return Resources.lastGrave;
         }
 
-        public class RS_JobDefOf
+        public class RT_JobDefOf
         {
             public static JobDef AttendFuneral;
         }

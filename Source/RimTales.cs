@@ -107,9 +107,8 @@ namespace RimTales
         }
 
         //* Add String Tales for GUI
-        private static void AddTale(Tale tale, String overrideName, String plus){
+        private static void AddTale(Tale tale, String overrideName){
             
-            //TODO: Restructure Function for translation support. IncomingTales() relies on it!
             StringBuilder str = new StringBuilder();
             Vector2 longitude = Vector2.zero;
             
@@ -126,13 +125,13 @@ namespace RimTales
             string taleStr3 = taleStr2.Split(',')[0];
             str.Append(taleStr3.Remove(0, taleStr2.IndexOf(':') + 2));
             if (overrideName == ""){
-                str.Append(plus);
+                //str.Append(plus);
                 TaleTMP.customLabel = str.ToString();
             }
             else{
                 string[] temp = str.ToString().Split(':');
                 string final = temp[0] + ":" + temp[1];
-                var outstr = final + overrideName + plus;
+                var outstr = final + overrideName; //+ plus;
                 TaleTMP.customLabel = outstr;
 
             }
@@ -187,10 +186,7 @@ namespace RimTales
                 Log.Message("[RimTales]: TaleManager.Add() - " + tale.ToString());
             }
 
-            //TODO: Add translation support to tale descriptions.
-            String StrTalePlus = "";
             String StrTaleOverride = "";
-            
             Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
             Tale_SinglePawnAndThing tale3 = tale as Tale_SinglePawnAndThing;
             Tale_DoublePawn tale4 = tale as Tale_DoublePawn;
@@ -200,755 +196,653 @@ namespace RimTales
             {
                 case "Vomited":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "LandedInPod":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "Drunk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "WasOnFire":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "WalkedNaked":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CollapseDodged":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanAmbushedByHumanlike":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanMeeting":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanDemand":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanFormed":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanFled":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanAmbushDefeated":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanAssaultSuccessful":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "Meditated":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "Prayed":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "LaunchedShip":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "AttendedConcert":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "HeldConcert":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "Exhausted":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_IngestedHumanFlesh":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_BingedFood":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_BingedDrug":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_HideInRoom":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_ThrewTantrum":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WanderedInSaddness":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WentBerserk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WentIntoSadisticRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WentOnFireStartingSpree":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WentOnMurderousRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_RanWild":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "ButcheredHumanlikeCorpse":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "AteRawHumanlikeMeat":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "BuiltSnowman":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "EnteredCryptosleep":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "MentalStateBerserk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "MentalStateGaveUp":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_SlaughteredAnimalInRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_TamedThrumbo":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WasPreviouslyOurEnemy":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_WasBadlyInjured":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_RemovedPrisonersOrgans":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_FailedMedicalOperationAndKilled":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CaravanRemoteMining":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_CaravanRemoteMining".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "CaravanAmbushedByManhunter":
-                    //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    //Tale_SinglePawnAndDef --  or is it SinglePawn??
+                    AddTale(tale,"RT_CaravanAmbushedByManhunter".Translate(tale2.pawnData.name));
+
                     break;    
 
                 case "PlayedGame":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "HeatstrokeRevealed":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
                     break;
 
                 case "HypothermiaRevealed":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
                     break;
 
                 case "ToxicityRevealed":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "FinishedResearchProject":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_FinishedResearchProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "CompletedLongConstructionProject":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_CompletedLongConstructionProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "IllnessRevealed":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "MinedValuable":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_MinedValuable".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "GainedMasterSkillWithPassion":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_GainedMasterSkillWithPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "GainedMasterSkillWithoutPassion":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_GainedMasterSkillWithoutPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "DefeatedHostileFactionLeader":
+                    //TODO: Should be Double-Tale?! - DefeatedHostileFactionLeader
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    //StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "CompletedLongCraftingProject":
                     //Tale_SinglePawnAndDef
-                    StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_CompletedLongCraftingProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "CraftedArt":
                     //* Tale_SinglePawnAndThing ?!?
-                    //StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    StrTalePlus = " - " + tale3.thingData.thingDef.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    //TODO: Should be Tale_SinglePawnAndThing?! - CraftedArt
+                    AddTale(tale,"RT_CraftedArt".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "StruckMineable":
                     //Tale_SinglePawnAndThing
-                    StrTalePlus = " - " + tale3.thingData.thingDef.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,"RT_StruckMineable".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
                     break;
 
                 case "Recruited":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Joiner: " + tale4.secondPawnData.name + ".";
+                    if (tale4.secondPawnData != null && tale4.firstPawnData != null){
+                        AddTale(tale,"RT_Recruited".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": Recruiter: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "Stripped":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = " removed clothing from - " + tale4.secondPawnData.name;
+                    if (tale4.secondPawnData != null && tale4.firstPawnData != null){
+                        AddTale(tale,"RT_Stripped".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = ": " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "IncreasedMenagerie":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
+                    if (tale4.secondPawnData != null && tale4.firstPawnData != null){
+                        AddTale(tale,"RT_IncreasedMenagerie".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " has been tamed by - " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "AttendedParty":
                     // Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " atttended the party of " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_AttendedParty".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "VSIE_DidNotAttendWedding":
                     //Tale_DoublePawn
-                    //TODO: Finish double-pawn tales.
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_DidNotAttendWedding".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
+                    }
                     break;
 
                 case "VSIE_AttendedMyWedding":
                     //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_AttendedMyWedding".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
+                    }
                     break;
 
                 case "VSIE_TamedMe":
-                    //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    //Tale_DoublePawn //TODO: Finish VSIE_TamedMe.
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_ArrestedMe":
                     //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_ArrestedMe".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
+                    }
                     break;
 
                 case "VSIE_ResurrectedMe":
                     //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_ResurrectedMe".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
+                    }
                     break;
 
                 case "VSIE_BrokeUpWithMe":
                     //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_BrokeUpWithMe".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
+                    }
                     break;
 
                 case "VSIE_BondedPetButchered":
-                    //Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    //Tale_DoublePawn //TODO: Finish VSIE_BondedPetButchered.
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_ExposedCorpseOfMyFriend":
-                    // Tale_DoublePawn
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    // Tale_DoublePawn //TODO: Finish VSIE_ExposedCorpseOfMyFriend.
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "Hunted":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_Hunted".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
                     }
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Hunter: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "KidnappedColonist":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": Victim: " + tale4.secondPawnData.name;
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_KidnappedColonist".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Kidnapper: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "DidSurgery":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Patient: " + tale4.secondPawnData.name + ".";
+                    if (!tale4.secondPawnData.kind.RaceProps.Humanlike){
+                        AddTale(tale,"RT_DidSurgery".Translate(tale4.secondPawnData.kind.LabelCap,tale4.firstPawnData.name));
+                    }else{
+                        AddTale(tale,"RT_DidSurgery".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
                     }
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Patient: " + tale4.secondPawnData.kind.LabelCap + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "KilledColonist":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledColonist".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_KilledColonist".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_KilledColonist".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_KilledColonist".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Killer: " + tale4.firstPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Killer: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-
-                case "KilledMajorThreat":
-                    //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " - Enemy: " + tale5.secondPawnData.name + " Weapon: " + tale5.defData.def.LabelCap + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "TradedWith":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Trader: " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_TradedWith".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "VSIE_WeHadNiceChat":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " & " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_WeHadNiceChat".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "BecameLover":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " and " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_BecameLover".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name + "";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "Breakup": 
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " and " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_Breakup".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name + "";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "Marriage":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " and " + tale4.secondPawnData.name + ".";
+                    if (tale4.firstPawnData != null && tale4.secondPawnData != null){
+                        AddTale(tale,"RT_Marriage".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name + "";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "Captured":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Animal: " + tale4.secondPawnData.kind.LabelCap + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_Captured".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_Captured".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_Captured".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_Captured".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Prisoner: " + tale4.secondPawnData.name + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": Warden: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "ExecutedPrisoner":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Animal: " + tale4.secondPawnData.kind.LabelCap + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_ExecutedPrisoner".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_ExecutedPrisoner".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_ExecutedPrisoner".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_ExecutedPrisoner".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Prisoner: " + tale4.secondPawnData.name + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": Warden: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "SoldPrisoner":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Animal: " + tale4.secondPawnData.kind.LabelCap + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_SoldPrisoner".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_SoldPrisoner".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_SoldPrisoner".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_SoldPrisoner".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Prisoner: " + tale4.secondPawnData.name + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": Warden: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "TamedAnimal":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_TamedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_TamedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_TamedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_TamedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Handler: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
                 
                 case "TrainedAnimal":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
+                    //Tale_DoublePawn //TODO: Should be Tale_DoublePawnAndDef?! - TrainedAnimal.
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Handler: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
                 
                 case "BondedWithAnimal":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_BondedWithAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_BondedWithAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_BondedWithAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_BondedWithAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Handler: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
                 
                 case "KilledColonyAnimal":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Animal: " + tale4.secondPawnData.kind.LabelCap + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledColonyAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_KilledColonyAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_KilledColonyAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_KilledColonyAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Animal: " + tale4.secondPawnData.name + ".";
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": Killer: " + tale4.firstPawnData.kind.LabelCap;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": Killer: " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
                 
                 case "BuriedCorpse":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.secondPawnData.kind.LabelCap;
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_BuriedCorpse".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_BuriedCorpse".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_BuriedCorpse".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_BuriedCorpse".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.secondPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Worker: " + tale4.firstPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Worker: " + tale4.firstPawnData.name + ".";
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "VisitedGrave":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " went to visit the grave of  " + tale4.secondPawnData.kind.LabelCap  + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_VisitedGrave".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_VisitedGrave".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_VisitedGrave".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_VisitedGrave".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " went to visit the grave of " + tale4.secondPawnData.name  + ".";
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.firstPawnData.kind.LabelCap;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "PutIntoCryptosleep":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " helped - " + tale4.secondPawnData.kind.LabelCap  + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_PutIntoCryptosleep".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_PutIntoCryptosleep".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_PutIntoCryptosleep".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_PutIntoCryptosleep".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " helped - " + tale4.secondPawnData.name  + ".";
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.firstPawnData.kind.LabelCap;
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "SocialFight":
                     //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_SocialFight".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_SocialFight".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_SocialFight".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_SocialFight".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "KilledBy":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                    //Tale_DoublePawn //TODO: Should be Tale_DoublePawnKilledBy ?! - KilledBy
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledBy".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_KilledBy".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_KilledBy".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_KilledBy".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
-                    if (tale4.secondPawnData != null && !tale4.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
-                    }
-                    if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale4.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-
-                case "KilledMortar":
-                    //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " killed - " + tale5.secondPawnData.name + ".";
-                    }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " killed - " + tale5.secondPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-
-                case "KilledLongRange":
-                    //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-                
-                case "KilledMelee":
-                    //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-
-                case "KilledCapacity":
-                    //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
                     break;
 
                 case "GaveBirth":
@@ -960,38 +854,98 @@ namespace RimTales
                         StrTaleOverride = ": " + tale4.secondPawnData.name;
                     }
                     if (tale4.firstPawnData != null && !tale4.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Mother: " + tale4.firstPawnData.kind.LabelCap  + ".";
+                        //StrTalePlus = " - Mother: " + tale4.firstPawnData.kind.LabelCap  + ".";
                     }
                     if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTalePlus = " - Mother: " + tale4.firstPawnData.name + ".";
+                        //StrTalePlus = " - Mother: " + tale4.firstPawnData.name + ".";
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
                 
-                case "Wounded":
+                case "VSIE_InsultedMe":
+                    //Tale_DoublePawn
+                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
+                        //StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                    }
+                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    }
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "VSIE_RebuffedMe":
+                    //Tale_DoublePawn
+                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
+                        //StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                    }
+                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    }
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "VSIE_WeHadSocialFight":
+                    //Tale_DoublePawn
+                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
+                        //StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                    }
+                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    }
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "VSIE_SavedMeFromMyWounds":
+                    //Tale_DoublePawn
+                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
+                       //StrTalePlus = " - Friend: " + tale4.secondPawnData.name + ".";
+                    }
+                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    }
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "VSIE_HasBeenMyFriendSinceChildhood":
+                    //Tale_DoublePawn
+                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
+                        //StrTalePlus = " - Friend: " + tale4.secondPawnData.name + ".";
+                    }
+                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    }
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "KilledMajorThreat":
                     //Tale_DoublePawnAndDef
                     if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
+                        //StrTalePlus = " - Enemy: " + tale5.secondPawnData.name + " Weapon: " + tale5.defData.def.LabelCap + ".";
                     }
-                    else if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Attacker: " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
+                case "KilledMortar":
+                    //Tale_DoublePawnAndDef
+                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
+                        //StrTalePlus = " killed - " + tale5.secondPawnData.name + ".";
+                    }
+                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
+                        //StrTalePlus = " killed - " + tale5.secondPawnData.kind.LabelCap + ".";
                     }
                     if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
                         StrTaleOverride = ": " + tale5.firstPawnData.name;
                     }
-                    else if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
-                case "Downed":
+                case "KilledLongRange":
                     //Tale_DoublePawnAndDef
                     if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale5.secondPawnData.name + tale5.defData.def.LabelCap + ".";
+                        //StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
                     }
                     if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        StrTalePlus = " - Attacker: " + tale5.secondPawnData.kind.LabelCap + tale5.defData.def.LabelCap + ".";
+                        //StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
                     }
                     if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
                         StrTaleOverride = ": " + tale5.firstPawnData.name;
@@ -999,78 +953,91 @@ namespace RimTales
                     if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
                         StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
                 
-                case "VSIE_InsultedMe":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                case "KilledMelee":
+                    //Tale_DoublePawnAndDef
+                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
+                        //StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
+                        //StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale5.firstPawnData.name;
+                    }
+                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
+                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
+                    }
+                    AddTale(tale,StrTaleOverride);
                     break;
 
-                case "VSIE_RebuffedMe":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                case "KilledCapacity":
+                    //Tale_DoublePawnAndDef
+                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
+                        //StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
+                        //StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale5.firstPawnData.name;
+                    }
+                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
+                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
+                    }
+                    AddTale(tale,StrTaleOverride);
                     break;
 
-                case "VSIE_WeHadSocialFight":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Attacker: " + tale4.secondPawnData.name + ".";
+                case "Wounded":
+                    //Tale_DoublePawnAndDef
+                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
+                        //StrTalePlus = " - Attacker: " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    else if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
+                        //StrTalePlus = " - Attacker: " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale5.firstPawnData.name;
+                    }
+                    else if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
+                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
+                    }
+                    AddTale(tale,StrTaleOverride);
                     break;
 
-                case "VSIE_SavedMeFromMyWounds":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Friend: " + tale4.secondPawnData.name + ".";
+                case "Downed":
+                    //Tale_DoublePawnAndDef
+                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
+                        //StrTalePlus = " - Attacker: " + tale5.secondPawnData.name + tale5.defData.def.LabelCap + ".";
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
+                        //StrTalePlus = " - Attacker: " + tale5.secondPawnData.kind.LabelCap + tale5.defData.def.LabelCap + ".";
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
-                    break;
-
-                case "VSIE_HasBeenMyFriendSinceChildhood":
-                    //Tale_DoublePawn
-                    if (tale4.secondPawnData != null && tale4.secondPawnData.name != null){
-                        StrTalePlus = " - Friend: " + tale4.secondPawnData.name + ".";
+                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
+                        StrTaleOverride = ": " + tale5.firstPawnData.name;
                     }
-                    if (tale4.firstPawnData != null && tale4.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale4.firstPawnData.name;
+                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
+                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
                     }
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_SavedMeFromRaiders":
                     // TODO: Add triple-pawn tales.
                     //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_StoleMyLover":
                     //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "VSIE_CuredMyFriend":
                     //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "MajorThreat":
@@ -1102,23 +1069,23 @@ namespace RimTales
                     break;
 
                 case "Eclipse":
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
     
                 case "Aurora":
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
     
                 case "MeteoriteImpact":
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
     
                 case "ShipPartCrash":
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
     
                 case "EndGame_ShipEscape":
-                    AddTale(tale,StrTaleOverride,StrTalePlus);
+                    AddTale(tale,StrTaleOverride);
                     break;
     
                 default:
