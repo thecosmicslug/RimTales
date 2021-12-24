@@ -608,7 +608,7 @@ namespace RimTales
                     break;
 
                 case "KidnappedColonist":
-                    //Tale_DoublePawn
+                    //Tale_DoublePawn -- can animals kidnap?
                     if (tale4.firstPawnData != null && tale4.secondPawnData != null){
                         AddTale(tale,"RT_KidnappedColonist".Translate(tale4.secondPawnData.name,tale4.firstPawnData.name));
                     }
@@ -941,50 +941,45 @@ namespace RimTales
 
                 case "KilledMortar":
                     //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        //StrTalePlus = " killed - " + tale5.secondPawnData.name + ".";
+                    if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledMortar".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
+                    }else{
+                            AddTale(tale,"RT_KilledMortar".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
                     }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        //StrTalePlus = " killed - " + tale5.secondPawnData.kind.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "KilledLongRange":
                     //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        //StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
+                    if (!tale5.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                        }
+                    }else{
+                        if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                            }        
                     }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        //StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride);
                     break;
                 
                 case "KilledMelee":
                     //Tale_DoublePawnAndDef
-                    if (tale5.secondPawnData != null && tale5.secondPawnData.name != null){
-                        //StrTalePlus = " killed " + tale5.secondPawnData.name + " with " + tale5.defData.def.LabelCap + ".";
+                    if (!tale5.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                        }
+                    }else{
+                        if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                            }        
                     }
-                    if (tale5.secondPawnData != null && !tale5.secondPawnData.kind.RaceProps.Humanlike){
-                        //StrTalePlus = " killed " + tale5.secondPawnData.kind.LabelCap + " with " + tale5.defData.def.LabelCap + ".";
-                    }
-                    if (tale5.firstPawnData != null && tale5.firstPawnData.name != null){
-                        StrTaleOverride = ": " + tale5.firstPawnData.name;
-                    }
-                    if (tale5.firstPawnData != null && !tale5.firstPawnData.kind.RaceProps.Humanlike){
-                        StrTaleOverride = ": " + tale5.firstPawnData.kind.LabelCap;
-                    }
-                    AddTale(tale,StrTaleOverride);
                     break;
 
                 case "KilledCapacity":

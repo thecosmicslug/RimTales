@@ -101,8 +101,9 @@
   <RT_SavedMeFromMyWounds>SavedMeFromMyWounds: {1} saved {0} from wounds.</RT_SavedMeFromMyWounds>
   <RT_HasBeenMyFriendSinceChildhood>HasBeenMyFriendSinceChildhood: {1} has been friends with {0} since childhood.</RT_HasBeenMyFriendSinceChildhood>
   <RT_KilledMajorThreat>KilledMajorThreat: {0} killed {1} with a {2}.</RT_KilledMajorThreat>
-
-
+  <RT_KilledMortar>KilledMortar: {1} is being killed by {0}'s {2}.</RT_KilledMortar>
+  <RT_KilledLongRange>KilledLongRange: {0} fired at {1} from extreme distance with a {2}.</RT_KilledLongRange>
+  <RT_KilledMelee>KilledMelee: {0} killed {1} in melee with a {2}.</RT_KilledMelee>
 <!-- Unused? -->
   <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
   <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
