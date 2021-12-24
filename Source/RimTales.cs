@@ -410,9 +410,7 @@ namespace RimTales
                     break;
 
                 case "CaravanAmbushedByManhunter":
-                    //Tale_SinglePawnAndDef --  or is it SinglePawn??
                     AddTale(tale,"RT_CaravanAmbushedByManhunter".Translate(tale2.pawnData.name));
-
                     break;    
 
                 case "PlayedGame":
@@ -531,8 +529,20 @@ namespace RimTales
                     break;
 
                 case "VSIE_TamedMe":
-                    //Tale_DoublePawn //TODO: Finish VSIE_TamedMe.
-                    AddTale(tale,StrTaleOverride);
+                    //Tale_DoublePawn
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_TamedMe".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_TamedMe".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_TamedMe".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_TamedMe".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
+                    }
                     break;
 
                 case "VSIE_ArrestedMe":
@@ -557,13 +567,37 @@ namespace RimTales
                     break;
 
                 case "VSIE_BondedPetButchered":
-                    //Tale_DoublePawn //TODO: Finish VSIE_BondedPetButchered.
-                    AddTale(tale,StrTaleOverride);
+                    //Tale_DoublePawn
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_BondedPetButchered".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_BondedPetButchered".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_BondedPetButchered".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_BondedPetButchered".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
+                    }
                     break;
 
                 case "VSIE_ExposedCorpseOfMyFriend":
-                    // Tale_DoublePawn //TODO: Finish VSIE_ExposedCorpseOfMyFriend.
-                    AddTale(tale,StrTaleOverride);
+                    // Tale_DoublePawn
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_ExposedCorpseOfMyFriend".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_ExposedCorpseOfMyFriend".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_ExposedCorpseOfMyFriend".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_ExposedCorpseOfMyFriend".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
+                    }
                     break;
 
                 case "Hunted":
@@ -1020,6 +1054,26 @@ namespace RimTales
                     AddTale(tale,StrTaleOverride);
                     break;
 
+                case "Eclipse":
+                    AddTale(tale,StrTaleOverride);
+                    break;
+    
+                case "Aurora":
+                    AddTale(tale,StrTaleOverride);
+                    break;
+    
+                case "MeteoriteImpact":
+                    AddTale(tale,StrTaleOverride);
+                    break;
+    
+                case "ShipPartCrash":
+                    AddTale(tale,StrTaleOverride);
+                    break;
+    
+                case "EndGame_ShipEscape":
+                    AddTale(tale,StrTaleOverride);
+                    break;
+
                 case "MajorThreat":
                     //* Duplicate ??
                     break;
@@ -1046,26 +1100,6 @@ namespace RimTales
 
                 case "ManhunterPack":
                     //* Duplicate ??
-                    break;
-
-                case "Eclipse":
-                    AddTale(tale,StrTaleOverride);
-                    break;
-    
-                case "Aurora":
-                    AddTale(tale,StrTaleOverride);
-                    break;
-    
-                case "MeteoriteImpact":
-                    AddTale(tale,StrTaleOverride);
-                    break;
-    
-                case "ShipPartCrash":
-                    AddTale(tale,StrTaleOverride);
-                    break;
-    
-                case "EndGame_ShipEscape":
-                    AddTale(tale,StrTaleOverride);
                     break;
     
                 default:

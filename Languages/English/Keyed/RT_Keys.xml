@@ -68,8 +68,11 @@
   <RT_DidNotAttendWedding>DidNotAttendWedding: {0} did not show up to the wedding of {1}.</RT_DidNotAttendWedding>
   <RT_AttendedMyWedding>AttendedMyWedding: {0} came to the wedding of {1}.</RT_AttendedMyWedding>
   <RT_ArrestedMe>ArrestedMe: {0} has arrested {1}.</RT_ArrestedMe>
+  <RT_TamedMe>TamedMe: {0} has tamed {1}.</RT_ArrestedMe>
   <RT_ResurrectedMe>ResurrectedMe: {0} has resurrected {1}.</RT_ResurrectedMe>
   <RT_BrokeUpWithMe>BrokeUpWithMe: The relationship between {0} and {1} has ended.</RT_BrokeUpWithMe>
+  <RT_BondedPetButchered>BondedPetButchered: {0} butchered my pet {1}.</RT_BondedPetButchered>
+  <RT_ExposedCorpseOfMyFriend>ExposedCorpseOfMyFriend: {1} dug up and exposed the corpse of my friend {0}.</RT_ExposedCorpseOfMyFriend>
   <RT_Hunted>Hunted: {1} was killed by {0}.</RT_Hunted>
   <RT_KidnappedColonist>KidnappedColonist: {1} has taken {0}.</RT_KidnappedColonist>
   <RT_DidSurgery>DidSurgery: {1} is operating on {0}.</RT_DidSurgery>
