@@ -104,6 +104,9 @@
   <RT_KilledMortar>KilledMortar: {1} is being killed by {0}'s {2}.</RT_KilledMortar>
   <RT_KilledLongRange>KilledLongRange: {0} fired at {1} from extreme distance with a {2}.</RT_KilledLongRange>
   <RT_KilledMelee>KilledMelee: {0} killed {1} in melee with a {2}.</RT_KilledMelee>
+  <RT_KilledCapacity>KilledCapacity: {0} killed {1} with a {2}.</RT_KilledCapacity>
+  <RT_Wounded>Wounded: {1} wounded {0} with a {2}.</RT_Wounded>
+  <RT_Downed>Downed: {1} downed {0} with a {2}.</RT_Downed>
 <!-- Unused? -->
   <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
   <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
