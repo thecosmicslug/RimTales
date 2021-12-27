@@ -186,232 +186,235 @@ namespace RimTales
                 Log.Message("[RimTales]: TaleManager.Add() - " + tale.ToString());
             }
 
-            String StrTaleOverride = "";
             Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
             Tale_SinglePawnAndThing tale3 = tale as Tale_SinglePawnAndThing;
             Tale_DoublePawn tale4 = tale as Tale_DoublePawn;
             Tale_DoublePawnAndDef tale5 = tale as Tale_DoublePawnAndDef;
+            Tale_TriplePawn tale6 = tale as Tale_TriplePawn;
 
             switch (tale.def.defName)
             {
                 case "Vomited":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "LandedInPod":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "Drunk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "WasOnFire":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "WalkedNaked":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CollapseDodged":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanAmbushedByHumanlike":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanMeeting":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanDemand":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanFormed":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanFled":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanAmbushDefeated":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "CaravanAssaultSuccessful":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "Meditated":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "Prayed":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "LaunchedShip":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "AttendedConcert":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "HeldConcert":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "Exhausted":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_IngestedHumanFlesh":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_BingedFood":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_BingedDrug":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_HideInRoom":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_ThrewTantrum":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WanderedInSaddness":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WentBerserk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WentIntoSadisticRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WentOnFireStartingSpree":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WentOnMurderousRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_RanWild":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "ButcheredHumanlikeCorpse":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "AteRawHumanlikeMeat":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "BuiltSnowman":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "EnteredCryptosleep":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "MentalStateBerserk":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "MentalStateGaveUp":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_SlaughteredAnimalInRage":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_TamedThrumbo":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WasPreviouslyOurEnemy":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_WasBadlyInjured":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_RemovedPrisonersOrgans":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
 
                 case "VSIE_FailedMedicalOperationAndKilled":
                     //Tale_SinglePawn
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"");
                     break;
+
+                case "CaravanAmbushedByManhunter":
+                    //Tale_SinglePawn
+                    AddTale(tale,"RT_CaravanAmbushedByManhunter".Translate(tale2.pawnData.name));
+                    break;    
+
 
                 case "CaravanRemoteMining":
                     //Tale_SinglePawnAndDef
                     AddTale(tale,"RT_CaravanRemoteMining".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
-                case "CaravanAmbushedByManhunter":
-                    AddTale(tale,"RT_CaravanAmbushedByManhunter".Translate(tale2.pawnData.name));
-                    break;    
 
                 case "PlayedGame":
                     //Tale_SinglePawnAndDef
@@ -463,22 +466,14 @@ namespace RimTales
                     AddTale(tale,"RT_GainedMasterSkillWithoutPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
-                case "DefeatedHostileFactionLeader":
-                    //TODO: Should be Double-Tale?! - DefeatedHostileFactionLeader
-                    //Tale_SinglePawnAndDef
-                    //StrTalePlus = " - " + tale2.defData.def.LabelCap + ".";
-                    AddTale(tale,StrTaleOverride);
-                    break;
-
                 case "CompletedLongCraftingProject":
                     //Tale_SinglePawnAndDef
                     AddTale(tale,"RT_CompletedLongCraftingProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                     break;
 
                 case "CraftedArt":
-                    //* Tale_SinglePawnAndThing ?!?
-                    //TODO: Should be Tale_SinglePawnAndThing?! - CraftedArt
-                    AddTale(tale,"RT_CraftedArt".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                    //* Tale_SinglePawnAndThing
+                    AddTale(tale,"RT_CraftedArt".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
                     break;
 
                 case "StruckMineable":
@@ -486,10 +481,49 @@ namespace RimTales
                     AddTale(tale,"RT_StruckMineable".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
                     break;
 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+    
+    
+    
                 case "Recruited":
                     //Tale_DoublePawn
                     if (tale4.secondPawnData != null && tale4.firstPawnData != null){
                         AddTale(tale,"RT_Recruited".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                    }
+                    break;
+
+                case "DefeatedHostileFactionLeader":
+                    // Double-Tale?!
+                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_DefeatedHostileFactionLeader".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
+                        }else{
+                            AddTale(tale,"RT_DefeatedHostileFactionLeader".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
+                        }
+                    }else{
+                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
+                                AddTale(tale,"RT_DefeatedHostileFactionLeader".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
+                            }else{
+                                AddTale(tale,"RT_DefeatedHostileFactionLeader".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                            }        
                     }
                     break;
 
@@ -744,19 +778,9 @@ namespace RimTales
                     break;
                 
                 case "TrainedAnimal":
-                    //Tale_DoublePawn //TODO: Should be Tale_DoublePawnAndDef?! - TrainedAnimal.
-                    if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
-                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
-                            AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
-                        }else{
-                            AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.name));
-                        }
-                    }else{
-                        if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
-                                AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.kind.LabelCap));
-                            }else{
-                                AddTale(tale,"RT_TrainedAnimal".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
-                            }        
+                    //Tale_DoublePawnAndDef
+                    if (tale5.firstPawnData != null && tale5.secondPawnData != null){
+                        AddTale(tale,"RT_TrainedAnimal".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));  
                     }
                     break;
                 
@@ -854,7 +878,7 @@ namespace RimTales
                     break;
 
                 case "KilledBy":
-                    //Tale_DoublePawn //TODO: Should be Tale_DoublePawnKilledBy ?! - KilledBy
+                    //Tale_DoublePawn - Should be Tale_DoublePawnKilledBy ?!
                     if (!tale4.firstPawnData.kind.RaceProps.Humanlike ){
                         if (!tale4.secondPawnData.kind.RaceProps.Humanlike ){
                             AddTale(tale,"RT_KilledBy".Translate(tale4.firstPawnData.kind.LabelCap,tale4.secondPawnData.kind.LabelCap));
@@ -1034,39 +1058,48 @@ namespace RimTales
                     break;
 
                 case "VSIE_SavedMeFromRaiders":
-                    // TODO: Add triple-pawn tales.
-                    //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride);
+                    //* Triple-pawn tale
+                    if (tale6.firstPawnData != null &&  tale6.secondPawnData != null && tale6.thirdPawnData != null){
+                        if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
+                            AddTale(tale,"RT_SavedMeFromRaiders".Translate(tale6.firstPawnData.name,tale6.secondPawnData.kind.LabelCap,tale6.thirdPawnData.name));
+                        }else{
+                            AddTale(tale,"RT_SavedMeFromRaiders".Translate(tale6.firstPawnData.name,tale6.secondPawnData.name,tale6.thirdPawnData.name));
+                        }
+                    }
                     break;
 
                 case "VSIE_StoleMyLover":
-                    //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride);
+                    //* Triple-pawn tale
+                    if (tale6.firstPawnData != null &&  tale6.secondPawnData != null && tale6.thirdPawnData != null){
+                        AddTale(tale,"RT_StoleMyLover".Translate(tale6.firstPawnData.name,tale6.secondPawnData.name,tale6.thirdPawnData.name));
+                    }
                     break;
 
                 case "VSIE_CuredMyFriend":
-                    //* Triple-pawn  tale
-                    AddTale(tale,StrTaleOverride);
+                    //* Triple-pawn tale
+                    if (tale6.firstPawnData != null &&  tale6.secondPawnData != null && tale6.thirdPawnData != null){
+                        AddTale(tale,"RT_CuredMyFriend".Translate(tale6.firstPawnData.name,tale6.secondPawnData.name,tale6.thirdPawnData.name));
+                    }
                     break;
 
                 case "Eclipse":
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"RT_Eclipse".Translate());
                     break;
     
                 case "Aurora":
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"RT_Aurora".Translate());
                     break;
     
                 case "MeteoriteImpact":
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"RT_MeteoriteImpact".Translate());
                     break;
     
                 case "ShipPartCrash":
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"RT_ShipPartCrash".Translate());
                     break;
     
                 case "EndGame_ShipEscape":
-                    AddTale(tale,StrTaleOverride);
+                    AddTale(tale,"RT_EndGame_ShipEscape".Translate());
                     break;
 
                 case "MajorThreat":

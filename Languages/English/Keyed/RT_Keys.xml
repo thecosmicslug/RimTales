@@ -57,7 +57,7 @@
   <RT_MinedValuable>MinedValuable: {0} is mining a rich vein of {1}.</RT_MinedValuable>
   <RT_GainedMasterSkillWithPassion>GainedMasterSkillWithPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithPassion>
   <RT_GainedMasterSkillWithoutPassion>GainedMasterSkillWithoutPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithoutPassion>
-  <RT_DefeatedHostileFactionLeader>DefeatedHostileFactionLeader: {0} killed {1}, The leader of {2}.</RT_DefeatedHostileFactionLeader>
+  <RT_DefeatedHostileFactionLeader>DefeatedHostileFactionLeader: {0} killed {1}.</RT_DefeatedHostileFactionLeader>
   <RT_CompletedLongCraftingProject>CompletedLongCraftingProject: {0} completed work on a {1}.</RT_CompletedLongCraftingProject>
   <RT_CraftedArt>CraftedArt: {0} completed work on a {1}.</RT_CraftedArt>
   <RT_StruckMineable>StruckMineable: {0} is mining a rich vein of {1}.</RT_StruckMineable>
@@ -86,7 +86,7 @@
   <RT_ExecutedPrisoner>ExecutedPrisoner: {0} has killed {1}.</RT_ExecutedPrisoner>
   <RT_SoldPrisoner>SoldPrisoner: {0} has sold {1} to slavers.</RT_SoldPrisoner>
   <RT_TamedAnimal>TamedAnimal: {0} is taming a {1}.</RT_TamedAnimal>
-  <RT_TrainedAnimal>TrainedAnimal: {0} is training {1}.</RT_TrainedAnimal>
+  <RT_TrainedAnimal>TrainedAnimal: {0} is teaching {2} to {1}.</RT_TrainedAnimal>
   <RT_BondedWithAnimal>BondedWithAnimal: {0} is forming a deep bond with {1}.</RT_BondedWithAnimal>
   <RT_KilledColonyAnimal>KilledColonyAnimal: {0} has killed {1}.</RT_KilledColonyAnimal>
   <RT_BuriedCorpse>BuriedCorpse: {0} is burying {1}.</RT_BuriedCorpse>
@@ -107,6 +107,15 @@
   <RT_KilledCapacity>KilledCapacity: {0} killed {1} with a {2}.</RT_KilledCapacity>
   <RT_Wounded>Wounded: {1} wounded {0} with a {2}.</RT_Wounded>
   <RT_Downed>Downed: {1} downed {0} with a {2}.</RT_Downed>
+  <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
+  <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
+  <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend {2}.</RT_CuredMyFriend>
+  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</li></RT_Eclipse>
+  <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
+  <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
+  <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
+  <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
+
 <!-- Unused? -->
   <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
   <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
