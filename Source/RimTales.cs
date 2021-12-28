@@ -40,15 +40,19 @@ namespace RimTales
         public override void MapLoaded(Map map){
 
             Logger.Message("Initialisng Tales...");
+
             //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
             // WipeTaleLog();
-            Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales.");
+
+            if(Resources.TaleManager.Count > 0){
+                Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales.");
+            }
+
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
 
             //* One tick per hour for the anniversaries
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
-                if(RimTalesMod.settings.enableMarriageAnniversary || RimTalesMod.settings.enableMemoryDay || RimTalesMod.settings.enableDaysOfVictory || RimTalesMod.settings.enableIndividualThoughts ){
                     if (Resources.EventManager.Count > 0){
                         foreach (var e in Resources.EventManager){
                             if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary){
@@ -65,8 +69,6 @@ namespace RimTales
                             }
                         }
                     }
-            }
-
             }, 2500, null, true);
 
             //* Mass funeral code
@@ -125,13 +127,12 @@ namespace RimTales
             string taleStr3 = taleStr2.Split(',')[0];
             str.Append(taleStr3.Remove(0, taleStr2.IndexOf(':') + 2));
             if (overrideName == ""){
-                //str.Append(plus);
                 TaleTMP.customLabel = str.ToString();
             }
             else{
                 string[] temp = str.ToString().Split(':');
                 string final = temp[0] + ":" + temp[1];
-                var outstr = final + overrideName; //+ plus;
+                var outstr = final + overrideName;
                 TaleTMP.customLabel = outstr;
 
             }

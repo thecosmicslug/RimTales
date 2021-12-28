@@ -68,7 +68,7 @@
   <RT_DidNotAttendWedding>DidNotAttendWedding: {0} did not show up to the wedding of {1}.</RT_DidNotAttendWedding>
   <RT_AttendedMyWedding>AttendedMyWedding: {0} came to the wedding of {1}.</RT_AttendedMyWedding>
   <RT_ArrestedMe>ArrestedMe: {0} has arrested {1}.</RT_ArrestedMe>
-  <RT_TamedMe>TamedMe: {0} has tamed {1}.</RT_ArrestedMe>
+  <RT_TamedMe>TamedMe: {0} has tamed {1}.</RT_TamedMe>
   <RT_ResurrectedMe>ResurrectedMe: {0} has resurrected {1}.</RT_ResurrectedMe>
   <RT_BrokeUpWithMe>BrokeUpWithMe: The relationship between {0} and {1} has ended.</RT_BrokeUpWithMe>
   <RT_BondedPetButchered>BondedPetButchered: {0} butchered my pet {1}.</RT_BondedPetButchered>
@@ -92,7 +92,7 @@
   <RT_BuriedCorpse>BuriedCorpse: {0} is burying {1}.</RT_BuriedCorpse>
   <RT_VisitedGrave>VisitedGrave: {0} is  visiting the grave of {1}.</RT_VisitedGrave>
   <RT_PutIntoCryptosleep>PutIntoCryptosleep: {0} is putting {1} into cryptosleep.</RT_PutIntoCryptosleep>
-  <RT_SocialFight>SocialFight: {0} is starting a fight with {1}.</SocialFight>
+  <RT_SocialFight>SocialFight: {0} is starting a fight with {1}.</RT_SocialFight>
   <RT_KilledBy>KilledBy: {0} was killed by {1}.</RT_KilledBy>
   <RT_GaveBirth>GaveBirth: {0} is giving birth to {1}.</RT_GaveBirth>
   <RT_InsultedMe>InsultedMe: {1} insulted {0}.</RT_InsultedMe>
@@ -110,7 +110,7 @@
   <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
   <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
   <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend {2}.</RT_CuredMyFriend>
-  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</li></RT_Eclipse>
+  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</RT_Eclipse>
   <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
   <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
   <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
