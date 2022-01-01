@@ -50,6 +50,15 @@ namespace RimTales
             throw new NotImplementedException();
         }
 
+        public string ShowInLog()
+        {
+            if (deadPawn != null) {
+                return (date.day + " " + date.quadrum + " " + date.year + " " + "RT_AMemorialDay".Translate(deadPawn.Name));
+            }
+            return (date.day + " " + date.quadrum + " " + date.year + " colonist died");
+            //return (date.day + " " + date.quadrum + " " + date.year + " " + deadPawn.Name + " died.");
+        }
+
         public bool TryStartEvent()
         {
             throw new NotImplementedException();

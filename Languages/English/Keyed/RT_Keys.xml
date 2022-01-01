@@ -21,10 +21,12 @@
   <RT_SaveList>Save List</RT_SaveList>
   <RT_SaveAllList>Save ALL Tales</RT_SaveAllList>
 <!-- Events Taken from RimStory -->
+  <RT_ABreakup>{0} brokeup with {1}.</RT_ABreakup>
   <RT_DayOfVictory>Day of {0} defeat.</RT_DayOfVictory>
   <RT_DayOfVictoryDesc>Celebrating anniversary of {0}'s defeat on {1}.</RT_DayOfVictoryDesc>
   <RT_AMarriageLetter>Marriage anniversary.</RT_AMarriageLetter>
   <RT_AMarriageDesc>{0} and {1}'s marriage anniversary of {2}yrs.</RT_AMarriageDesc>
+  <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
   <RT_AMemorialDay>{0} died.</RT_AMemorialDay>
   <RT_AMemorialDayLetter>Memorial Day.</RT_AMemorialDayLetter>
   <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</RT_AMemorialDayDesc>
@@ -44,6 +46,15 @@
   <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
   <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
   <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
+  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</RT_Eclipse>
+  <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
+  <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
+  <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
+  <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
+  <RT_Alphabeavers>Alphabeavers: Alphabeavers are attacking the colony.</RT_Alphabeavers>
+  <RT_AmbrosiaSprout>AmbrosiaSprout: Colonists discovered a patch of ambrosia growing nearby.</RT_AmbrosiaSprout>
+  <RT_ShortCircuit>ShortCircuit: Colony electronics have short-circuited.</RT_ShortCircuit>
+  <RT_ResourcePodCrash>ResourcePodCrash: Some resources have landed nearby.</RT_ResourcePodCrash>
   <!-- Tales -->
   <RT_CaravanRemoteMining>CaravanRemoteMining: {0}'s caravan mining a rich vein of {1} in a foreign land.</RT_CaravanRemoteMining>
   <RT_CaravanAmbushedByManhunter>CaravanAmbushedByManhunter: {0}'s caravan is being ambushed by animals.</RT_CaravanAmbushedByManhunter>
@@ -101,22 +112,20 @@
   <RT_SavedMeFromMyWounds>SavedMeFromMyWounds: {1} saved {0} from wounds.</RT_SavedMeFromMyWounds>
   <RT_HasBeenMyFriendSinceChildhood>HasBeenMyFriendSinceChildhood: {1} has been friends with {0} since childhood.</RT_HasBeenMyFriendSinceChildhood>
   <RT_KilledMajorThreat>KilledMajorThreat: {0} killed {1} with a {2}.</RT_KilledMajorThreat>
-  <RT_KilledMortar>KilledMortar: {1} is being killed by {0}'s {2}.</RT_KilledMortar>
-  <RT_KilledLongRange>KilledLongRange: {0} fired at {1} from extreme distance with a {2}.</RT_KilledLongRange>
+  <RT_KilledMajorThreat2>KilledMajorThreat: {0} killed {1}.</RT_KilledMajorThreat2>
+  <RT_KilledLongRange>KilledLongRange: {0} fired at {1} from a distance with a {2}.</RT_KilledLongRange>
+  <RT_KilledLongRange2>KilledLongRange: {0} fired at {1} from a distance.</RT_KilledLongRange2>
   <RT_KilledMelee>KilledMelee: {0} killed {1} in melee with a {2}.</RT_KilledMelee>
-  <RT_KilledCapacity>KilledCapacity: {0} killed {1} with a {2}.</RT_KilledCapacity>
+  <RT_KilledMelee2>KilledMelee: {0} killed {1} in melee combat.</RT_KilledMelee2>
   <RT_Wounded>Wounded: {1} wounded {0} with a {2}.</RT_Wounded>
+  <RT_Wounded2>Wounded: {1} wounded {0}.</RT_Wounded2>
   <RT_Downed>Downed: {1} downed {0} with a {2}.</RT_Downed>
+  <RT_Downed2>Downed: {1} downed {0}.</RT_Downed2>
+  <RT_KilledMortar>KilledMortar: {1} is being killed by {0}'s {2}.</RT_KilledMortar>
+  <RT_KilledCapacity>KilledCapacity: {0} killed {1}.</RT_KilledCapacity>
   <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
   <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
-  <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend {2}.</RT_CuredMyFriend>
-  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</RT_Eclipse>
-  <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
-  <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
-  <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
-  <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
-
+  <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend, {2}.</RT_CuredMyFriend>
 <!-- Unused? -->
   <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
-  <RT_Alphabeavers>Alphabeavers.</RT_Alphabeavers>
 </LanguageData>

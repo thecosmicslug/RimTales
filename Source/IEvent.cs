@@ -9,6 +9,7 @@ namespace RimTales
         bool TryStartEvent(Map map);
         bool IsStillEvent();
         void EndEvent();
+        string ShowInLog();
         Date Date();
     }
 }
