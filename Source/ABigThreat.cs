@@ -36,9 +36,9 @@ namespace RimTales
         public void ExposeData()
         {
             Scribe_Values.Look(ref anniversary, "ff", true);
-            Scribe_Collections.Look(ref yearsWhenEventStarted, "RS_yearsWhenEventStarted", LookMode.Value);
-            Scribe_References.Look(ref faction, "RS_FactionAttacked");
-            Scribe_Deep.Look(ref date, "RS_DateAttacked");
+            Scribe_Collections.Look(ref yearsWhenEventStarted, "RT_yearsWhenEventStarted", LookMode.Value);
+            Scribe_References.Look(ref faction, "RT_FactionAttacked");
+            Scribe_Deep.Look(ref date, "RT_DateAttacked");
         }
 
         public bool GetIsAnniversary()
@@ -49,6 +49,21 @@ namespace RimTales
         public bool IsStillEvent()
         {
             throw new NotImplementedException();
+        }
+
+        public string ShowInLog()
+        {
+            if (faction != null && date != null)
+            {
+                return (date.day + " " + date.quadrum + " " + date.year + " " + "RT_ColonyAttacked".Translate(faction.Name));
+            }
+            else if (faction == null && date != null){
+                return (date.day + " " + date.quadrum + " " + date.year + " " + "Your colony was raided.");
+            }
+            else 
+            {
+                return ("Your colony was raided.");
+            }
         }
 
         public bool TryStartEvent()

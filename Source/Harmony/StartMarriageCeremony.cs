@@ -10,7 +10,9 @@ namespace RimTales
     {
         private static void Postfix(ref Pawn firstFiance, ref Pawn secondFiance)
         {
-            Resources.EventManager.Add(new AMarriage(Utils.CurrentDate(), firstFiance, secondFiance));
+           Resources.EventManager.Add(new AMarriage(Utils.CurrentDate(), firstFiance, secondFiance));
+           Log.Message("[RimTales]: EventManager.Add(AMarriage)");
+
         }
     }
 }

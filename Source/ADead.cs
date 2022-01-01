@@ -34,10 +34,10 @@ namespace RimTales
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref anniversary, "RS_Anniversary", true);
-            Scribe_References.Look(ref deadPawn, "RS_DeadPawn", true);
-            Scribe_Collections.Look(ref yearsWhenEventStarted, "RS_YearsWhenEventStarted", LookMode.Value);
-            Scribe_Deep.Look(ref date, "RS_DateAttacked");
+            Scribe_Values.Look(ref anniversary, "RT_Anniversary", true);
+            Scribe_References.Look(ref deadPawn, "RT_DeadPawn", true);
+            Scribe_Collections.Look(ref yearsWhenEventStarted, "RT_YearsWhenEventStarted", LookMode.Value);
+            Scribe_Deep.Look(ref date, "RT_DateAttacked");
         }
 
         public bool GetIsAnniversary()
@@ -46,6 +46,11 @@ namespace RimTales
         }
 
         public bool IsStillEvent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ShowInLog()
         {
             throw new NotImplementedException();
         }
@@ -77,37 +82,37 @@ namespace RimTales
                 {
                     if (item == PawnRelationDefOf.Fiance)
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedFiance);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedFiance);
                     }
 
                     if (item == PawnRelationDefOf.Lover)
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedLover);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedLover);
                     }
 
                     if (item == PawnRelationDefOf.Spouse)
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedSpouse);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedSpouse);
                     }
 
                     if (p.relations.DirectRelationExists(PawnRelationDefOf.Parent, deadPawn))
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedFather);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedFather);
                     }
 
                     if (p.relations.DirectRelationExists(PawnRelationDefOf.Parent, deadPawn))
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedFiance);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedFiance);
                     }
 
                     if (item == PawnRelationDefOf.Child)
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedChild);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedChild);
                     }
 
                     if (item == PawnRelationDefOf.Sibling)
                     {
-                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_DayDiedSibling);
+                        p.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_DayDiedSibling);
                     }
                 }
             }
@@ -117,7 +122,7 @@ namespace RimTales
 
         private void AddDeadOfRelativeThoughts(Pawn pawn)
         {
-            pawn.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RS_AttendedMemorialDay);
+            pawn.needs.mood.thoughts.memories.TryGainMemory(Thoughts.RT_AttendedMemorialDay);
         }
     }
 }

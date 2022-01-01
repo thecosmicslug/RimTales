@@ -59,18 +59,14 @@ namespace RimTales {
     }
 
     public override void PostOpen(){
-        if (Prefs.DevMode){
-            Log.Message("[RimTales]: Showing Main Tab GUI.");
-        }
+        Log.Message("[RimTales]: Showing Main Tab GUI.");
         base.PostOpen();
     }
 
     //* Called when closing window.
     public override void PostClose(){
         bTabOpen=false;
-        if (Prefs.DevMode){
-            Log.Message("[RimTales]: Closing Main Tab GUI.");
-        }
+        Log.Message("[RimTales]: Closing Main Tab GUI.");
         base.PostClose();
     }
 
@@ -163,6 +159,9 @@ namespace RimTales {
         Widgets.CheckboxLabeled(position11, "RT_EnableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
         Widgets.CheckboxLabeled(position12, "RT_EnableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
         
+        // TODO: Add Debugging buttons for viewing EventManager & Wiping.
+
+
         GUI.EndGroup();
         RimTalesMod.settings.Write();
     }
@@ -173,10 +172,34 @@ namespace RimTales {
         Widgets.DrawBoxSolidWithOutline(fillRect, Widgets.MenuSectionBGFillColor, new Color(0.5f, 0.5f, 0.5f, 1f), 1);
         Rect position = fillRect.ContractedBy(5f);
         GUI.BeginGroup(position);
+
         GUI.color = Color.white;
         Text.Font = GameFont.Small;
+
+        Rect positionLabel1 = new Rect(position.x + 150, 55f, 200F, 30F);
         Widgets.Label(position, "RimTales by TheCosmicSlug");
-        // TODO: Add credits & thanks to the About tab.
+        Widgets.DrawLineHorizontal(positionLabel1.x, 80f, 200);
+        Text.Font = GameFont.Small;
+
+        //* Filter Settings
+        Rect position2 = new Rect(position.x, 90f, 1000F, 30F);
+        Widgets.Label(position2, "This mod was Inspired by two abandoned mods, 'Tales Log [Retold]' 'RimStory' and  which I felt were both lacking features but good in their own way.");
+
+        Rect position3 = new Rect(position.x, 130f, 1000F, 30F);
+        Widgets.Label(position3, "So I started to combine the two, removing the UI from RimStory and integrating it with 'Tales Log [Retold]'");
+
+        Rect position4 = new Rect(position.x, 170f, 1000F, 30F);
+        Widgets.Label(position4, "RimTales takes the best bits from both mods, condenses it into one interface while massivly expanding the Events & Incidents it records.");
+
+        Rect position5 = new Rect(position.x, 205f, 1000F, 30F);
+        Widgets.Label(position5, "The Internals of this project have changed drastically since I started by tweaking 'Tales Log [Retold]'");
+
+        Rect position6 = new Rect(position.x, 245f, 1000F, 30F);
+        Widgets.Label(position6, "This version no longer relies on the TaleManager to retrieve the events, Rimworld deletes them after sometime in-game and that bugged me!");
+
+        Rect position7 = new Rect(position.x, 275f, 1000F, 30F);
+        Widgets.Label(position7, "This version uses a Harmony hook to catch all tales and log them permamently, the same with the incidents.");
+
         GUI.EndGroup();
     }
 
@@ -226,9 +249,7 @@ namespace RimTales {
 
         //* Check if filter settings changed
         if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowWounded || bTabShowAnimalTales != RimTalesMod.settings.bShowAnimalTales || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame ){
-            if (Prefs.DevMode){
-                Log.Message("[RimTales]: Filters changed, Importing tales again.");
-            }
+            Log.Message("[RimTales]: Filters changed, Importing tales again.");
             ImportStringTales();
         };
 
@@ -275,7 +296,7 @@ namespace RimTales {
         if(CheckTaleFilters(taleTMP)==true){
             if (CheckStringFilters(taleTMP.ShortSummary) == true){
                 tales.Reverse();
-                tales.Add(taleTMP.ShortSummary);
+                tales.Add(taleTMP.date + ": " + taleTMP.ShortSummary);
                 tales.Reverse();
             }
         }
@@ -293,15 +314,13 @@ namespace RimTales {
             {
                 if(CheckTaleFilters(TaleTMP) == true){
                     if (CheckStringFilters(TaleTMP.ShortSummary) == true){
-                        output.WriteLine(TaleTMP.ShortSummary);
+                        output.WriteLine(TaleTMP.date + ": " + TaleTMP.ShortSummary);
                     }
                 }
             }
         }
         
-        if (Prefs.DevMode){
-            Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
-        }
+        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
 
         outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
@@ -319,13 +338,11 @@ namespace RimTales {
         using (var output = new StreamWriter(outputFile, false)){
             foreach (TaleStorage taleTMP in Resources.TaleManager)
             {
-                output.WriteLine(taleTMP.ShortSummary);
+                output.WriteLine(taleTMP.date + ": " + taleTMP.ShortSummary);
             }
         }
 
-        if (Prefs.DevMode){
-            Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
-        }
+        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
         outputMsg = "ALL Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);
@@ -396,14 +413,17 @@ namespace RimTales {
             return;
         }
 
+        string strTemp ="";
         for (int i = Resources.TaleManager.Count-1; i >= 0; i--)
         {
             if(CheckTaleFilters(Resources.TaleManager[i])==true){
                 if (CheckStringFilters(Resources.TaleManager[i].ShortSummary) == true){
-                    tales.Add(Resources.TaleManager[i].ShortSummary);
+                    strTemp = Resources.TaleManager[i].date + ": " + Resources.TaleManager[i].ShortSummary;
+                    tales.Add(strTemp);
+                    strTemp="";
                     TaleCount = TaleCount + 1;
                     // TODO: Make the amount of tales displayed customisable.
-                    if (TaleCount == 50){
+                    if (TaleCount == 300){
                         break;
                     }
                 }

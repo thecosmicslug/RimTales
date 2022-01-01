@@ -17,14 +17,17 @@ namespace RimTales
 
             Resources.deadPawns.Add(__instance);
             Resources.deadPawnsForMassFuneral.Add(__instance);
+            
             Resources.EventManager.Add(new ADead(Utils.CurrentDate(), __instance));
-
+            Log.Message("[RimTales]: EventManager.Add(ADead)");
+            
             if (Resources.isMemorialDayCreated)
             {
                 return;
             }
 
             Resources.EventManager.Add(new AMemorialDay(Utils.CurrentDate(), __instance));
+            Log.Message("[RimTales]: EventManager.Add(AMemorialDay)");
             Resources.isMemorialDayCreated = true;
             
         }

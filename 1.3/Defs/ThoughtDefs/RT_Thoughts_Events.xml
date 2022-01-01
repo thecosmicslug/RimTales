@@ -45,31 +45,31 @@
 		<taleClass>Tale_SinglePawn</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_ColdSnap</defName>
 		<label>start of cold snap</label>
 		<taleClass>Tale</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_HeatWave</defName>
 		<label>start of heat wave</label>
 		<taleClass>Tale</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_FarmAnimalsWanderIn</defName>
 		<label>animals joined your colony</label>
 		<taleClass>Tale_SinglePawn</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_Infestation</defName>
 		<label>infestation of your colony</label>
 		<taleClass>Tale_SinglePawn</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_WandererJoin</defName>
 		<label>wanderer tried to join your colony</label>
 		<taleClass>Tale_SinglePawn</taleClass>
@@ -87,9 +87,33 @@
 		<taleClass>Tale</taleClass>
 	</TaleDef>
 
-		<TaleDef ParentName="RimTales">
+	<TaleDef ParentName="RimTales">
 		<defName>Incident_Flashstorm</defName>
 		<label>beginning of flash storm</label>
+		<taleClass>Tale</taleClass>
+	</TaleDef>
+	
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_Alphabeavers</defName>
+		<label>beavers are attacking.</label>
+		<taleClass>Tale</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_AmbrosiaSprout</defName>
+		<label>discovered a patch of ambrosia.</label>
+		<taleClass>Tale</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_ShortCircuit</defName>
+		<label>electrics have short-circuited.</label>
+		<taleClass>Tale</taleClass>
+	</TaleDef>
+
+	<TaleDef ParentName="RimTales">
+		<defName>Incident_ResourcePodCrash</defName>
+		<label>a resource pod has fallen from the sky.</label>
 		<taleClass>Tale</taleClass>
 	</TaleDef>
 

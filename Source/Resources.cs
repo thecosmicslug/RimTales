@@ -19,9 +19,7 @@ namespace RimTales
 
         public static List<Pawn> deadPawnsForMassFuneral = new List<Pawn>();
         public static List<Pawn> deadPawnsForMassFuneralBuried = new List<Pawn>();
-        public static List<Building_Grave> graves = new List<Building_Grave>();
         public static List<IEvent> EventManager = new List<IEvent>();
-        public static List<Pawn> pawnsAttended = new List<Pawn>();
         public static List<TaleStorage> TaleManager = new List<TaleStorage>();
         public static List<Pawn> deadPawns = new List<Pawn>();
 

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<!-- Settings -->
+  <RT_UseColour>Colour List:</RT_UseColour>
+  <RT_ShowDeaths>Show Deaths:</RT_ShowDeaths>
+  <RT_ShowVommit>Show Vommit:</RT_ShowVommit>
+  <RT_ShowWounded>Show Wounded:</RT_ShowWounded>
+  <RT_ShowAnimalTales>Show Animal Tales:</RT_ShowAnimalTales>
+  <RT_ShowChitChat>Show Chit-Chat: </RT_ShowChitChat>
+  <RT_ShowPlayedGame>Show Playing Game:</RT_ShowPlayedGame>
+  <RT_EnableFunerals>Funerals:</RT_EnableFunerals>
+  <RT_EnableMarriageAnniversary>Marriage:</RT_EnableMarriageAnniversary>
+  <RT_EnableMemoryDay>Memorial Days:</RT_EnableMemoryDay>
+  <RT_EnableDaysOfVictory>Days of Victory:</RT_EnableDaysOfVictory>
+  <RT_EnableIndividualThoughts>Enable Thoughts:</RT_EnableIndividualThoughts>
+<!-- GUI -->
+  <RT_FilterSettings>Filter Settings:</RT_FilterSettings>
+  <RT_AnniversarySettings>Anniversary Settings:</RT_AnniversarySettings>
+  <RT_TheStoryExporter>The Story Exporter.</RT_TheStoryExporter>
+  <RT_Filter>Filter Results:</RT_Filter>
+  <RT_SaveList>Save List</RT_SaveList>
+  <RT_SaveAllList>Save ALL Tales</RT_SaveAllList>
+<!-- Events Taken from RimStory -->
+  <RT_ABreakup>{0} brokeup with {1}.</RT_ABreakup>
+  <RT_DayOfVictory>Day of {0} defeat.</RT_DayOfVictory>
+  <RT_DayOfVictoryDesc>Celebrating anniversary of {0}'s defeat on {1}.</RT_DayOfVictoryDesc>
+  <RT_AMarriageLetter>Marriage anniversary.</RT_AMarriageLetter>
+  <RT_AMarriageDesc>{0} and {1}'s marriage anniversary of {2}yrs.</RT_AMarriageDesc>
+  <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
+  <RT_AMemorialDay>{0} died.</RT_AMemorialDay>
+  <RT_AMemorialDayLetter>Memorial Day.</RT_AMemorialDayLetter>
+  <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</RT_AMemorialDayDesc>
+  <RT_FuneralCalledOff>Funeral called off.</RT_FuneralCalledOff>
+  <RT_FuneralFinished>Funeral finished.</RT_FuneralFinished>
+  <RT_FuneralLetter>Funeral.</RT_FuneralLetter>
+  <RT_FuneralDesc>Colonists are gathering to honor:\n\n</RT_FuneralDesc>
+<!-- Incidents -->
+  <RT_ColonyAttacked>Enemy Raid: {0} are launching an attack on your colony.</RT_ColonyAttacked>
+  <RT_AnimalInsanityMass>Mass Animal Insanity occurs.</RT_AnimalInsanityMass>
+  <RT_ManhunterPack>Manhunter Pack attacked your colony.</RT_ManhunterPack>
+  <RT_ColdSnap>Start of a Cold Snap.</RT_ColdSnap>
+  <RT_HeatWave>Start of a Heat-Wave.</RT_HeatWave>
+  <RT_FarmAnimalsWanderIn>Animals joined your colony.</RT_FarmAnimalsWanderIn>
+  <RT_Infestation>Infestation of your colony.</RT_Infestation>
+  <RT_WandererJoin>Wanderer tried to join your colony.</RT_WandererJoin>
+  <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
+  <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
+  <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
+  <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</RT_Eclipse>
+  <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
+  <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
+  <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
+  <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
+  <RT_Alphabeavers>Alphabeavers: Alphabeavers are attacking the colony.</RT_Alphabeavers>
+  <RT_AmbrosiaSprout>AmbrosiaSprout: Colonists discovered a patch of ambrosia growing nearby.</RT_AmbrosiaSprout>
+  <RT_ShortCircuit>ShortCircuit: Colony electronics have short-circuited.</RT_ShortCircuit>
+  <RT_ResourcePodCrash>ResourcePodCrash: Some resources have landed nearby.</RT_ResourcePodCrash>
+  <!-- Tales -->
+  <RT_CaravanRemoteMining>CaravanRemoteMining: {0}'s caravan mining a rich vein of {1} in a foreign land.</RT_CaravanRemoteMining>
+  <RT_CaravanAmbushedByManhunter>CaravanAmbushedByManhunter: {0}'s caravan is being ambushed by animals.</RT_CaravanAmbushedByManhunter>
+  <RT_PlayedGame>PlayedGame: {0} played a game of {1}.</RT_PlayedGame>
+  <RT_HeatstrokeRevealed>HeatstrokeRevealed: {0} has Heat-Stroke.</RT_HeatstrokeRevealed>
+  <RT_HypothermiaRevealed>HypothermiaRevealed: {0} has Hypothermia.</RT_HypothermiaRevealed>
+  <RT_ToxicityRevealed>ToxicityRevealed: {0} has developed {1}.</RT_ToxicityRevealed>
+  <RT_IllnessRevealed>IllnessRevealed: {0} has developed {1}.</RT_IllnessRevealed>
+  <RT_FinishedResearchProject>FinishedResearchProject: {0} has discovered {1}.</RT_FinishedResearchProject>
+  <RT_CompletedLongConstructionProject>CompletedLongConstructionProject: {0} has built {1}.</RT_CompletedLongConstructionProject>
+  <RT_MinedValuable>MinedValuable: {0} is mining a rich vein of {1}.</RT_MinedValuable>
+  <RT_GainedMasterSkillWithPassion>GainedMasterSkillWithPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithPassion>
+  <RT_GainedMasterSkillWithoutPassion>GainedMasterSkillWithoutPassion: {0} becoming a master at {1} tasks.</RT_GainedMasterSkillWithoutPassion>
+  <RT_DefeatedHostileFactionLeader>DefeatedHostileFactionLeader: {0} killed {1}.</RT_DefeatedHostileFactionLeader>
+  <RT_CompletedLongCraftingProject>CompletedLongCraftingProject: {0} completed work on a {1}.</RT_CompletedLongCraftingProject>
+  <RT_CraftedArt>CraftedArt: {0} completed work on a {1}.</RT_CraftedArt>
+  <RT_StruckMineable>StruckMineable: {0} is mining a rich vein of {1}.</RT_StruckMineable>
+  <RT_Recruited>Recruited: {1} has been recruited by {0}.</RT_Recruited>
+  <RT_Stripped>Stripped: {0} removed clothing from {1}.</RT_Stripped>
+  <RT_IncreasedMenagerie>IncreasedMenagerie: {1} has been tamed by {0}.</RT_IncreasedMenagerie>
+  <RT_AttendedParty>AttendedParty: {1} atttended the party of {0}.</RT_AttendedParty>
+  <RT_DidNotAttendWedding>DidNotAttendWedding: {0} did not show up to the wedding of {1}.</RT_DidNotAttendWedding>
+  <RT_AttendedMyWedding>AttendedMyWedding: {0} came to the wedding of {1}.</RT_AttendedMyWedding>
+  <RT_ArrestedMe>ArrestedMe: {0} has arrested {1}.</RT_ArrestedMe>
+  <RT_TamedMe>TamedMe: {0} has tamed {1}.</RT_TamedMe>
+  <RT_ResurrectedMe>ResurrectedMe: {0} has resurrected {1}.</RT_ResurrectedMe>
+  <RT_BrokeUpWithMe>BrokeUpWithMe: The relationship between {0} and {1} has ended.</RT_BrokeUpWithMe>
+  <RT_BondedPetButchered>BondedPetButchered: {0} butchered my pet {1}.</RT_BondedPetButchered>
+  <RT_ExposedCorpseOfMyFriend>ExposedCorpseOfMyFriend: {1} dug up and exposed the corpse of my friend {0}.</RT_ExposedCorpseOfMyFriend>
+  <RT_Hunted>Hunted: {1} was killed by {0}.</RT_Hunted>
+  <RT_KidnappedColonist>KidnappedColonist: {1} has taken {0}.</RT_KidnappedColonist>
+  <RT_DidSurgery>DidSurgery: {1} is operating on {0}.</RT_DidSurgery>
+  <RT_KilledColonist>KilledColonist: {0} has killed {1}.</RT_KilledColonist>
+  <RT_TradedWith>TradedWith: {0} is buying goods from {1}.</RT_TradedWith>
+  <RT_WeHadNiceChat>WeHadNiceChat: {0} and {1} had a nice chat.</RT_WeHadNiceChat>
+  <RT_BecameLover>BecameLover: {0} and {1} are now lovers.</RT_BecameLover>
+  <RT_Breakup>Breakup: {0} and {1} are no longer in a relationship.</RT_Breakup>
+  <RT_Marriage>Marriage: {0} and {1} are now married.</RT_Marriage>
+  <RT_Captured>Captured: {0} has caught {1}.</RT_Captured>
+  <RT_ExecutedPrisoner>ExecutedPrisoner: {0} has killed {1}.</RT_ExecutedPrisoner>
+  <RT_SoldPrisoner>SoldPrisoner: {0} has sold {1} to slavers.</RT_SoldPrisoner>
+  <RT_TamedAnimal>TamedAnimal: {0} is taming a {1}.</RT_TamedAnimal>
+  <RT_TrainedAnimal>TrainedAnimal: {0} is teaching {2} to {1}.</RT_TrainedAnimal>
+  <RT_BondedWithAnimal>BondedWithAnimal: {0} is forming a deep bond with {1}.</RT_BondedWithAnimal>
+  <RT_KilledColonyAnimal>KilledColonyAnimal: {0} has killed {1}.</RT_KilledColonyAnimal>
+  <RT_BuriedCorpse>BuriedCorpse: {0} is burying {1}.</RT_BuriedCorpse>
+  <RT_VisitedGrave>VisitedGrave: {0} is  visiting the grave of {1}.</RT_VisitedGrave>
+  <RT_PutIntoCryptosleep>PutIntoCryptosleep: {0} is putting {1} into cryptosleep.</RT_PutIntoCryptosleep>
+  <RT_SocialFight>SocialFight: {0} is starting a fight with {1}.</RT_SocialFight>
+  <RT_KilledBy>KilledBy: {0} was killed by {1}.</RT_KilledBy>
+  <RT_GaveBirth>GaveBirth: {0} is giving birth to {1}.</RT_GaveBirth>
+  <RT_InsultedMe>InsultedMe: {1} insulted {0}.</RT_InsultedMe>
+  <RT_RebuffedMe>RebuffedMe: {1} rebuffed {0}.</RT_RebuffedMe>
+  <RT_WeHadSocialFight>WeHadSocialFight: {1} and {0} had a social fight.</RT_WeHadSocialFight>
+  <RT_SavedMeFromMyWounds>SavedMeFromMyWounds: {1} saved {0} from wounds.</RT_SavedMeFromMyWounds>
+  <RT_HasBeenMyFriendSinceChildhood>HasBeenMyFriendSinceChildhood: {1} has been friends with {0} since childhood.</RT_HasBeenMyFriendSinceChildhood>
+  <RT_KilledMajorThreat>KilledMajorThreat: {0} killed {1} with a {2}.</RT_KilledMajorThreat>
+  <RT_KilledMajorThreat2>KilledMajorThreat: {0} killed {1}.</RT_KilledMajorThreat2>
+  <RT_KilledLongRange>KilledLongRange: {0} fired at {1} from a distance with a {2}.</RT_KilledLongRange>
+  <RT_KilledLongRange2>KilledLongRange: {0} fired at {1} from a distance.</RT_KilledLongRange2>
+  <RT_KilledMelee>KilledMelee: {0} killed {1} in melee with a {2}.</RT_KilledMelee>
+  <RT_KilledMelee2>KilledMelee: {0} killed {1} in melee combat.</RT_KilledMelee2>
+  <RT_Wounded>Wounded: {1} wounded {0} with a {2}.</RT_Wounded>
+  <RT_Wounded2>Wounded: {1} wounded {0}.</RT_Wounded2>
+  <RT_Downed>Downed: {1} downed {0} with a {2}.</RT_Downed>
+  <RT_Downed2>Downed: {1} downed {0}.</RT_Downed2>
+  <RT_KilledMortar>KilledMortar: {1} is being killed by {0}'s {2}.</RT_KilledMortar>
+  <RT_KilledCapacity>KilledCapacity: {0} killed {1}.</RT_KilledCapacity>
+  <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
+  <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
+  <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend, {2}.</RT_CuredMyFriend>
+<!-- Unused? -->
+  <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
+</LanguageData>

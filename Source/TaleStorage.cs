@@ -12,6 +12,8 @@ namespace RimTales
 
 		public TaleDef  def;
 		public string   customLabel;
+		public string   date;
+
 
 		public virtual string ShortSummary
 		{
@@ -29,6 +31,8 @@ namespace RimTales
 		{
 			Scribe_Defs.Look(ref def, "def");
 			Scribe_Values.Look(ref customLabel, "customLabel");
+			Scribe_Values.Look(ref date, "date");
+
 		}
 
 		

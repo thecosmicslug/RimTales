@@ -13,6 +13,7 @@ namespace RimTales
             if (Resources.rng.Next(101) <= Resources.randomChanceRaid)
             {
                 Resources.EventManager.Add(new ABigThreat(Utils.CurrentDate(), parms.faction));
+                Log.Message("[RimTales]: EventManager.Add(ABigThreat)");
             }
             
             Core.AddIncident(Core.RimTales_DefOf.Incident_Raid, "RT_ColonyAttacked".Translate(parms.faction.Name));
