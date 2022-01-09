@@ -1,14 +1,15 @@
 
 ## RimTales - A Story Exporter for Rimworld. 
 
-    This mod was Inspired by two abandoned mods, 'Tales Log [Retold]' 'RimStory' and  which I felt were both lacking features but good in their own way.
-    So I started to combine the two, removing the UI from RimStory and integrating it with 'Tales Log [Retold]'
-
-    RimTales takes the best bits from both mods, condenses it into one interface while massivly expanding the Events & Incidents it records.
+    This mod was Inspired by two abandoned mods, 'Tales Log [Retold]' and 'RimStory'
+    which I felt were both lacking features but good in their own way.
+    So I started to combine the two! RimTales takes the best bits from both mods, 
+    condenses it into one interface while massivly expanding the Events & Incidents it records.
     The Internals of this project have changed drastically since I started by tweaking 'Tales Log [Retold]'
 
-    This version no longer relies on the TaleManager to retrieve the events, Rimworld deletes them after sometime in-game and that bugged me!
-    This version uses a Harmony hook to catch all tales and log them permamently, the same with the incidents.
+    This version no longer relies on the TaleManager to retrieve the events, Rimworld deletes them after
+    sometime in-game and that bugged me! This version uses a Harmony hook to catch all tales and log them 
+    permamently, the same with the incidents.
 
 
 # Development:
