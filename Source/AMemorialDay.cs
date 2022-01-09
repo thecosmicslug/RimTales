@@ -97,7 +97,7 @@ namespace RimTales
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
 
-            //TODO: Search EventManager and list all deaths for memorial day.
+            //TODO: Test Memorial day deceased listing.
             string StrOutput ="";
             if (Resources.EventManager.Count > 0){
                 foreach (var e in Resources.EventManager){
