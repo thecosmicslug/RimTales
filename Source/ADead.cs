@@ -120,7 +120,7 @@ namespace RimTales
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
             //* Added a tale for wedding anniversary
-            Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "RT_AFuneral".Translate(deadPawn.LabelShort, yearsWhenEventStarted.Count, date.day + " " + date.quadrum + " " + date.year));
+            Core.AddIncident("AnniversaryDeath", "RT_AFuneral".Translate(deadPawn.LabelShort, yearsWhenEventStarted.Count, date.day + " " + date.quadrum + " " + date.year));
             return true;
         }
 

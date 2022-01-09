@@ -113,7 +113,7 @@ namespace RimTales
             Find.LetterStack.ReceiveLetter("RT_AMemorialDayLetter".Translate(), "RT_AMemorialDayDesc".Translate() + StrOutput ,LetterDefOf.PositiveEvent);
 
             if (deadPawn != null){
-                Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "RT_AMemorialDay".Translate(deadPawn.Name.ToString()));
+                Core.AddIncident("AnniversaryMemorialDay", "RT_AMemorialDay".Translate(deadPawn.Name.ToString()));
             }
        
             return true;

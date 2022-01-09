@@ -16,51 +16,13 @@ namespace RimTales
             get { return "RimTales"; }
         }
 
-        [DefOf]     //* Taken from Vanilla Interactions Expanded.
-        public static class RimTales_DefOf{
-            //* our events from the hooks.
-            public static TaleDef AnniversaryDeath;        
-            public static TaleDef AnniversaryMarriage;
-            public static TaleDef AnniversaryThreat;
-            public static TaleDef AnniversaryMemorialDay;
-
-            //* Incident hooks
-            public static TaleDef Incident_Raid;
-            public static TaleDef Incident_ColonistDeath;
-            public static TaleDef Incident_AnimalInsanityMass;
-            public static TaleDef Incident_ManhunterPack;
-            public static TaleDef Incident_ColdSnap;
-            public static TaleDef Incident_Flashstorm;
-            public static TaleDef Incident_HeatWave;
-            public static TaleDef Incident_FarmAnimalsWanderIn;
-            public static TaleDef Incident_Infestation;
-            public static TaleDef Incident_WandererJoin;
-            public static TaleDef Incident_VolcanicWinter;
-            public static TaleDef Incident_ToxicFallout;
-            public static TaleDef Incident_Alphabeavers;
-            public static TaleDef Incident_AmbrosiaSprout;
-            public static TaleDef Incident_ShortCircuit;
-            public static TaleDef Incident_ResourcePodCrash;
-            public static TaleDef Incident_AnimalInsanitySingle;
-            public static TaleDef Incident_ThrumboPasses;
-            public static TaleDef Incident_HerdMigration;
-            public static TaleDef Incident_CropBlight;
-            public static TaleDef Incident_PsychicDrone;
-            public static TaleDef Incident_PsychicSoothe;
-            public static TaleDef Incident_SelfTame;
-            public static TaleDef Incident_TravelerGroup;
-            public static TaleDef Incident_VisitorGroup;
-            public static TaleDef Incident_WildManWandersIn;
-            public static TaleDef Incident_OrbitalTraderArrival;
-            public static TaleDef Incident_SolarFlare;
-        }
-
         public override void MapLoaded(Map map){
             
             //* Main program entry-point.
             if (RimTalesMod.settings.bVerboseLogging){
                 Logger.Message("Initialisng Tales...");
             }
+            
             //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
             //WipeTaleLog();
 
@@ -133,7 +95,7 @@ namespace RimTales
       
             //* Prepare for storing the tale
             TaleStorage TaleTMP = new TaleStorage();
-            TaleTMP.def = tale.def;
+            TaleTMP.def = tale.def.defName;
             TaleTMP.date = strDate;
 
 
@@ -157,7 +119,7 @@ namespace RimTales
         }
 
         //* Add Incidents from our hook, that don't have a tale
-        public static void AddIncident(TaleDef def, String Text){
+        public static void AddIncident(String def, String Text){
             
             //* Copied from game-code to find out how to get date without a location.
             Vector2 val;

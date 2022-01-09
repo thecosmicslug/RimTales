@@ -387,7 +387,7 @@ namespace RimTales {
     //* Filter out unwanted tales based on type
     private static bool CheckTaleFilters(TaleStorage TaleTMP){
         // TODO: Add more Tale filters.
-        switch (TaleTMP.def.defName)
+        switch (TaleTMP.def)
         {
             case "Vomited":
                 return RimTalesMod.settings.bShowVommit;

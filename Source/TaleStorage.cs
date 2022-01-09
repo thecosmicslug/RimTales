@@ -8,9 +8,9 @@ namespace RimTales
 {
 	public class TaleStorage : IExposable
 	{
-		public TaleDef  def;
-		public string   customLabel;
-		public string   date;
+		public string	def;
+		public string	customLabel;
+		public string	date;
 
 		public virtual string ShortSummary
 		{
@@ -26,7 +26,7 @@ namespace RimTales
 
 		public virtual void ExposeData()
 		{
-			Scribe_Defs.Look(ref def, "def");
+			Scribe_Values.Look(ref def, "def");
 			Scribe_Values.Look(ref customLabel, "customLabel");
 			Scribe_Values.Look(ref date, "date");
 		}

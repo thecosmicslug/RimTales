@@ -16,7 +16,7 @@ namespace RimTales
             }
             
             Resources.EventManager.Add(new ADead(Utils.CurrentDate(), __instance));
-            Core.AddIncident(Core.RimTales_DefOf.Incident_ColonistDeath, "ColonistDied: " + "RT_AMemorialDay".Translate(__instance.Name));
+            Core.AddIncident("Incident_ColonistDeath", "ColonistDied: " + "RT_AMemorialDay".Translate(__instance.Name));
 
             if (RimTalesMod.settings.bVerboseLogging){
                 Log.Message("[RimTales]: ColonistDied() - EventManager.Add(ADead)");

@@ -85,32 +85,8 @@
       </li>
     </stages>
   </ThoughtDef>
-  <!-- Other -->
+
   <ThoughtDef>
-    <defName>RT_DayBreakup</defName>
-    <durationDays>1.0</durationDays>
-    <stackLimit>1</stackLimit>
-    <stages>
-      <li>
-        <label>Year ago</label>
-        <description>I miss you.</description>
-        <baseMoodEffect>-5</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-  <ThoughtDef>
-    <defName>RT_ChitchatPast</defName>
-    <durationDays>1.0</durationDays>
-    <stackLimit>1</stackLimit>
-    <stages>
-      <li>
-        <label>Today is the day my lover died.</label>
-        <description>No one can replace my lover.</description>
-        <baseMoodEffect>50</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-<ThoughtDef>
     <defName>RT_AttendedOurAnniversary</defName>
     <durationDays>5.0</durationDays>
     <stackLimit>1</stackLimit>
@@ -143,6 +119,31 @@
         <label>attended memorial day</label>
         <description>It's good to remember our fallen brothers and sisters.</description>
         <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+    <!-- Unused?! -->
+  <ThoughtDef>
+    <defName>RT_DayBreakup</defName>
+    <durationDays>1.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Year ago</label>
+        <description>I miss you.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>RT_ChitchatPast</defName>
+    <durationDays>1.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Today is the day my lover died.</label>
+        <description>No one can replace my lover.</description>
+        <baseMoodEffect>50</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>

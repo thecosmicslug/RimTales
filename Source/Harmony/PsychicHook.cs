@@ -11,7 +11,7 @@ namespace RimTales
         private static void Postfix(IncidentParms parms, Map map, int duration, Gender gender, float points)
         {
             //* Positive mood effects.
-            Core.AddIncident(Core.RimTales_DefOf.Incident_PsychicSoothe, "RT_PsychicSoothe".Translate(gender.GetLabel()));
+            Core.AddIncident("Incident_PsychicSoothe", "RT_PsychicSoothe".Translate(gender.GetLabel()));
         }
     }
 
@@ -22,7 +22,7 @@ namespace RimTales
         private static void Postfix(IncidentParms parms, Map map, int duration, Gender gender, float points)
         {
             //* Negative mood effects.
-            Core.AddIncident(Core.RimTales_DefOf.Incident_PsychicDrone, "RT_PsychicDrone".Translate(gender.GetLabel()));
+            Core.AddIncident("Incident_PsychicDrone", "RT_PsychicDrone".Translate(gender.GetLabel()));
         }
     }
 }

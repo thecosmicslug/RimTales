@@ -115,7 +115,7 @@ namespace RimTales
             string label = "RT_DayOfVictory".Translate(faction.Name);
             string text = "RT_DayOfVictoryDesc".Translate(faction.Name, date.ToString());
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.PositiveEvent);
-            Core.AddIncident(Core.RimTales_DefOf.AnniversaryThreat, text);
+            Core.AddIncident("AnniversaryThreat", text);
             return true;
         }
 

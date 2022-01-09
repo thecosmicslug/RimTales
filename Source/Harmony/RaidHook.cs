@@ -18,7 +18,7 @@ namespace RimTales
                 Log.Message("[RimTales]: EventManager.Add(ABigThreat) - " + parms.faction.Name);
             }
             
-            Core.AddIncident(Core.RimTales_DefOf.Incident_Raid, "RT_ColonyAttacked".Translate(parms.faction.Name));
+            Core.AddIncident("Incident_Raid", "RT_ColonyAttacked".Translate(parms.faction.Name));
         }
     }
 }
