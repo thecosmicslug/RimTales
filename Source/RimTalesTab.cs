@@ -13,7 +13,6 @@ namespace RimTales {
     private static List<String> tales = new List<String>();
     private Vector2 scrollPosition = Vector2.zero;
     private float scrollViewHeight;
-    private static String StrFilter = "";
 
     private enum RimTab : byte
     {
@@ -33,10 +32,12 @@ namespace RimTales {
     private bool bTabShowChitChat= true;
     private bool bTabShowPlayedGame= true;
 
+    private static String StrFilter = "";
+    private int iFilterCount = 0;
+
     //* Called when opening window, Set it all up.
     public override void PreOpen(){
 
-        StrFilter = "";
         ImportStringTales();
 
         tabs.Clear();
@@ -60,6 +61,7 @@ namespace RimTales {
 
     public override void PostOpen(){
         Log.Message("[RimTales]: Showing Main Tab GUI.");
+        curTab = RimTab.Log;
         base.PostOpen();
     }
 
@@ -114,7 +116,7 @@ namespace RimTales {
         Text.Font = GameFont.Medium;
 
         //* Filter Label
-        Rect positionLabel1 = new Rect(position.x + 150, 55f, 200F, 30F);
+        Rect positionLabel1 = new Rect(position.x + 100, 55f, 200F, 30F);
         Widgets.Label(positionLabel1, "RT_FilterSettings".Translate());
         Widgets.DrawLineHorizontal(positionLabel1.x, 80f, 200);
         Text.Font = GameFont.Small;
@@ -128,7 +130,7 @@ namespace RimTales {
         Rect position7 = new Rect(positionLabel1.x, 275f, 160F, 30F);
 
         //* Aniversary Label
-        Rect positionLabel2 = new Rect(positionLabel1.x + 350, 55f, 220F, 30F);
+        Rect positionLabel2 = new Rect(positionLabel1.x + 300, 55f, 220F, 30F);
         Text.Font = GameFont.Medium;
         
         Widgets.Label(positionLabel2, "RT_AnniversarySettings".Translate());
@@ -150,17 +152,44 @@ namespace RimTales {
         Widgets.CheckboxLabeled(position6, "RT_ShowChitChat".Translate(), ref RimTalesMod.settings.bShowChitChat);
         Widgets.CheckboxLabeled(position7, "RT_ShowPlayedGame".Translate(), ref RimTalesMod.settings.bShowPlayedGame);
 
-        // TODO: Make the amount of tales displayed customisable.
-
         //* Aniversary Settings
         Widgets.CheckboxLabeled(position8, "RT_EnableMarriageAnniversary".Translate(), ref RimTalesMod.settings.enableMarriageAnniversary);
         Widgets.CheckboxLabeled(position9, "RT_EnableMemoryDay".Translate(), ref RimTalesMod.settings.enableMemoryDay);
         Widgets.CheckboxLabeled(position10, "RT_EnableFunerals".Translate(), ref RimTalesMod.settings.enableFunerals);
         Widgets.CheckboxLabeled(position11, "RT_EnableDaysOfVictory".Translate(), ref RimTalesMod.settings.enableDaysOfVictory);
         Widgets.CheckboxLabeled(position12, "RT_EnableIndividualThoughts".Translate(), ref RimTalesMod.settings.enableIndividualThoughts);
-        
-        // TODO: Add Debugging buttons for viewing EventManager & Wiping.
 
+        //* Filter label
+        Rect position13 = new Rect(positionLabel1.x, 310f, 100F, 30F);
+        Widgets.Label(position13, "RT_FilterCount".Translate());
+
+        //* tale count textbox
+        Rect position14 = new Rect(positionLabel1.x + 100, 305f, 80F, 30F);
+
+        //* Check its numbers only or we get error!
+        try{
+            iFilterCount = Convert.ToInt32(Widgets.TextField(position14, iFilterCount.ToString()));
+        }catch (FormatException){
+            iFilterCount = Convert.ToInt32(Widgets.TextField(position14, RimTalesMod.settings.iFilterCount.ToString()));
+        }catch (OverflowException){
+            iFilterCount = Convert.ToInt32(Widgets.TextField(position14, RimTalesMod.settings.iFilterCount.ToString()));
+        }
+
+        //* Print Anniversary events to debug log.
+        Rect position15 = new Rect(positionLabel2.x, 305f, 160F, 30F);
+        if(Widgets.ButtonText(position15, "RT_DebugPrintEvents".Translate())){
+            Core.PrintEventLog();
+        }
+
+        //* Wipe Anniversary EventLog.
+        Rect position16 = new Rect(positionLabel2.x, 340f, 160F, 30F);
+        if(Widgets.ButtonText(position16, "RT_DebugWipeEvents".Translate())){
+            Core.WipeEventLog();
+        }
+
+        //* Print Anniversary events to debug log.
+        Rect position17 = new Rect(positionLabel2.x, 380f, 160F, 30F);
+        Widgets.CheckboxLabeled(position17, "RT_VerboseLogging".Translate(), ref RimTalesMod.settings.bVerboseLogging);
 
         GUI.EndGroup();
         RimTalesMod.settings.Write();
@@ -219,7 +248,13 @@ namespace RimTales {
 
         //* Filter textbox
         Rect position3 = new Rect(120f, 5f, 220F, 30F);
-        StrFilter = Widgets.TextField(position3, StrFilter);
+        string StrFilter2 = StrFilter;
+
+        StrFilter2 = Widgets.TextField(position3, StrFilter);
+        if (StrFilter2 != StrFilter){
+            StrFilter = StrFilter2;
+            ImportStringTales();
+        }
 
         //* Colour list toggle
         Rect position4 = new Rect(350, 5f, 100F, 30F);
@@ -248,8 +283,9 @@ namespace RimTales {
         Widgets.BeginScrollView(outRect, ref this.scrollPosition, rect);
 
         //* Check if filter settings changed
-        if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowWounded || bTabShowAnimalTales != RimTalesMod.settings.bShowAnimalTales || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame ){
+        if (bTabShowVommit != RimTalesMod.settings.bShowVommit || bTabShowDeaths != RimTalesMod.settings.bShowDeaths || bTabShowWounded != RimTalesMod.settings.bShowWounded || bTabShowAnimalTales != RimTalesMod.settings.bShowAnimalTales || bTabShowChitChat != RimTalesMod.settings.bShowChitChat || bTabShowPlayedGame != RimTalesMod.settings.bShowPlayedGame || iFilterCount != RimTalesMod.settings.iFilterCount){
             Log.Message("[RimTales]: Filters changed, Importing tales again.");
+            RimTalesMod.settings.iFilterCount = iFilterCount;
             ImportStringTales();
         };
 
@@ -406,6 +442,7 @@ namespace RimTales {
         bTabShowAnimalTales = RimTalesMod.settings.bShowAnimalTales;
         bTabShowChitChat = RimTalesMod.settings.bShowChitChat;
         bTabShowPlayedGame = RimTalesMod.settings.bShowPlayedGame;
+        iFilterCount = RimTalesMod.settings.iFilterCount;
 
         tales.Clear();
         int TaleCount = 0;
@@ -422,9 +459,10 @@ namespace RimTales {
                     tales.Add(strTemp);
                     strTemp="";
                     TaleCount = TaleCount + 1;
-                    // TODO: Make the amount of tales displayed customisable.
-                    if (TaleCount == 300){
-                        break;
+                    if (iFilterCount != 0){
+                        if (TaleCount == iFilterCount){
+                            break;
+                        }
                     }
                 }
             }

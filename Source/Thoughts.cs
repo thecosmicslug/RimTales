@@ -9,8 +9,6 @@ namespace RimTales
 
         public static ThoughtDef RT_AttendedAnniversary;
 
-        public static ThoughtDef RT_AttendedFuneral;
-
         public static ThoughtDef RT_AttendedMemorialDay;
 
         public static ThoughtDef RT_DayDiedLover;

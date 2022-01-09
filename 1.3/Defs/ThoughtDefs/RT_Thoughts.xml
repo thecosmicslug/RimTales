@@ -135,18 +135,6 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>RT_AttendedFuneral</defName>
-    <durationDays>1.0</durationDays>
-    <stackLimit>1</stackLimit>
-    <stages>
-      <li>
-        <label>attended funeral</label>
-        <description>Rest in peace.</description>
-        <baseMoodEffect>2</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-  <ThoughtDef>
     <defName>RT_AttendedMemorialDay</defName>
     <durationDays>1.0</durationDays>
     <stackLimit>1</stackLimit>

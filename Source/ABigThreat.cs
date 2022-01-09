@@ -75,6 +75,7 @@ namespace RimTales
         {
             if (faction == null)
             {
+                Log.Message("[RimTales]: ABigThreat.TryStartEvent() faction == null");
                 return false;
             }
 
@@ -91,22 +92,22 @@ namespace RimTales
                 Utils.CurrentHour() < Resources.minHour || Utils.CurrentHour() > Resources.maxHour ||
                 Utils.CurrentYear() == date.year || !isThisYear)
             {
+                Log.Message("[RimTales]: ABigThreat.TryStartEvent() (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum ||");
                 return false;
             }
 
-            var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map,
-                GatheringDefOf.Party);
+            var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
             if (pawn == null)
             {
+                Log.Message("[RimTales]: ABigThreat.TryStartEvent() GatheringsUtility.FindRandomGatheringOrganizer() pawn=null");
                 return false;
             }
 
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, true, out var intVec))
             {
+                Log.Message("[RimTales]: ABigThreat.TryStartEvent() RCellFinder.TryFindGatheringSpot()=false");
                 return false;
             }
-
-            yearsWhenEventStarted.Add(Utils.CurrentYear());
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);

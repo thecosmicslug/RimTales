@@ -14,20 +14,20 @@ namespace RimTales
             {
                 return;
             }
-
-            Resources.deadPawns.Add(__instance);
-            Resources.deadPawnsForMassFuneral.Add(__instance);
             
             Resources.EventManager.Add(new ADead(Utils.CurrentDate(), __instance));
-            Log.Message("[RimTales]: EventManager.Add(ADead)");
-            
+            Core.AddIncident(Core.RimTales_DefOf.Incident_ColonistDeath, "ColonistDied: " + "RT_AMemorialDay".Translate(__instance.Name));
+
+            if (RimTalesMod.settings.bVerboseLogging){
+                Log.Message("[RimTales]: ColonistDied() - EventManager.Add(ADead)");
+            }
+
             if (Resources.isMemorialDayCreated)
-            {
+            {            
                 return;
             }
 
             Resources.EventManager.Add(new AMemorialDay(Utils.CurrentDate(), __instance));
-            Log.Message("[RimTales]: EventManager.Add(AMemorialDay)");
             Resources.isMemorialDayCreated = true;
             
         }

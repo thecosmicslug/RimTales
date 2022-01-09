@@ -13,6 +13,10 @@
   <RT_EnableMemoryDay>Memorial Days:</RT_EnableMemoryDay>
   <RT_EnableDaysOfVictory>Days of Victory:</RT_EnableDaysOfVictory>
   <RT_EnableIndividualThoughts>Enable Thoughts:</RT_EnableIndividualThoughts>
+  <RT_DebugPrintEvents>Print EventLog</RT_DebugPrintEvents>
+  <RT_DebugWipeEvents>Wipe EventLog</RT_DebugWipeEvents>
+  <RT_FilterCount>Filter Count:</RT_FilterCount>
+  <RT_VerboseLogging>Extra Debug Logging: </RT_VerboseLogging>
 <!-- GUI -->
   <RT_FilterSettings>Filter Settings:</RT_FilterSettings>
   <RT_AnniversarySettings>Anniversary Settings:</RT_AnniversarySettings>
@@ -27,22 +31,19 @@
   <RT_AMarriageLetter>Marriage anniversary.</RT_AMarriageLetter>
   <RT_AMarriageDesc>{0} and {1}'s marriage anniversary of {2}yrs.</RT_AMarriageDesc>
   <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
+  <RT_AFuneral> Anniversary of {0}'s death {1} years ago - {2}.</RT_AFuneral>
   <RT_AMemorialDay>{0} died.</RT_AMemorialDay>
   <RT_AMemorialDayLetter>Memorial Day.</RT_AMemorialDayLetter>
-  <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters.</RT_AMemorialDayDesc>
-  <RT_FuneralCalledOff>Funeral called off.</RT_FuneralCalledOff>
-  <RT_FuneralFinished>Funeral finished.</RT_FuneralFinished>
-  <RT_FuneralLetter>Funeral.</RT_FuneralLetter>
-  <RT_FuneralDesc>Colonists are gathering to honor:\n\n</RT_FuneralDesc>
+  <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters who have been lost over the years.\n\n</RT_AMemorialDayDesc>
 <!-- Incidents -->
   <RT_ColonyAttacked>Enemy Raid: {0} are launching an attack on your colony.</RT_ColonyAttacked>
   <RT_AnimalInsanityMass>Mass Animal Insanity occurs.</RT_AnimalInsanityMass>
   <RT_ManhunterPack>Manhunter Pack attacked your colony.</RT_ManhunterPack>
   <RT_ColdSnap>Start of a Cold Snap.</RT_ColdSnap>
-  <RT_HeatWave>Start of a Heat-Wave.</RT_HeatWave>
+  <RT_HeatWave>Start of a Heat Wave.</RT_HeatWave>
   <RT_FarmAnimalsWanderIn>Animals joined your colony.</RT_FarmAnimalsWanderIn>
   <RT_Infestation>Infestation of your colony.</RT_Infestation>
-  <RT_WandererJoin>Wanderer tried to join your colony.</RT_WandererJoin>
+  <RT_WandererJoin>A wanderer has joined your colony.</RT_WandererJoin>
   <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
   <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
   <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
@@ -55,6 +56,18 @@
   <RT_AmbrosiaSprout>AmbrosiaSprout: Colonists discovered a patch of ambrosia growing nearby.</RT_AmbrosiaSprout>
   <RT_ShortCircuit>ShortCircuit: Colony electronics have short-circuited.</RT_ShortCircuit>
   <RT_ResourcePodCrash>ResourcePodCrash: Some resources have landed nearby.</RT_ResourcePodCrash>
+  <RT_SolarFlare>SolarFlare: Electronics have been disabled for the day.</RT_SolarFlare>
+  <!-- NEW - need some more testing -->
+  <RT_AnimalInsanitySingle>AnimalInsanitySingle: An animal has gone crazy.</RT_AnimalInsanitySingle>
+  <RT_ThrumboPasses>ThrumboPasses: A Thrumbo has entered.</RT_ThrumboPasses>
+  <RT_HerdMigration>HerdMigration: Animals on the move.</RT_HerdMigration>
+  <RT_CropBlight>CropBlight: Some crops are ruined.</RT_CropBlight>
+  <RT_PsychicDrone>PsychicDrone: A psychic drone affecting {0}s has begun.</RT_PsychicDrone>
+  <RT_PsychicSoothe>PsychicSoothe: A psychic soothe affecting {0}s has begun.</RT_PsychicSoothe>
+  <RT_SelfTame>SelfTame: An animal has self-tamed.</RT_SelfTame>
+  <RT_TravelerGroup>TravelerGroup: A group of travellers from {0} are passing through.</RT_TravelerGroup>
+  <RT_VisitorGroup>VisitorGroup: A group of visitors from {0} have arrived.</RT_VisitorGroup>
+  <RT_WildManWandersIn>WildManWandersIn: A wildman has appeared.</RT_WildManWandersIn>
   <!-- Tales -->
   <RT_CaravanRemoteMining>CaravanRemoteMining: {0}'s caravan mining a rich vein of {1} in a foreign land.</RT_CaravanRemoteMining>
   <RT_CaravanAmbushedByManhunter>CaravanAmbushedByManhunter: {0}'s caravan is being ambushed by animals.</RT_CaravanAmbushedByManhunter>
@@ -126,6 +139,4 @@
   <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
   <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
   <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend, {2}.</RT_CuredMyFriend>
-<!-- Unused? -->
-  <RT_RefugeePodCrash>Refugee crashed on your territory.</RT_RefugeePodCrash>
 </LanguageData>

@@ -53,10 +53,9 @@ namespace RimTales
         public string ShowInLog()
         {
             if (deadPawn != null) {
-                return (date.day + " " + date.quadrum + " " + date.year + " " + "RT_AMemorialDay".Translate(deadPawn.Name));
+                return (date.day + " " + date.quadrum + " " + date.year + " - " + "RT_AMemorialDayLetter".Translate());
             }
             return (date.day + " " + date.quadrum + " " + date.year + " colonist died");
-            //return (date.day + " " + date.quadrum + " " + date.year + " " + deadPawn.Name + " died.");
         }
 
         public bool TryStartEvent()
@@ -86,17 +85,32 @@ namespace RimTales
             var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
             if (pawn == null)
             {
+                Log.Message("[RimTales]: AMemorialDay.TryStartEvent() GatheringsUtility.FindRandomGatheringOrganizer() pawn=null");
                 return false;
             }
 
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, true, out var intVec))
             {
+                Log.Message("[RimTales]: AMemorialDay.TryStartEvent() RCellFinder.TryFindGatheringSpot()=false");
                 return false;
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
+
+            //TODO: Search EventManager and list all deaths for memorial day.
+            string StrOutput ="";
+            if (Resources.EventManager.Count > 0){
+                foreach (var e in Resources.EventManager){
+                    if (e is ADead){
+                        StrOutput = StrOutput + e.ShowInLog() + "\n";
+                    }
+                }
+                StrOutput = StrOutput + "\n";
+            }
+
+
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
-            Find.LetterStack.ReceiveLetter("RT_AMemorialDayLetter".Translate(), "RT_AMemorialDayDesc".Translate(),LetterDefOf.PositiveEvent);
+            Find.LetterStack.ReceiveLetter("RT_AMemorialDayLetter".Translate(), "RT_AMemorialDayDesc".Translate() + StrOutput ,LetterDefOf.PositiveEvent);
 
             if (deadPawn != null){
                 Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "RT_AMemorialDay".Translate(deadPawn.Name.ToString()));

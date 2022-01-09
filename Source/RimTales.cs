@@ -10,7 +10,6 @@ using RimWorld.Planet;
 
 namespace RimTales
 {
-
     public class Core : ModBase{
 
         public override string ModIdentifier {
@@ -23,8 +22,11 @@ namespace RimTales
             public static TaleDef AnniversaryDeath;        
             public static TaleDef AnniversaryMarriage;
             public static TaleDef AnniversaryThreat;
+            public static TaleDef AnniversaryMemorialDay;
+
             //* Incident hooks
             public static TaleDef Incident_Raid;
+            public static TaleDef Incident_ColonistDeath;
             public static TaleDef Incident_AnimalInsanityMass;
             public static TaleDef Incident_ManhunterPack;
             public static TaleDef Incident_ColdSnap;
@@ -35,69 +37,67 @@ namespace RimTales
             public static TaleDef Incident_WandererJoin;
             public static TaleDef Incident_VolcanicWinter;
             public static TaleDef Incident_ToxicFallout;
-            //
             public static TaleDef Incident_Alphabeavers;
             public static TaleDef Incident_AmbrosiaSprout;
             public static TaleDef Incident_ShortCircuit;
-            public static TaleDef Incident_ShipChunkDrop;
-            public static TaleDef Incident_CrashedShipPart;
             public static TaleDef Incident_ResourcePodCrash;
-            public static TaleDef Incident_MeteoriteImpact;
+            public static TaleDef Incident_AnimalInsanitySingle;
+            public static TaleDef Incident_ThrumboPasses;
+            public static TaleDef Incident_HerdMigration;
+            public static TaleDef Incident_CropBlight;
+            public static TaleDef Incident_PsychicDrone;
+            public static TaleDef Incident_PsychicSoothe;
+            public static TaleDef Incident_SelfTame;
+            public static TaleDef Incident_TravelerGroup;
+            public static TaleDef Incident_VisitorGroup;
+            public static TaleDef Incident_WildManWandersIn;
+            public static TaleDef Incident_OrbitalTraderArrival;
+            public static TaleDef Incident_SolarFlare;
         }
 
         public override void MapLoaded(Map map){
             
             //* Main program entry-point.
-            Logger.Message("Initialisng Tales...");
-
+            if (RimTalesMod.settings.bVerboseLogging){
+                Logger.Message("Initialisng Tales...");
+            }
             //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
             //WipeTaleLog();
 
-            if(Resources.TaleManager.Count > 0){
-                Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales.");
+            if (RimTalesMod.settings.bVerboseLogging){
+                if(Resources.TaleManager.Count > 0){
+                    Logger.Message("Done! Loaded " + Resources.TaleManager.Count + " tales. Loading Events..");
+                }
+
+                if(Resources.EventManager.Count > 0){
+                    Logger.Message("Done! Loaded " + Resources.EventManager.Count + " events.");
+                }
+                PrintEventLog();
             }
+
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
 
-            //* One tick per hour for the anniversaries
+            //* One tick per hour for the anniversaries - if enabled
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
-                    if (Resources.EventManager.Count > 0){
-                        foreach (var e in Resources.EventManager){
-                            if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary){
-                                e.TryStartEvent(map);
-                            }
-                            if (e is AMemorialDay && RimTalesMod.settings.enableMemoryDay){
-                                e.TryStartEvent(map);
-                            }
-                            if (e is ABigThreat && RimTalesMod.settings.enableDaysOfVictory){
-                                e.TryStartEvent(map);
-                            }
-                            if (e is ADead && RimTalesMod.settings.enableIndividualThoughts){
-                                e.TryStartEvent(map);
-                            }
+                if (Resources.EventManager.Count > 0){
+                    foreach (var e in Resources.EventManager){
+                        if (e is AMarriage && RimTalesMod.settings.enableMarriageAnniversary){
+                            e.TryStartEvent(map);
+                        }
+                        if (e is AMemorialDay && RimTalesMod.settings.enableMemoryDay){
+                            e.TryStartEvent(map);
+                        }
+                        if (e is ABigThreat && RimTalesMod.settings.enableDaysOfVictory){
+                            e.TryStartEvent(map);
+                        }
+                        if (e is ADead && RimTalesMod.settings.enableIndividualThoughts){
+                            e.TryStartEvent(map);
                         }
                     }
+                }
             }, 2500, null, true);
 
-            //* Mass funeral code
-            HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
-                if (Resources.deadPawnsForMassFuneralBuried.Count <= 0 || !RimTalesMod.settings.enableFunerals){
-                    return;
-                }
-
-                if (Resources.dateLastFuneral == null ||
-                    Utils.CurrentDay() != Resources.dateLastFuneral.GetDate().day &&
-                    Utils.CurrentQuadrum() != Resources.dateLastFuneral.GetDate().quadrum &&
-                    Utils.CurrentYear() != Resources.dateLastFuneral.GetDate().year){
-                }
-
-                if (!MassFuneral.TryStartMassFuneral(map)){
-                    return;
-                }
-
-                Resources.deadPawnsForMassFuneralBuried.Clear();
-                Resources.dateLastFuneral = Utils.CurrentDate();
-            }, 2500, null, true);
         }
 
         public override void SceneLoaded(Scene scene){
@@ -184,33 +184,43 @@ namespace RimTales
 
             //* Add it to the collection
             Resources.TaleManager.Add(TaleTMP);
+            if (RimTalesMod.settings.bVerboseLogging){
+                Log.Message("[RimTales]: AddIncident() - " + Text);
+            }
+
+            //* If GUI is open, update the list as well.
+            if(RimTalesTab.bTabOpen == true){
+                RimTalesTab.UpdateList(TaleTMP);
+            }
 
         }
 
         //* Wipe our log (DEBUGGING)
         public static void WipeTaleLog(){
 
-            Log.Message("[RimTales]: WipeTaleLog() - Clearing tale database...");
+            if(RimTalesMod.settings.bVerboseLogging){
+                Log.Message("[RimTales]: WipeTaleLog() - Clearing tale database...");
+            }
+    
             Resources.TaleManager.Clear();
             foreach (Tale tale in Find.TaleManager.AllTalesListForReading){
                 Core.IncomingTale(tale);
             }
-            Log.Message("[RimTales]: WipeTaleLog() - Done!");
+
+            if(RimTalesMod.settings.bVerboseLogging){
+                Log.Message("[RimTales]: WipeTaleLog() - Done!");
+            }
 
         }
 
         public static void WipeEventLog(){
             Resources.EventManager.Clear();
-            Resources.deadPawnsForMassFuneralBuried.Clear();
-            Resources.deadPawnsForMassFuneral.Clear();
-            Resources.deadPawns.Clear();
             Resources.isMemorialDayCreated = false;
-            Resources.dateLastFuneral = null;
         }
 
         //* Print Event Log (DEBUGGING)
         public static void PrintEventLog(){
-            // TODO: Add Code to view event log data
+            Log.Message("[RimTales]: PrintEventLog(): Resources.isMemorialDayCreated=" + Resources.isMemorialDayCreated);
             if (Resources.EventManager.Count > 0){
                 Log.Message("[RimTales]: PrintEventLog(): EventLog=");
                 foreach (var e in Resources.EventManager){
@@ -234,6 +244,7 @@ namespace RimTales
                     if (e is ADead){
                         Log.Message("[RimTales]: Type=ADead");
                         Log.Message("[RimTales]: Date=" + e.Date().ToString());
+                        Log.Message("[RimTales]: Desc=" + e.ShowInLog());
                     }
                 }
             }
@@ -241,8 +252,10 @@ namespace RimTales
 
         //* Process Tales, Build String version
         public static void IncomingTale(Tale tale){
-
-            Log.Message("[RimTales]: IncomingTale() - " + tale.ToString());
+            
+            if(RimTalesMod.settings.bVerboseLogging){
+                Log.Message("[RimTales]: IncomingTale() - " + tale.ToString());
+            }
 
             Tale_SinglePawnAndDef tale2 = tale as Tale_SinglePawnAndDef;
             Tale_SinglePawnAndThing tale3 = tale as Tale_SinglePawnAndThing;
@@ -471,98 +484,162 @@ namespace RimTales
                 case "CaravanRemoteMining":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_CaravanRemoteMining".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_CaravanRemoteMining".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CaravanRemoteMining'");
+                        }
                     }
                     break;
 
                 case "PlayedGame":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'PlayedGame'");
+                        }
                     }
                     break;
 
                 case "HeatstrokeRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
+                        try{
+                            AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
+                        }
                     }
                     break;
 
                 case "HypothermiaRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
+                        try{
+                            AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                        }
                     }
                     break;
 
                 case "ToxicityRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                        }
                     }
                     break;
 
                 case "FinishedResearchProject":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_FinishedResearchProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_FinishedResearchProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'FinishedResearchProject'");
+                        }
                     }
                     break;
 
                 case "CompletedLongConstructionProject":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_CompletedLongConstructionProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_CompletedLongConstructionProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CompletedLongConstructionProject'");
+                        }
                     }
                     break;
 
                 case "IllnessRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        if(tale2.pawnData.kind.RaceProps.Humanlike){
+                            try{
+                                AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'IllnessRevealed'");
+                            }
+                        }else{
+                            try{
+                                AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.kind.LabelCap,tale2.defData.def.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'IllnessRevealed'");
+                            }
+                        }
                     }
                     break;
 
                 case "MinedValuable":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_MinedValuable".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_MinedValuable".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'MinedValuable'");
+                        }
                     }
                     break;
 
                 case "GainedMasterSkillWithPassion":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_GainedMasterSkillWithPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_GainedMasterSkillWithPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'GainedMasterSkillWithPassion'");
+                        }
                     }
                     break;
 
                 case "GainedMasterSkillWithoutPassion":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_GainedMasterSkillWithoutPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_GainedMasterSkillWithoutPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'GainedMasterSkillWithoutPassion'");
+                        }
                     }
                     break;
 
                 case "CompletedLongCraftingProject":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        AddTale(tale,"RT_CompletedLongCraftingProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        try{
+                            AddTale(tale,"RT_CompletedLongCraftingProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CompletedLongCraftingProject'");
+                        }
                     }
                     break;
 
                 case "CraftedArt":
                     // Tale_SinglePawnAndThing
                     if (tale3.pawnData != null){
-                        AddTale(tale,"RT_CraftedArt".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
+                        try{
+                            AddTale(tale,"RT_CraftedArt".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing thingData for 'CraftedArt'");
+                        }
                     }
                     break;
 
                 case "StruckMineable":
                     //Tale_SinglePawnAndThing
                     if (tale3.pawnData != null){
-                        AddTale(tale,"RT_StruckMineable".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
+                        try{
+                            AddTale(tale,"RT_StruckMineable".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
+                        } catch(NullReferenceException){
+                            Log.Message("[RimTales]: IncomingTale() - Error accessing thingData for 'StruckMineable'");
+                        }
                     }
                     break;
 
@@ -773,14 +850,14 @@ namespace RimTales
                 case "Breakup": 
                     //Tale_DoublePawn
                     if (tale4.firstPawnData != null && tale4.secondPawnData != null){
-                        AddTale(tale,"RT_Breakup".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                        AddTale(tale,"RT_ABreakup".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
                     break;
 
                 case "Marriage":
                     //Tale_DoublePawn
                     if (tale4.firstPawnData != null && tale4.secondPawnData != null){
-                        AddTale(tale,"RT_Marriage".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
+                        AddTale(tale,"RT_AMarriage".Translate(tale4.firstPawnData.name,tale4.secondPawnData.name));
                     }
                     break;
 
@@ -1038,8 +1115,12 @@ namespace RimTales
 
                 case "TrainedAnimal":
                     //Tale_DoublePawnAndDef
-                    if (tale5.firstPawnData != null && tale5.secondPawnData != null){
-                        AddTale(tale,"RT_TrainedAnimal".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));  
+                    try{
+                        if (tale5.firstPawnData != null && tale5.secondPawnData != null){
+                            AddTale(tale,"RT_TrainedAnimal".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));  
+                        }
+                    } catch(NullReferenceException){
+                        Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'TrainedAnimal'");
                     }
                     break;
 
@@ -1050,9 +1131,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
-                                    AddTale(tale,"RT_KilledMajorThreat".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
+                                        AddTale(tale,"RT_KilledMajorThreat".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMajorThreat'");
                                     AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1060,9 +1146,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
-                                    AddTale(tale,"RT_KilledMajorThreat".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
+                                        AddTale(tale,"RT_KilledMajorThreat".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'TrainedAnimal'");
                                     AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1072,13 +1163,18 @@ namespace RimTales
 
                 case "KilledMortar":
                     //Tale_DoublePawnAndDef
-                    if (tale5.firstPawnData != null &&  tale5.secondPawnData != null){
+                    try{
+                       if (tale5.firstPawnData != null &&  tale5.secondPawnData != null && tale5.defData.def != null){
                         if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledMortar".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));
                         }else{
                                 AddTale(tale,"RT_KilledMortar".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
                         }
                     }
+                    } catch(NullReferenceException){
+                        Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMortar'");
+                    }
+    
                     break;
 
                 case "KilledLongRange":
@@ -1088,9 +1184,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledLongRange'");
                                     AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1098,10 +1199,15 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap  || tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap  || tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_KilledLongRange".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
                                     AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledLongRange'");
                                 }
                             }
                         }
@@ -1115,9 +1221,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMelee'");
                                     AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1125,9 +1236,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
-                                    AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != tale5.secondPawnData.kind.LabelCap || tale5.defData.def.LabelCap != "Human" ){
+                                        AddTale(tale,"RT_KilledMelee".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMelee'");
                                     AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1136,7 +1252,7 @@ namespace RimTales
                     break;
 
                 case "KilledCapacity":
-                    //Tale_DoublePawnAndDef - Def isnt very helpful here.
+                    //Tale_DoublePawnAndDef  Def isnt very helpful here so we treat it like another doubletale.
                     if (tale5.firstPawnData != null &&  tale5.secondPawnData != null){
                         if (!tale5.firstPawnData.kind.RaceProps.Humanlike ){
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
@@ -1161,9 +1277,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_Wounded".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_Wounded".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Wounded'");
                                     AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1171,9 +1292,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_Wounded".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_Wounded".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Wounded'");
                                     AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1188,9 +1314,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike ){
                                 AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_Downed".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_Downed".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Downed'");
                                     AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1198,9 +1329,14 @@ namespace RimTales
                             if (!tale5.secondPawnData.kind.RaceProps.Humanlike){
                                 AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap));    
                             }else{
-                                if(tale5.defData.def.LabelCap != "Human"){
-                                    AddTale(tale,"RT_Downed".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
-                                }else{
+                                try{
+                                    if(tale5.defData.def.LabelCap != "Human"){
+                                        AddTale(tale,"RT_Downed".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name,tale5.defData.def.LabelCap));
+                                    }else{
+                                        AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
+                                    }
+                                } catch(NullReferenceException){
+                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Downed'");
                                     AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1209,7 +1345,7 @@ namespace RimTales
                     break;
 
                 case "VSIE_SavedMeFromRaiders":
-                    //*FIXME: Triple-pawn tales not working correctly.
+                    //*FIXME: Triple-pawn tales not working, treat like single-pawn tales.
                     // Just dump info like a single pawn tale for now
                     AddTale(tale, tale.ShortSummary);
                     break;
@@ -1273,11 +1409,14 @@ namespace RimTales
                     break;
     
                 default:
-                    //* We Shouldn't end up here, log the tale.
-                    Log.Message("[RimTales]:============UNKNOWN-TALE===========");
-                    Log.Message("[RimTales]:(TOSTRING) " + tale.ToString());
-                    Log.Message("[RimTales]:(DEF) " +  tale.def);
-                    Log.Message("[RimTales]:===================================");
+
+                    if(RimTalesMod.settings.bVerboseLogging){
+                        //* We Shouldn't end up here, log the tale.
+                        Log.Message("[RimTales]:============UNKNOWN-TALE===========");
+                        Log.Message("[RimTales]:(TOSTRING) " + tale.ToString());
+                        Log.Message("[RimTales]:(DEF) " +  tale.def);
+                        Log.Message("[RimTales]:===================================");
+                    }
                     break;
 
             }

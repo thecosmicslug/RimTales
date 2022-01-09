@@ -52,7 +52,10 @@ namespace RimTales
 
         public string ShowInLog()
         {
-            throw new NotImplementedException();
+            if (deadPawn != null) {
+                return (deadPawn.Name + " - Died on " + date.day + " " + date.quadrum + " " + date.year);
+            }
+            return (date.day + " " + date.quadrum + " " + date.year + " colonist died");
         }
 
         public bool TryStartEvent()
@@ -65,9 +68,7 @@ namespace RimTales
             var unused = deadPawn.relations.RelatedPawns;
 
 
-            if (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum ||
-                Utils.CurrentYear() == date.year)
-            {
+            if (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum || Utils.CurrentYear() == date.year){
                 return true;
             }
 
@@ -117,6 +118,9 @@ namespace RimTales
                 }
             }
 
+            yearsWhenEventStarted.Add(Utils.CurrentYear());
+            //* Added a tale for wedding anniversary
+            Core.AddIncident(Core.RimTales_DefOf.AnniversaryDeath, "RT_AFuneral".Translate(deadPawn.LabelShort, yearsWhenEventStarted.Count, date.day + " " + date.quadrum + " " + date.year));
             return true;
         }
 

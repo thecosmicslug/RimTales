@@ -16,7 +16,10 @@ namespace RimTales {
         public bool bShowAnimalTales= true;
         public bool bShowChitChat= false;
         public bool bShowPlayedGame= false;
+        public int  iFilterCount = 0;
         public bool bUseColour = true;
+        public bool bVerboseLogging = false;
+
 
         //* Aniverary Settings taken from RimStory
         public bool enableMarriageAnniversary = true;
@@ -25,11 +28,15 @@ namespace RimTales {
         public bool enableIndividualThoughts = true;
         public bool enableFunerals = true;
 
+        //* Here is where we retrieve our settings
         public override void ExposeData()
         {
             base.ExposeData();
             //* UI Settings
             Scribe_Values.Look(ref this.bUseColour, "UseColour", true);
+            Scribe_Values.Look(ref this.bVerboseLogging, "VerboseLogging", false);
+            Scribe_Values.Look(ref this.iFilterCount, "FilterCount", 0);
+
             //* Filter settings
             Scribe_Values.Look(ref this.bShowDeaths, "ShowDeaths", true);
             Scribe_Values.Look(ref this.bShowVommit, "ShowVommit", true);
@@ -64,6 +71,8 @@ namespace RimTales {
         public override void DoSettingsWindowContents(Rect inRect){
 
             Listing_Standard listing_Standard = new Listing_Standard();
+            listing_Standard.ColumnWidth = 300f;
+
             listing_Standard.Begin(inRect);
 
             Text.Font = GameFont.Medium;
@@ -90,11 +99,12 @@ namespace RimTales {
             listing_Standard.Gap(10f);
             listing_Standard.CheckboxLabeled("RT_ShowPlayedGame".Translate(), ref settings.bShowPlayedGame);
             listing_Standard.Gap(10f);
-            listing_Standard.Gap(10f);
-            
+            listing_Standard.CheckboxLabeled("RT_VerboseLogging".Translate(), ref settings.bVerboseLogging);
+            listing_Standard.Gap(10f);            
+            listing_Standard.NewColumn();
+
             Text.Font = GameFont.Medium;
             listing_Standard.Label("RT_AnniversarySettings".Translate());
-            
             Text.Font = GameFont.Small;
 
             listing_Standard.Gap(10f);
