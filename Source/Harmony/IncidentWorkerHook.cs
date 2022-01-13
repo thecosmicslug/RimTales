@@ -14,10 +14,6 @@ namespace RimTales
                 return;
             }
 
-            //	public class IncidentWorker_MeteoriteImpact : IncidentWorker
-            // 	SendStandardLetter(def.letterLabel + ": " + list[0].def.LabelCap, text, baseLetterDef, parms, new TargetInfo(cell, map));
-
-
             //* These incidents don't have any extra details included that interest us.
             if (__instance is IncidentWorker_Infestation){
                 Core.AddIncident("Incident_Infestation", "RT_Infestation".Translate());

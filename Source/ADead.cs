@@ -51,11 +51,11 @@ namespace RimTales
         }
 
         public string ShowInLog()
-        {
+        {   
             if (deadPawn != null) {
                 return (deadPawn.Name + " - Died on " + date.day + " " + date.quadrum + " " + date.year);
             }
-            return (date.day + " " + date.quadrum + " " + date.year + " colonist died");
+            return (date.day + " " + date.quadrum + " " + date.year + "RT_ColonistDied".Translate());
         }
 
         public bool TryStartEvent()

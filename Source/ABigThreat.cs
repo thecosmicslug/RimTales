@@ -58,11 +58,11 @@ namespace RimTales
                 return (date.day + " " + date.quadrum + " " + date.year + " " + "RT_ColonyAttacked".Translate(faction.Name));
             }
             else if (faction == null && date != null){
-                return (date.day + " " + date.quadrum + " " + date.year + " " + "Your colony was raided.");
+                return (date.day + " " + date.quadrum + " " + date.year + " " + "RT_ColonyRaided".Translate());
             }
             else 
             {
-                return ("Your colony was raided.");
+                return ("RT_ColonyRaided".Translate());
             }
         }
 
@@ -75,7 +75,6 @@ namespace RimTales
         {
             if (faction == null)
             {
-                Log.Message("[RimTales]: ABigThreat.TryStartEvent() faction == null");
                 return false;
             }
 
@@ -92,20 +91,17 @@ namespace RimTales
                 Utils.CurrentHour() < Resources.minHour || Utils.CurrentHour() > Resources.maxHour ||
                 Utils.CurrentYear() == date.year || !isThisYear)
             {
-                Log.Message("[RimTales]: ABigThreat.TryStartEvent() (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum ||");
                 return false;
             }
 
             var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
             if (pawn == null)
             {
-                Log.Message("[RimTales]: ABigThreat.TryStartEvent() GatheringsUtility.FindRandomGatheringOrganizer() pawn=null");
                 return false;
             }
 
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, true, out var intVec))
             {
-                Log.Message("[RimTales]: ABigThreat.TryStartEvent() RCellFinder.TryFindGatheringSpot()=false");
                 return false;
             }
 

@@ -12,9 +12,17 @@ namespace RimTales
         private static void Postfix(IncidentWorker __instance, TaggedString baseLetterLabel, TaggedString baseLetterText, LetterDef baseLetterDef, IncidentParms parms, LookTargets lookTargets, params NamedArgument[] textArgs)
         {
             Pawn targetPawn = null ;
-   
+            
             switch (__instance.def.defName)
             {
+                case "MeteoriteImpact":
+                    Core.AddIncident("Incident_MeteoriteImpact", "RT_MeteoriteImpact".Translate() + baseLetterText);
+                    break;
+
+                case "FarmAnimalsWanderIn":
+                    Core.AddIncident("Incident_FarmAnimalsWanderIn", "RT_FarmAnimalsWanderIn".Translate() + baseLetterText);
+                    break;
+
                 case "AnimalInsanityMass":
                     targetPawn = lookTargets.TryGetPrimaryTarget().Thing as Pawn;
                     if (targetPawn != null){
@@ -61,13 +69,6 @@ namespace RimTales
                         }else{
                             Core.AddIncident("Incident_StrangerInBlackJoin", "RT_WomanInBlackJoin".Translate(targetPawn.Name.ToString()));
                         }
-                    }
-                    break;
-
-                case "FarmAnimalsWanderIn":
-                    targetPawn = lookTargets.TryGetPrimaryTarget().Thing as Pawn;
-                    if (targetPawn != null){
-                        Core.AddIncident("Incident_FarmAnimalsWanderIn", "RT_FarmAnimalsWanderIn".Translate(targetPawn.LabelCap));
                     }
                     break;
 

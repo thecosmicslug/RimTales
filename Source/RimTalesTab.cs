@@ -263,7 +263,7 @@ namespace RimTales {
 
         //* Tale Counter
         Rect position5 = new Rect(500, 10f, 250F, 30F);
-        Widgets.Label(position5, "Showing " + tales.Count + "/" +  Resources.TaleManager.Count + " Tales.");
+        Widgets.Label(position5, "RT_TaleCount".Translate(tales.Count,Resources.TaleManager.Count));
 
         //* Save button
         Rect position6 = new Rect(720f, 5f , 100f, 30f);
@@ -355,10 +355,8 @@ namespace RimTales {
                 }
             }
         }
-        
         Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
-
-        outputMsg = "Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
+        outputMsg = "RT_SaveTales".Translate(outputFile) + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);
 
@@ -370,16 +368,14 @@ namespace RimTales {
         String outputFile;
         String outputMsg;
         outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "rimworld_all_tales.txt");
-
         using (var output = new StreamWriter(outputFile, false)){
             foreach (TaleStorage taleTMP in Resources.TaleManager)
             {
                 output.WriteLine(taleTMP.date + ": " + taleTMP.ShortSummary);
             }
         }
-
-        Log.Message("[RimTales]: Filtered Tales exported to " + outputFile);
-        outputMsg = "ALL Tales saved to " + outputFile + System.Environment.NewLine + System.Environment.NewLine;
+        Log.Message("[RimTales]: ALL Tales exported to " + outputFile);
+        outputMsg = "RT_SaveAllTales".Translate(outputFile) + System.Environment.NewLine + System.Environment.NewLine;
         Dialog_MessageBox window = new Dialog_MessageBox(outputMsg, "OK!");
 		Find.WindowStack.Add(window);
     }

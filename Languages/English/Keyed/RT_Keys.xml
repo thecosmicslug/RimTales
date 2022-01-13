@@ -24,6 +24,10 @@
   <RT_Filter>Filter Results:</RT_Filter>
   <RT_SaveList>Save List</RT_SaveList>
   <RT_SaveAllList>Save ALL Tales</RT_SaveAllList>
+  <RT_SaveTales>Tales saved to {0}</RT_SaveTales>
+  <RT_SaveAllTales>ALL Tales saved to {0}</RT_SaveAllTales>
+  <RT_TaleCount>Showing {0}/{1} Tales.</RT_TaleCount>
+  <RT_DefError>Error accessing defData for '{0}'</RT_DefError>
 <!-- Events Taken from RimStory -->
   <RT_ABreakup>{0} brokeup with {1}.</RT_ABreakup>
   <RT_DayOfVictory>Day of {0} defeat.</RT_DayOfVictory>
@@ -33,25 +37,27 @@
   <RT_AMarriage>{0} and {1} married.</RT_AMarriage>
   <RT_AFuneral> Anniversary of {0}'s death {1} years ago - {2}.</RT_AFuneral>
   <RT_AMemorialDay>{0} died.</RT_AMemorialDay>
-  <RT_AMemorialDayLetter>Memorial Day.</RT_AMemorialDayLetter>
+  <RT_AMemorialDayLetter>Memorial Day: </RT_AMemorialDayLetter>
   <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters who have been lost over the years.\n\n</RT_AMemorialDayDesc>
 <!-- Incidents -->
+  <RT_ColonistDiedIncident>ColonistDied: {0} died.</RT_ColonistDiedIncident>
   <RT_ColonyAttacked>Enemy Raid: {0} are launching an attack on your colony.</RT_ColonyAttacked>
+  <RT_ColonyRaided>Your colony was raided.</RT_ColonyRaided>
   <RT_AnimalInsanitySingle>AnimalInsanity: A {0} has gone mad and will attack anyone they encounter.</RT_AnimalInsanitySingle>
   <RT_AnimalInsanityMass>AnimalInsanity: A group of {0}s have gone mad and will attack anyone they encounter.</RT_AnimalInsanityMass>
   <RT_ManhunterPack>A Mad Pack of {0}s are attacking your colony.</RT_ManhunterPack>
   <RT_ColdSnap>Start of a Cold Snap.</RT_ColdSnap>
   <RT_HeatWave>Start of a Heat Wave.</RT_HeatWave>
-  <RT_FarmAnimalsWanderIn>AnimalsWanderIn: Some {0}s have joined your colony.</RT_FarmAnimalsWanderIn>
+  <RT_FarmAnimalsWanderIn>AnimalsWanderIn: </RT_FarmAnimalsWanderIn>
+  <RT_MeteoriteImpact>MeteoriteImpact: </RT_MeteoriteImpact>
   <RT_Infestation>Infestation of your colony.</RT_Infestation>
-  <RT_WandererJoin>A wanderer called {0} has joined your colony.</RT_WandererJoin>
-  <RT_WandererJoin2>A wanderer has joined your colony.</RT_WandererJoin2>
-  <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
-  <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
-  <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
+  <RT_WandererJoin>WandererJoin: A wanderer called {0} has joined your colony.</RT_WandererJoin>
+  <RT_WandererJoin2>WandererJoin: A wanderer has joined your colony.</RT_WandererJoin2>
+  <RT_VolcanicWinter>VolcanicWinter: Beginning of Volcanic Winter.</RT_VolcanicWinter>
+  <RT_ToxicFallout>ToxicFallout: Beginning of Toxic Fallout.</RT_ToxicFallout>
+  <RT_FlashStorm>FlashStorm: A storm has suddenly appeared.</RT_FlashStorm>
   <RT_Eclipse>Eclipse: A group of spectators watch the sky peacefully.</RT_Eclipse>
   <RT_Aurora>Aurora: The community is illuminated by the light of an aurora.</RT_Aurora>
-  <RT_MeteoriteImpact>MeteoriteImpact: Falling to the ground in a cloud of ash.</RT_MeteoriteImpact>
   <RT_ShipPartCrash>ShipPartCrash: A damaged ship part landed near the community.</RT_ShipPartCrash>
   <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
   <RT_Alphabeavers>Alphabeavers: Alphabeavers are attacking the colony.</RT_Alphabeavers>
@@ -59,10 +65,8 @@
   <RT_ShortCircuit>ShortCircuit: Electronics have failed. {0} has short-circuited.</RT_ShortCircuit>
   <RT_ResourcePodCrash>ResourcePodCrash: Some resources have landed nearby.</RT_ResourcePodCrash>
   <RT_SolarFlare>SolarFlare: Electronics have been disabled for the day.</RT_SolarFlare>
-  <RT_AnimalInsanitySingle>AnimalInsanitySingle: An animal has gone crazy.</RT_AnimalInsanitySingle>
   <RT_ThrumboPasses>ThrumboPasses: A Thrumbo has entered.</RT_ThrumboPasses>
   <RT_HerdMigration>HerdMigration: A herd of {0} are moving through the map.</RT_HerdMigration>
-  <RT_HerdMigration2>HerdMigration: A herd of animals are on the move.</RT_HerdMigration2>
   <RT_CropBlight>CropBlight: Some crops are ruined.</RT_CropBlight>
   <RT_PsychicDrone>PsychicDrone: A psychic drone affecting {0}s has begun.</RT_PsychicDrone>
   <RT_PsychicSoothe>PsychicSoothe: A psychic soothe affecting {0}s has begun.</RT_PsychicSoothe>
@@ -146,4 +150,7 @@
   <RT_SavedMeFromRaiders>VSIE_SavedMeFromRaiders: {1} saved {0} from {2}.</RT_SavedMeFromRaiders>
   <RT_StoleMyLover>VSIE_StoleMyLover: {2} stole {1} away from {0}.</RT_StoleMyLover>
   <RT_CuredMyFriend>VSIE_CuredMyFriend: {1} cured {0}'s' friend, {2}.</RT_CuredMyFriend>
+  <!-- Misc -->
+  <RT_ColonistDied> colonist died</RT_ColonistDied>
+
 </LanguageData>

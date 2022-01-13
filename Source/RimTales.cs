@@ -448,7 +448,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_CaravanRemoteMining".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CaravanRemoteMining'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -459,7 +459,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'PlayedGame'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -471,13 +471,13 @@ namespace RimTales
                             try{
                                 AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                          }else{
                             try{
                                 AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.kind.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                          }
               
@@ -491,13 +491,13 @@ namespace RimTales
                             try{
                                 AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }else{
                             try{
                                 AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.kind.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }
 
@@ -511,13 +511,13 @@ namespace RimTales
                             try{
                                 AddTale(tale,"RT_ToxicityRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }else{
                             try{
                                 AddTale(tale,"RT_ToxicityRevealed".Translate(tale2.pawnData.kind.LabelCap,tale2.defData.def.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }
 
@@ -530,7 +530,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_FinishedResearchProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'FinishedResearchProject'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -541,7 +541,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_CompletedLongConstructionProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CompletedLongConstructionProject'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -553,13 +553,13 @@ namespace RimTales
                             try{
                                 AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'IllnessRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }else{
                             try{
                                 AddTale(tale,"RT_IllnessRevealed".Translate(tale2.pawnData.kind.LabelCap,tale2.defData.def.LabelCap));
                             } catch(NullReferenceException){
-                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'IllnessRevealed'");
+                                Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                             }
                         }
                     }
@@ -571,7 +571,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_MinedValuable".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'MinedValuable'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -582,7 +582,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_GainedMasterSkillWithPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'GainedMasterSkillWithPassion'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -593,7 +593,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_GainedMasterSkillWithoutPassion".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'GainedMasterSkillWithoutPassion'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -604,7 +604,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_CompletedLongCraftingProject".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'CompletedLongCraftingProject'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -615,7 +615,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_CraftedArt".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing thingData for 'CraftedArt'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -626,7 +626,7 @@ namespace RimTales
                         try{
                             AddTale(tale,"RT_StruckMineable".Translate(tale3.pawnData.name,tale3.thingData.thingDef.LabelCap));
                         } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing thingData for 'StruckMineable'");
+                            Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                         }
                     }
                     break;
@@ -1108,7 +1108,7 @@ namespace RimTales
                             AddTale(tale,"RT_TrainedAnimal".Translate(tale5.firstPawnData.name,tale5.secondPawnData.kind.LabelCap,tale5.defData.def.LabelCap));  
                         }
                     } catch(NullReferenceException){
-                        Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'TrainedAnimal'");
+                        Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                     }
                     break;
 
@@ -1126,7 +1126,7 @@ namespace RimTales
                                         AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMajorThreat'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1141,7 +1141,7 @@ namespace RimTales
                                         AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'TrainedAnimal'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_KilledMajorThreat2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1160,7 +1160,7 @@ namespace RimTales
                         }
                     }
                     } catch(NullReferenceException){
-                        Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMortar'");
+                        Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                     }
     
                     break;
@@ -1179,7 +1179,7 @@ namespace RimTales
                                         AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledLongRange'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1195,7 +1195,7 @@ namespace RimTales
                                     }
                                 } catch(NullReferenceException){
                                     AddTale(tale,"RT_KilledLongRange2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledLongRange'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                 }
                             }
                         }
@@ -1216,7 +1216,7 @@ namespace RimTales
                                         AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMelee'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1231,7 +1231,7 @@ namespace RimTales
                                         AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'KilledMelee'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_KilledMelee2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1272,7 +1272,7 @@ namespace RimTales
                                         AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Wounded'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1287,7 +1287,7 @@ namespace RimTales
                                         AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Wounded'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_Wounded2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1309,7 +1309,7 @@ namespace RimTales
                                         AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Downed'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.kind.LabelCap,tale5.secondPawnData.name));
                                 }
                             }
@@ -1324,7 +1324,7 @@ namespace RimTales
                                         AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                     }
                                 } catch(NullReferenceException){
-                                    Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'Downed'");
+                                    Log.Message("[RimTales]: IncomingTale() - " + "RT_DefError".Translate(tale.def.defName));
                                     AddTale(tale,"RT_Downed2".Translate(tale5.firstPawnData.name,tale5.secondPawnData.name));
                                 }
                             }
@@ -1354,7 +1354,7 @@ namespace RimTales
                     break;
     
                 case "MeteoriteImpact":
-                    AddTale(tale,"RT_MeteoriteImpact".Translate());
+                    //AddTale(tale,"RT_MeteoriteImpact".Translate());
                     break;
     
                 case "ShipPartCrash":
