@@ -4,7 +4,7 @@ using Verse;
 namespace RimTales
 {
     [HarmonyPatch(typeof(Pawn),nameof(Pawn.Kill))]
-    static class ColonistDied
+    static class ColonistDiedHook
     {
         [HarmonyPrefix]
         static void Prefix(Pawn __instance)

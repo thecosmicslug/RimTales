@@ -23,7 +23,7 @@ namespace RimTales
                 Logger.Message("Initialisng Tales...");
             }
             
-            //* UNCOMMENT THIS TO WIPE OUR TALES DATA & RE-IMPORT ON LOAD
+            //* NOTE: Enable this to clear talelog & re-import.
             //WipeTaleLog();
 
             if (RimTalesMod.settings.bVerboseLogging){
@@ -40,7 +40,6 @@ namespace RimTales
             Resources.TEST_MAP = map;
             base.MapLoaded(map);
 
-            //* One tick per hour for the anniversaries - if enabled
             HugsLibController.Instance.TickDelayScheduler.ScheduleCallback(() =>{
                 if (Resources.EventManager.Count > 0){
                     foreach (var e in Resources.EventManager){
@@ -468,33 +467,60 @@ namespace RimTales
                 case "HeatstrokeRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        try{
-                            AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
-                        } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
-                        }
+                         if(tale2.pawnData.kind.RaceProps.Humanlike){
+                            try{
+                                AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.name));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
+                            }
+                         }else{
+                            try{
+                                AddTale(tale,"RT_HeatstrokeRevealed".Translate(tale2.pawnData.kind.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HeatstrokeRevealed'");
+                            }
+                         }
+              
                     }
                     break;
 
                 case "HypothermiaRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        try{
-                            AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
-                        } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                        if(tale2.pawnData.kind.RaceProps.Humanlike){
+                            try{
+                                AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.name));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                            }
+                        }else{
+                            try{
+                                AddTale(tale,"RT_HypothermiaRevealed".Translate(tale2.pawnData.kind.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'HypothermiaRevealed'");
+                            }
                         }
+
                     }
                     break;
 
                 case "ToxicityRevealed":
                     //Tale_SinglePawnAndDef
                     if (tale2.pawnData != null){
-                        try{
-                            AddTale(tale,"RT_PlayedGame".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
-                        } catch(NullReferenceException){
-                            Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                        if(tale2.pawnData.kind.RaceProps.Humanlike){
+                            try{
+                                AddTale(tale,"RT_ToxicityRevealed".Translate(tale2.pawnData.name,tale2.defData.def.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                            }
+                        }else{
+                            try{
+                                AddTale(tale,"RT_ToxicityRevealed".Translate(tale2.pawnData.kind.LabelCap,tale2.defData.def.LabelCap));
+                            } catch(NullReferenceException){
+                                Log.Message("[RimTales]: IncomingTale() - Error accessing defData for 'ToxicityRevealed'");
+                            }
                         }
+
                     }
                     break;
 
@@ -1307,18 +1333,15 @@ namespace RimTales
                     break;
 
                 case "VSIE_SavedMeFromRaiders":
-                    //*FIXME: Triple-pawn tales not working, treat like single-pawn tales.
-                    // Just dump info like a single pawn tale for now
+                    //* Triple-pawn tales, treat like single-pawn tales.
                     AddTale(tale, tale.ShortSummary);
                     break;
 
                 case "VSIE_StoleMyLover":
-                     // Just dump info like a single pawn tale for now
                     AddTale(tale, tale.ShortSummary);
                     break;
 
                 case "VSIE_CuredMyFriend":
-                    // Just dump info like a single pawn tale for now
                     AddTale(tale, tale.ShortSummary);
                     break;
 

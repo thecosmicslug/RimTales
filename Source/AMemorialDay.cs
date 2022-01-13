@@ -65,7 +65,6 @@ namespace RimTales
 
         public bool TryStartEvent(Map map)
         {
-
             var isThisYear = true;
             foreach (var y in yearsWhenEventStarted)
             {
@@ -85,19 +84,16 @@ namespace RimTales
             var pawn = GatheringsUtility.FindRandomGatheringOrganizer(Faction.OfPlayer, map, GatheringDefOf.Party);
             if (pawn == null)
             {
-                Log.Message("[RimTales]: AMemorialDay.TryStartEvent() GatheringsUtility.FindRandomGatheringOrganizer() pawn=null");
                 return false;
             }
 
             if (!RCellFinder.TryFindGatheringSpot(pawn, GatheringDefOf.Party, true, out var intVec))
             {
-                Log.Message("[RimTales]: AMemorialDay.TryStartEvent() RCellFinder.TryFindGatheringSpot()=false");
                 return false;
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
 
-            //TODO: Test Memorial day deceased listing.
             string StrOutput ="";
             if (Resources.EventManager.Count > 0){
                 foreach (var e in Resources.EventManager){
@@ -107,7 +103,6 @@ namespace RimTales
                 }
                 StrOutput = StrOutput + "\n";
             }
-
 
             var unused = LordMaker.MakeNewLord(pawn.Faction, new LordJob_Joinable_Party(intVec, pawn, GatheringDefOf.Party), map);
             Find.LetterStack.ReceiveLetter("RT_AMemorialDayLetter".Translate(), "RT_AMemorialDayDesc".Translate() + StrOutput ,LetterDefOf.PositiveEvent);

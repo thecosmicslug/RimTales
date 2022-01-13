@@ -6,7 +6,7 @@ namespace RimTales
 {
     [HarmonyPatch(typeof(VoluntarilyJoinableLordsStarter))]
     [HarmonyPatch("TryStartMarriageCeremony")]
-    internal class StartMarriageCeremony
+    internal class MarriageHook
     {
         private static void Postfix(ref Pawn firstFiance, ref Pawn secondFiance)
         {

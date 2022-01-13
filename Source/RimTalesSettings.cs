@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Verse;
+using HarmonyLib;
 
 namespace RimTales {
     //* Holds the actual settings here
@@ -66,6 +67,8 @@ namespace RimTales {
 
         public RimTalesMod(ModContentPack content) : base(content){
             settings = GetSettings<RimTalesSettings>();
+            //*NOTE: Enable Harmony Debug-log here.
+            //Harmony.DEBUG = true;
         }
 
         public override void DoSettingsWindowContents(Rect inRect){

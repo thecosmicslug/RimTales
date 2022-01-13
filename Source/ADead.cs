@@ -65,10 +65,17 @@ namespace RimTales
 
         public bool TryStartEvent(Map map)
         {
+            var isThisYear = true;
+            foreach (var y in yearsWhenEventStarted)
+            {
+                if (y == Utils.CurrentYear())
+                {
+                    isThisYear = false;
+                }
+            }
+
             var unused = deadPawn.relations.RelatedPawns;
-
-
-            if (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum || Utils.CurrentYear() == date.year){
+            if (Utils.CurrentDay() != date.day || Utils.CurrentQuadrum() != date.quadrum || Utils.CurrentYear() == date.year || !isThisYear){
                 return true;
             }
 
@@ -119,6 +126,7 @@ namespace RimTales
             }
 
             yearsWhenEventStarted.Add(Utils.CurrentYear());
+            
             //* Added a tale for wedding anniversary
             Core.AddIncident("AnniversaryDeath", "RT_AFuneral".Translate(deadPawn.LabelShort, yearsWhenEventStarted.Count, date.day + " " + date.quadrum + " " + date.year));
             return true;

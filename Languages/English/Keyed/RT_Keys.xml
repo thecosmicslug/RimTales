@@ -37,13 +37,15 @@
   <RT_AMemorialDayDesc>Colonist are gathering to honor fallen brothers and sisters who have been lost over the years.\n\n</RT_AMemorialDayDesc>
 <!-- Incidents -->
   <RT_ColonyAttacked>Enemy Raid: {0} are launching an attack on your colony.</RT_ColonyAttacked>
-  <RT_AnimalInsanityMass>Mass Animal Insanity occurs.</RT_AnimalInsanityMass>
-  <RT_ManhunterPack>Manhunter Pack attacked your colony.</RT_ManhunterPack>
+  <RT_AnimalInsanitySingle>AnimalInsanity: A {0} has gone mad and will attack anyone they encounter.</RT_AnimalInsanitySingle>
+  <RT_AnimalInsanityMass>AnimalInsanity: A group of {0}s have gone mad and will attack anyone they encounter.</RT_AnimalInsanityMass>
+  <RT_ManhunterPack>A Mad Pack of {0}s are attacking your colony.</RT_ManhunterPack>
   <RT_ColdSnap>Start of a Cold Snap.</RT_ColdSnap>
   <RT_HeatWave>Start of a Heat Wave.</RT_HeatWave>
-  <RT_FarmAnimalsWanderIn>Animals joined your colony.</RT_FarmAnimalsWanderIn>
+  <RT_FarmAnimalsWanderIn>AnimalsWanderIn: Some {0}s have joined your colony.</RT_FarmAnimalsWanderIn>
   <RT_Infestation>Infestation of your colony.</RT_Infestation>
-  <RT_WandererJoin>A wanderer has joined your colony.</RT_WandererJoin>
+  <RT_WandererJoin>A wanderer called {0} has joined your colony.</RT_WandererJoin>
+  <RT_WandererJoin2>A wanderer has joined your colony.</RT_WandererJoin2>
   <RT_VolcanicWinter>Beginning of Volcanic Winter.</RT_VolcanicWinter>
   <RT_ToxicFallout>Beginning of Toxic Fallout.</RT_ToxicFallout>
   <RT_FlashStorm>A Flash Storm occured.</RT_FlashStorm>
@@ -54,20 +56,25 @@
   <RT_EndGame_ShipEscape>EndGame_ShipEscape: A spaceship is visible in the far distance.</RT_EndGame_ShipEscape>
   <RT_Alphabeavers>Alphabeavers: Alphabeavers are attacking the colony.</RT_Alphabeavers>
   <RT_AmbrosiaSprout>AmbrosiaSprout: Colonists discovered a patch of ambrosia growing nearby.</RT_AmbrosiaSprout>
-  <RT_ShortCircuit>ShortCircuit: Colony electronics have short-circuited.</RT_ShortCircuit>
+  <RT_ShortCircuit>ShortCircuit: Electronics have failed. {0} has short-circuited.</RT_ShortCircuit>
   <RT_ResourcePodCrash>ResourcePodCrash: Some resources have landed nearby.</RT_ResourcePodCrash>
   <RT_SolarFlare>SolarFlare: Electronics have been disabled for the day.</RT_SolarFlare>
-  <!-- NEW - need some more testing -->
   <RT_AnimalInsanitySingle>AnimalInsanitySingle: An animal has gone crazy.</RT_AnimalInsanitySingle>
   <RT_ThrumboPasses>ThrumboPasses: A Thrumbo has entered.</RT_ThrumboPasses>
-  <RT_HerdMigration>HerdMigration: Animals on the move.</RT_HerdMigration>
+  <RT_HerdMigration>HerdMigration: A herd of {0} are moving through the map.</RT_HerdMigration>
+  <RT_HerdMigration2>HerdMigration: A herd of animals are on the move.</RT_HerdMigration2>
   <RT_CropBlight>CropBlight: Some crops are ruined.</RT_CropBlight>
   <RT_PsychicDrone>PsychicDrone: A psychic drone affecting {0}s has begun.</RT_PsychicDrone>
   <RT_PsychicSoothe>PsychicSoothe: A psychic soothe affecting {0}s has begun.</RT_PsychicSoothe>
-  <RT_SelfTame>SelfTame: An animal has self-tamed.</RT_SelfTame>
+  <RT_SelfTame>SelfTame: An {0} has self-tamed and is now friendly to the colony.</RT_SelfTame>
   <RT_TravelerGroup>TravelerGroup: A group of travellers from {0} are passing through.</RT_TravelerGroup>
   <RT_VisitorGroup>VisitorGroup: A group of visitors from {0} have arrived.</RT_VisitorGroup>
-  <RT_WildManWandersIn>WildManWandersIn: A wildman has appeared.</RT_WildManWandersIn>
+  <RT_VisitorSingle>Visitor: A visitor called {1} from {0} has arrived.</RT_VisitorSingle>
+  <RT_Trader> They have goods to trade.</RT_Trader>
+  <RT_WildManWandersIn>WildManWandersIn: A wild-man called {0} has appeared.</RT_WildManWandersIn>
+  <RT_WildWomanWandersIn>WildManWandersIn: A wild-woman called {0} has appeared.</RT_WildWomanWandersIn>
+  <RT_ManInBlackJoin>A mysterious man in black called {0} has joined your colony.</RT_ManInBlackJoin>
+  <RT_WomanInBlackJoin>A mysterious woman in black has joined your colony.</RT_WomanInBlackJoin>
   <!-- Tales -->
   <RT_CaravanRemoteMining>CaravanRemoteMining: {0}'s caravan mining a rich vein of {1} in a foreign land.</RT_CaravanRemoteMining>
   <RT_CaravanAmbushedByManhunter>CaravanAmbushedByManhunter: {0}'s caravan is being ambushed by animals.</RT_CaravanAmbushedByManhunter>
