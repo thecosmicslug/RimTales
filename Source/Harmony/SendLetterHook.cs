@@ -49,7 +49,7 @@ namespace RimTales
                     break; 
 
                 case "WandererJoin":
-                    //* FIXME: Not hooking here, need to find another way to trigger this.
+                    //* TODO: FIX! Not hooking here, need to find another way to trigger this.
                     //targetPawn = lookTargets.TryGetPrimaryTarget().Thing as Pawn;
                     //if (targetPawn != null){
                         //strOutput = targetPawn.Name.ToString();
